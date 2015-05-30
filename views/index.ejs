@@ -7,10 +7,20 @@
     <script src="javascripts/angular-app.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body ng-app="homeRoom">
-    <div ng-controller='mainCtrl'>
-      <h1><%= title %></h1>
-      <p>{{welcome}}</p>
+  <body>
+    <div ng-app="homeRoom">
+      <div ng-include="'templates/nav.ejs'"></div>
+
+      <div ui-view></div>
+      <a ui-sref="state1">State 1</a>
+      <a ui-sref="state2">State 2</a>
+      
+      <div ng-controller='mainCtrl'>
+        <h1><%= title %></h1>
+        <p>{{welcome}}</p>
+      </div>
+
+      <div ng-include="'templates/footer.ejs'"></div>
     </div>
   </body>
 </html>
