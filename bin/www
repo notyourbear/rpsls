@@ -29,13 +29,20 @@ var io = require('socket.io')(server);
 
 var players = [];
 
+var rooms = [];
+
 io.on('connection', function(user){
+  user.bool = false;
 
   console.log('a user has connected');
   players.push(user.id);
   user.player = new Player(user.id);
-  console.log(players);
-  console.log(user.player);
+  console.log(rooms);
+
+  if (rooms.length > 0 && !user.bool){
+    user.emit('currentRooms', rooms);
+    user.bool = true;
+  }
 
   user.on('disconnect', function(){
     console.log('a user has left');
@@ -52,9 +59,12 @@ io.on('connection', function(user){
     }
   });
 
-  user.on('addRoom', function(room){
-    console.log(room);
-    user.broadcast.emit('addRoom', this.player.userName, room);
+  user.on('addRoom', function(aRoom){
+    if (!this.player.room) {
+      rooms.push({name: this.player.userName, room: aRoom});
+      user.broadcast.emit('addRoom', user.player.userName, aRoom);
+      this.player.room = true;
+    }
   });
 });
 

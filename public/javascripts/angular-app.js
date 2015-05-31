@@ -6,6 +6,8 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
 
   $scope.welcome = 'Hi this is the main page';
 
+  var hasCreatedRoom = false;  //for room creation check
+
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
       var user = $scope.userName;
@@ -17,20 +19,39 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
   };
 
   $scope.addRoom = function(user, name){
+    roomDiv.createdBy =  user || 'you';
     roomDiv.name = name || 'Orange Mochafrappachino';
-    roomDiv.createdBy =  user || 'a user from Mars';
 
     var newRoom = roomDiv.roomBeg + roomDiv.nameBeg + roomDiv.name + roomDiv.nameEnd + roomDiv.createdBeg + roomDiv.createdBy + roomDiv.createdEnd + roomDiv.roomEnd;
 
-    var room = angular.element('#rooms').append(newRoom);
+    //check to see if user has already created a room, or if it's being sent from another user
+    if(arguments.length > 0 || !hasCreatedRoom){
+      //if not, create room
+      angular.element('#rooms').append(newRoom);
+      
+      //if user is creating room, make it so he/she cannot create another
+      if(arguments.length === 0){
+        hasCreatedRoom = true;
+      }
+    }
 
-    if(!user){
+    if(arguments.length === 0){
       socket.emit('addRoom', roomDiv.name);
     }
   };
 
   socket.on('addRoom', function(user, name){
     $scope.addRoom(user,name);
+  });
+
+  socket.on('currentRooms', function(currentRooms){
+    console.log(currentRooms);
+    if (currentRooms.length > 0 && !$scope.bool){
+      for (var x = 0; x < currentRooms.length; x++){
+        $scope.addRoom(currentRooms[x].name, currentRooms[x].room);
+      }
+      $scope.bool = true;
+    }
   });
 
 }]);
@@ -57,18 +78,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,   
 
 }]);
 
-app.factory('roomDiv', function (){
-  return {
-    roomBeg: "<div class='gameRoom'>",
-    nameBeg: "<div class='name'>",
-    name: "",
-    nameEnd: "</div>",
-    createdBeg:"<div class='createdBy'>",
-    createdBy: "",
-    createdEnd:"</div>",
-    roomEnd: "</div>"
-    };
-});
+
 
 
 
