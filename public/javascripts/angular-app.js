@@ -2,15 +2,15 @@
 
 var app = angular.module('homeRoom', ['ui.router']);
 
-app.controller('mainCtrl', ['$scope', 'socket', function($scope, socket) {
+app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', function($scope, $rootScope, socket) {
   $scope.welcome = 'Hi this is the main page';
   $scope.addName = function(){
-    if($scope.userName && !$scope.named){
+    if($scope.userName && !$rootScope.named){
       var user = $scope.userName;
       console.log($scope.userName);
       socket.emit('addName', user);
       $scope.userName = '';
-      $scope.named = true;
+      $rootScope.named = true;
     }
   };
 }]);
