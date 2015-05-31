@@ -6,8 +6,6 @@ MVP:
 
   Room screen
     -two people visible on screen
-    -queue for play on screen (winner stays rules)
-    -ability for room to chat
     -button to leave room
     -the game
 
@@ -19,6 +17,8 @@ Add on:
     player customization all tied to late-log in
 
   Rooms:
+    -queue for play on screen (winner stays rules)
+    -ability for room to chat
     Ability to create private rooms w/ passwords
     GUI 
 
