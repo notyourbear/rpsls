@@ -5,10 +5,12 @@ var app = angular.module('homeRoom', ['ui.router']);
 app.controller('mainCtrl', ['$scope', 'socket', function($scope, socket) {
   $scope.welcome = 'Hi this is the main page';
   $scope.addName = function(){
-    var user = $scope.userName;
-    console.log($scope.userName);
-    socket.emit('addName', user);
-    $scope.userName = '';
+    if($scope.userName){
+      var user = $scope.userName;
+      console.log($scope.userName);
+      socket.emit('addName', user);
+      $scope.userName = '';
+    }
   };
 }]);
 

@@ -45,9 +45,11 @@ io.on('connection', function(user){
   });
 
   user.on('addName', function(name){
-    this.player.addUserName(name);
-    console.log('name added!', this.player.userName);
-    console.log(this.player);
+    if(name !== '' && !this.player.userName){
+      this.player.addUserName(name);
+      console.log('name added!', this.player.userName);
+      console.log(this.player);
+    }
   });
 });
 
