@@ -51,6 +51,11 @@ io.on('connection', function(user){
       console.log(this.player);
     }
   });
+
+  user.on('addRoom', function(room){
+    console.log(room);
+    user.broadcast.emit('addRoom', this.player.userName, room);
+  });
 });
 
 

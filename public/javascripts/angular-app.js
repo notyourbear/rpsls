@@ -5,7 +5,7 @@ var app = angular.module('homeRoom', ['ui.router']);
 app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', function($scope, $rootScope, socket, roomDiv) {
 
   $scope.welcome = 'Hi this is the main page';
-  
+
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
       var user = $scope.userName;
@@ -16,9 +16,22 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
     }
   };
 
-  $scope.addRoom = function(){
-    angular.element('#rooms').append(roomDiv.room);
+  $scope.addRoom = function(user, name){
+    roomDiv.name = name || 'Orange Mochafrappachino';
+    roomDiv.createdBy =  user || 'a user from Mars';
+
+    var newRoom = roomDiv.roomBeg + roomDiv.nameBeg + roomDiv.name + roomDiv.nameEnd + roomDiv.createdBeg + roomDiv.createdBy + roomDiv.createdEnd + roomDiv.roomEnd;
+
+    var room = angular.element('#rooms').append(newRoom);
+
+    if(!user){
+      socket.emit('addRoom', roomDiv.name);
+    }
   };
+
+  socket.on('addRoom', function(user, name){
+    $scope.addRoom(user,name);
+  });
 
 }]);
 
@@ -46,7 +59,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,   
 
 app.factory('roomDiv', function (){
   return {
-    room: "<div class='gameRoom'><div class='name'> Name of Room </div><div class='createdBy'>created by this user</div></div>"
+    roomBeg: "<div class='gameRoom'>",
+    nameBeg: "<div class='name'>",
+    name: "",
+    nameEnd: "</div>",
+    createdBeg:"<div class='createdBy'>",
+    createdBy: "",
+    createdEnd:"</div>",
+    roomEnd: "</div>"
     };
 });
 
