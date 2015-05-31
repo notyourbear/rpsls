@@ -17,10 +17,12 @@
         <div>
           <h1><%= title %></h1>
           <p>{{welcome}}</p>
-          <form ng-submit="addName()">
-          <input ng-model='userName' name='userName' placeholder='Enter a name' type="text">
-          <input type="submit" name="submit" value="submit">
-          </form>
+          <div ng-hide="named">
+            <form ng-submit="addName()">
+            <input ng-model='userName' name='userName' placeholder='Enter a name' type="text">
+            <input type="submit" name="submit" value="submit">
+            </form>
+          </div>
         </div>
 
       </div>
