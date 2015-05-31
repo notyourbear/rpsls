@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('rpsls:server');
 var http = require('http');
+var Player = require('../util/Player.js');
 
 /**
  * Get port from environment and store in Express.
@@ -28,18 +29,15 @@ var io = require('socket.io')(server);
 
 var players = [];
 
-io.on('connection', function(player){
-  console.log('a player has connected');
-  players.push(player.id);
+io.on('connection', function(user){
+
+  console.log('a user has connected');
+  players.push(new Player(user.id));
   console.log(players);
 
-  player.on('disconnect', function(){
-    console.log('a player has left');
-    console.log(player.id);
-    var index = players.indexOf(player.id);
-    console.log(index);
-    players.splice(index, 1);
-    console.log(players);
+  user.on('disconnect', function(){
+    console.log('a user has left');
+    console.log(user.id);
   });
 });
 
