@@ -2,8 +2,10 @@
 
 var app = angular.module('homeRoom', ['ui.router']);
 
-app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', function($scope, $rootScope, socket) {
+app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', function($scope, $rootScope, socket, roomDiv) {
+
   $scope.welcome = 'Hi this is the main page';
+  
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
       var user = $scope.userName;
@@ -13,6 +15,11 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', function($scope, $
       $rootScope.named = true;
     }
   };
+
+  $scope.addRoom = function(){
+    angular.element('#rooms').append(roomDiv.room);
+  };
+
 }]);
 
 app.controller('roomCtrl', ['$scope', function($scope) {
@@ -35,9 +42,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,   
       controller: 'roomCtrl'
     });
 
-
-
 }]);
+
+app.factory('roomDiv', function (){
+  return {
+    room: "<div class='gameRoom'><div class='name'> Name of Room </div><div class='createdBy'>created by this user</div></div>"
+    };
+});
 
 
 
