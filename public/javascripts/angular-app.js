@@ -2,7 +2,7 @@
 
 var app = angular.module('homeRoom', ['ui.router']);
 
-app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', function($scope, $rootScope, socket, roomDiv) {
+app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', 'socket', 'roomDiv', function($scope, $rootScope, $compile, socket, roomDiv) {
 
   $scope.welcome = 'Hi this is the main page';
 
@@ -10,6 +10,10 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
   var userName = null;
 
   $scope.roomName = '';
+
+  $scope.joinRoom = function(id){
+    socket.emit('joinRoom', id);
+  }
 
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
@@ -24,7 +28,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
     $scope.createRoom = true;
   };
 
-  $scope.addRoom = function(user, name){
+  $scope.addRoom = function(user, name, id){
     //check for scope
     if ($scope.roomName !== ''){
       roomDiv.room.createdBy = userName || 'you';
@@ -36,8 +40,11 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
       roomDiv.room.name = name;
     }
 
-    var newRoom = roomDiv.room.roomBeg + roomDiv.room.nameBeg + roomDiv.room.name + roomDiv.room.nameEnd + roomDiv.room.createdBeg + roomDiv.room.createdBy + roomDiv.room.createdEnd + roomDiv.room.roomEnd;
+    var joinButton = roomDiv.join.buttonBeg + "\""+id+"\"" + roomDiv.join.buttonBegEnd + roomDiv.join.buttonText + roomDiv.join.buttonEnd;
 
+    var newRoom = $compile(roomDiv.room.roomBeg + roomDiv.room.nameBeg + roomDiv.room.name + roomDiv.room.nameEnd + roomDiv.room.createdBeg + roomDiv.room.createdBy + roomDiv.room.createdEnd + joinButton + roomDiv.room.roomEnd)($scope);
+
+  
     //check if room creation is being sent from another user
     if(arguments.length > 0){
       //if not, create room
@@ -60,15 +67,15 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
    
   };
 
-  socket.on('addRoom', function(user, name){
-    $scope.addRoom(user,name);
+  socket.on('addRoom', function(user, name, id){
+    $scope.addRoom(user,name, id);
   });
 
   socket.on('currentRooms', function(currentRooms){
     console.log(currentRooms);
     if (currentRooms.length > 0 && !$scope.bool){
-      for (var x = 0; x < currentRooms.length; x++){
-        $scope.addRoom(currentRooms[x].ownerUserName, currentRooms[x].name);
+      for (var i = 0; i < currentRooms.length; i++){
+        $scope.addRoom(currentRooms[i].ownerUserName, currentRooms[i].name, currentRooms[i].id);
       }
       $scope.bool = true;
     }

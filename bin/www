@@ -76,9 +76,28 @@ io.on('connection', function(user){
       this.player.roomId = this.id;
       
       //update currentRooms list
-      user.broadcast.emit('addRoom', this.player.userName, roomName);
-      // user.emit('currentRooms', rooms);
+      user.broadcast.emit('addRoom', this.player.userName, roomName, 'hi');
+     
       
+    }
+  });
+
+  user.on('joinRoom', function(id){
+    //run through all rooms
+    for (var i = 0; i < rooms.length; i++){
+      if(rooms[i].id === id){
+        //add player to room object
+        rooms[i].addPerson(this.player.id, this.player.userName);
+
+        //also join player into room's socket
+        this.join(id);
+
+        //update user's player object with current roomId
+        this.player.roomId = id;
+
+        //console log out rooms
+        console.log(rooms);
+      }
     }
   });
 });

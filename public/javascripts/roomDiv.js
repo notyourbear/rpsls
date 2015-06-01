@@ -9,6 +9,12 @@ app.factory('roomDiv', function (){
             createdBy: "",
             createdEnd:"</div>",
             roomEnd: "</div>"
-            }
+            },
+        join: {
+            buttonBeg: "<div ng-click='joinRoom(",
+            buttonBegEnd: ")' class='joinButton'>",
+            buttonText: "Join this room",
+            buttonEnd: "</div>"
+        }
     };
 });
