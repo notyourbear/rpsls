@@ -6,8 +6,9 @@ var Room = function(name, id, ownerId, ownerUserName){
   this.people = []; //needs to be rethought
 };
 
-Room.prototype.addPerson = function(userId, userName){
-  this.people.push([userId, userName]);
+Room.prototype.addPerson = function(person){
+  this.people.push(person);
+  console.log('added:', person);
 };
 
 module.exports = Room;

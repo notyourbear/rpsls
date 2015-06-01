@@ -11,7 +11,7 @@ app.factory('roomDiv', function (){
             roomEnd: "</div>"
             },
         join: {
-            buttonBeg: "<div ng-click='joinRoom(",
+            buttonBeg: "<div ng-click='checkRoom(",
             buttonBegEnd: ")' class='joinButton'>",
             buttonText: "Join this room",
             buttonEnd: "</div>"

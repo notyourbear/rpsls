@@ -11,9 +11,16 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', 'socket', 'roomD
 
   $scope.roomName = '';
 
+
+  $scope.checkRoom = function(id){
+    console.log('frontcheck, whats the id:',  id);
+    //emit to backend to know whether user is in room (true or false)
+    socket.emit('checkRoom', id);
+  };
+
   $scope.joinRoom = function(id){
     socket.emit('joinRoom', id);
-  }
+  };
 
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
@@ -80,6 +87,22 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', 'socket', 'roomD
       $scope.bool = true;
     }
   });
+
+  socket.on('checkRoom', function(id, inRoom){
+    //if in room, console.log (already in room)
+    if(inRoom){
+      console.log('already in room');
+    } else {
+      //else have user join room
+      console.log('joined room!');
+      $scope.joinRoom(id);
+    }
+  });
+    
+    
+
+
+
 
 }]);
 

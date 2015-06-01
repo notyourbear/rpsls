@@ -35,7 +35,8 @@ io.on('connection', function(user){
 
   console.log('a user has connected');
   user.player = new Player(user.id);
-  console.log(rooms);
+  console.log('user.player', user.player);
+  console.log('rooms right now', rooms);
 
   if (rooms.length > 0 && !user.bool){
     user.emit('currentRooms', rooms);
@@ -50,7 +51,9 @@ io.on('connection', function(user){
     if(name !== '' && !this.player.userName){
       this.player.addUserName(name);
       console.log('name added!', this.player.userName);
+      console.log('this.player', this.player);
       players[user.id] = this.player;
+      console.log('all the players', players);
     }
   });
 
@@ -70,7 +73,7 @@ io.on('connection', function(user){
       this.join(this.player.room);
 
       //also push player into room's people list
-      newRoom.addPerson(this.player.id, this.player.userName);
+      newRoom.addPerson(this.player);
 
       //update user's player object with created roomId
       this.player.roomId = this.id;
@@ -87,7 +90,7 @@ io.on('connection', function(user){
     for (var i = 0; i < rooms.length; i++){
       if(rooms[i].id === id){
         //add player to room object
-        rooms[i].addPerson(this.player.id, this.player.userName);
+        rooms[i].addPerson(user.player);
 
         //also join player into room's socket
         this.join(id);
@@ -100,6 +103,28 @@ io.on('connection', function(user){
       }
     }
   });
+
+  user.on('checkRoom', function(id){
+    //bool check:
+    var bool = false;
+
+    //run through all rooms
+    for (var i = 0; i < rooms.length; i++){
+      if(rooms[i].id === id){
+        //run through all players in room
+        for (var j = 0; j < rooms[i].people.length; j++){
+          if(rooms[i].people[j].id === id){
+            bool = true;
+            this.emit('checkRoom', id, true);
+          }
+        }
+      }
+    }
+
+    //if person is not in room
+    this.emit('checkRoom', id, false);
+  });
+
 });
 
 
