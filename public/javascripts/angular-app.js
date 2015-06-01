@@ -7,12 +7,13 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
   $scope.welcome = 'Hi this is the main page';
 
   var hasCreatedRoom = false;  //for room creation check
+  var userName = null;
 
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
-      var user = $scope.userName;
+      userName = $scope.userName;
       console.log($scope.userName);
-      socket.emit('addName', user);
+      socket.emit('addName', userName);
       $scope.userName = '';
       $rootScope.named = true;
     }
@@ -24,15 +25,17 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
 
     var newRoom = roomDiv.roomBeg + roomDiv.nameBeg + roomDiv.name + roomDiv.nameEnd + roomDiv.createdBeg + roomDiv.createdBy + roomDiv.createdEnd + roomDiv.roomEnd;
 
-    //check to see if user has already created a room, or if it's being sent from another user
-    if(arguments.length > 0 || !hasCreatedRoom){
+    //check if room creation is being sent from another user
+    if(arguments.length > 0){
       //if not, create room
       angular.element('#rooms').append(newRoom);
       
+      //else current user is trying to add a room.
+      //check if user has already created a room and if user has a name
+    } else if (userName && !hasCreatedRoom){
+        angular.element('#rooms').append(newRoom);
       //if user is creating room, make it so he/she cannot create another
-      if(arguments.length === 0){
         hasCreatedRoom = true;
-      }
     }
 
     if(arguments.length === 0){
@@ -48,7 +51,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
     console.log(currentRooms);
     if (currentRooms.length > 0 && !$scope.bool){
       for (var x = 0; x < currentRooms.length; x++){
-        $scope.addRoom(currentRooms[x].name, currentRooms[x].room);
+        $scope.addRoom(currentRooms[x].ownerUserName, currentRooms[x].name);
       }
       $scope.bool = true;
     }
