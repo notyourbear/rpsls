@@ -75,7 +75,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', 'socket', 'roomD
   };
 
   socket.on('addRoom', function(user, name, id){
-    $scope.addRoom(user,name, id);
+    $scope.addRoom(user, name, id);
   });
 
   socket.on('currentRooms', function(currentRooms){
@@ -90,7 +90,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', 'socket', 'roomD
 
   socket.on('checkRoom', function(id, inRoom){
     //if in room, console.log (already in room)
-    if(inRoom){
+    if(!inRoom){
       console.log('already in room');
     } else {
       //else have user join room

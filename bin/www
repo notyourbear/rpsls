@@ -75,11 +75,9 @@ io.on('connection', function(user){
       //also push player into room's people list
       newRoom.addPerson(this.player);
 
-      //update user's player object with created roomId
-      this.player.roomId = this.id;
       
       //update currentRooms list
-      user.broadcast.emit('addRoom', this.player.userName, roomName, 'hi');
+      user.broadcast.emit('addRoom', this.player.userName, roomName);
      
       
     }
@@ -89,15 +87,16 @@ io.on('connection', function(user){
     //run through all rooms
     for (var i = 0; i < rooms.length; i++){
       if(rooms[i].id === id){
+        //update user's player object with current room
+        this.player.room = id;
+
         //add player to room object
         rooms[i].addPerson(user.player);
 
         //also join player into room's socket
         this.join(id);
 
-        //update user's player object with current roomId
-        this.player.roomId = id;
-
+        
         //console log out rooms
         console.log(rooms);
       }
@@ -107,22 +106,35 @@ io.on('connection', function(user){
   user.on('checkRoom', function(id){
     //bool check:
     var bool = false;
+    var checked = false;
 
+    console.log('this is the id we are checking against', id);
     //run through all rooms
     for (var i = 0; i < rooms.length; i++){
+      console.log('running through all the rooms', rooms[i]);
+      console.log('the people in this room', rooms[i].people);
+
       if(rooms[i].id === id){
+        console.log('room id ('+rooms[i].id+') is equal to asked id', id);
         //run through all players in room
         for (var j = 0; j < rooms[i].people.length; j++){
-          if(rooms[i].people[j].id === id){
-            bool = true;
-            this.emit('checkRoom', id, true);
+          if(user.player.room !== id){
+            //check to make sure that player's associated room is not this one
+              bool = true;
+              console.log('\n\n\n\n\n\n\n\n\ntruthy!');
+              this.emit('checkRoom', id, true);
           }
         }
       }
     }
 
+    checked = true;
+
     //if person is not in room
-    this.emit('checkRoom', id, false);
+    if (!bool && checked){
+      console.log('falsy!');
+      this.emit('checkRoom', id, false);
+    }
   });
 
 });
