@@ -16,30 +16,7 @@
       <div ng-include="'templates/nav.ejs'"></div>
 
       <div ui-view>
-        <div>
-          <h1><%= title %></h1>
-          <p>{{welcome}}</p>
-          
-          <div ng-hide="named">
-            <form ng-submit="addName()">
-            <input ng-model='userName' name='userName' placeholder='Enter a Username' type="text">
-            <input type="submit" name="submit" value="submit">
-            </form>
-          </div>
-
-          <div style='margin: 20px 0;' id='games'>
-            <div id='rooms'></div>
-            <div id='addRooms'>
-              <button ng-hide="createRoom" id="addRoomsBtn" ng-click="addRoomField()">Create a new game</button>
-              <div ng-show="createRoom" id='addRoomConfig'>
-                <form ng-submit='addRoom()'>
-                  <input ng-model='roomName' name='roomName' placeholder='Enter a Roomname' type='text'>
-                  <input type='submit' name='submit' value='submit'>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
       
       

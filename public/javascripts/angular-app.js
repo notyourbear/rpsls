@@ -119,11 +119,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,   
   $stateProvider
     .state('home', {
       url: '/',
-      controller: 'mainCtrl'
+      controller: 'mainCtrl',
+      templateUrl: 'templates/home.ejs'
     })
     .state('room', {
       url: '/room',
-      controller: 'roomCtrl'
+      controller: 'roomCtrl',
+      templateUrl: 'templates/room.ejs'
     });
 
 }]);
