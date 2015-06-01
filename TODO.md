@@ -1,3 +1,5 @@
+rewire everything into the service
+
 
 then some sort of visual representation that a room has been joined -- new controller? new view? just more of the ifs and shows?
 
