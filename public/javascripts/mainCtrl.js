@@ -88,8 +88,6 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
       //make the create room button dissapear
         angular.element('#addRooms').hide(300);
 
-      //enter room route
-        $state.go('room');
     }
    
   };
@@ -136,9 +134,13 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
     }
   });
     
+  socket.on('createdRoom', function(id){
+    profile.currentRoomId = id;
+
+    //enter room route
+    $state.go('room');
+  });
     
-
-
 
 
 }]);
