@@ -1,4 +1,4 @@
-app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$location', '$state', 'socket', 'roomDiv', 'profile', function($scope, $rootScope, $compile, $location, $state, socket, roomDiv, profile) {
+app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socket', 'roomDiv', 'profile', function($scope, $rootScope, $compile, $state, socket, roomDiv, profile) {
 
   $scope.welcome = 'Hi this is the main page';
 
