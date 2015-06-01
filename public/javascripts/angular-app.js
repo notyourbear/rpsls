@@ -9,6 +9,8 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
   var hasCreatedRoom = false;  //for room creation check
   var userName = null;
 
+  $scope.roomName = '';
+
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
       userName = $scope.userName;
@@ -19,11 +21,23 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
     }
   };
 
-  $scope.addRoom = function(user, name){
-    roomDiv.createdBy =  user || 'you';
-    roomDiv.name = name || 'Orange Mochafrappachino';
+  $scope.addRoomField = function(){
+    $scope.createRoom = true;
+  };
 
-    var newRoom = roomDiv.roomBeg + roomDiv.nameBeg + roomDiv.name + roomDiv.nameEnd + roomDiv.createdBeg + roomDiv.createdBy + roomDiv.createdEnd + roomDiv.roomEnd;
+  $scope.addRoom = function(user, name){
+    //check for scope
+    if ($scope.roomName !== ''){
+      roomDiv.room.createdBy = userName || 'you';
+      roomDiv.room.name = $scope.roomName || 'Orange Mochafrappachino';
+      $scope.roomName = "";
+    //else assume content provided via args
+    } else {
+      roomDiv.room.createdBy = user;
+      roomDiv.room.name = name;
+    }
+
+    var newRoom = roomDiv.room.roomBeg + roomDiv.room.nameBeg + roomDiv.room.name + roomDiv.room.nameEnd + roomDiv.room.createdBeg + roomDiv.room.createdBy + roomDiv.room.createdEnd + roomDiv.room.roomEnd;
 
     //check if room creation is being sent from another user
     if(arguments.length > 0){
@@ -34,13 +48,17 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
       //check if user has already created a room and if user has a name
     } else if (userName && !hasCreatedRoom){
         angular.element('#rooms').append(newRoom);
+
       //if user is creating room, make it so he/she cannot create another
         hasCreatedRoom = true;
-    }
 
-    if(arguments.length === 0){
-      socket.emit('addRoom', roomDiv.name);
+      //emit room creation to backend
+        socket.emit('addRoom', roomDiv.room.name);
+
+      //make the create room button dissapear
+        angular.element('#addRooms').hide(300);
     }
+   
   };
 
   socket.on('addRoom', function(user, name){
