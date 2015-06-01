@@ -23,3 +23,11 @@ a {
   padding: 15px 0;
   margin: -40px 0 0 0;
 }
+
+.joinButton:hover {
+  background: maroon;
+}
+
+.joinButton:active {
+  background: black;
+}
