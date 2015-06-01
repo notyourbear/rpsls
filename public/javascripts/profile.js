@@ -6,6 +6,7 @@ app.factory('profile', function (){
         currentRoomId: null,
         //userName,
         userName: null,
+        hasName: false,
         blah: 'mow'
     };
 });
