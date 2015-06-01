@@ -14,7 +14,6 @@ app.controller('mainCtrl', ['$scope', '$rootScope', 'socket', 'roomDiv', functio
   $scope.addName = function(){
     if($scope.userName && !$rootScope.named){
       userName = $scope.userName;
-      console.log($scope.userName);
       socket.emit('addName', userName);
       $scope.userName = '';
       $rootScope.named = true;

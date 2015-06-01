@@ -9,6 +9,7 @@ var debug = require('debug')('rpsls:server');
 var http = require('http');
 var Player = require('../util/Player.js');
 var Room = require('../util/Room.js');
+var uuid = require('node-uuid');
 
 /**
  * Get port from environment and store in Express.
@@ -55,10 +56,29 @@ io.on('connection', function(user){
 
   user.on('addRoom', function(roomName){
     if (!this.player.roomId && this.player.userName) {
-      var newRoom = new Room(roomName, 'id', this.player.id, this.player.userName);
+      var id = uuid.v4();
+      //create new room
+      var newRoom = new Room(roomName, id, this.player.id, this.player.userName);
+
+      //add room to rooms array
       rooms.push(newRoom);
+      
+      //also create socket room for the room
+      this.player.room = id;
+
+      //auto join player into room
+      this.join(this.player.room);
+
+      //also push player into room's people list
+      newRoom.addPerson(this.player.id, this.player.userName);
+
+      //update user's player object with created roomId
+      this.player.roomId = this.id;
+      
+      //update currentRooms list
       user.broadcast.emit('addRoom', this.player.userName, roomName);
-      this.player.roomId = true;
+      // user.emit('currentRooms', rooms);
+      
     }
   });
 });

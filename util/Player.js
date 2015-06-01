@@ -2,6 +2,7 @@ var Player = function(id) {
   this.id = id;
   this.userName = null;
   this.roomId = null;
+  this.room = null;
 };
 
 Player.prototype.addUserName = function(name) {
