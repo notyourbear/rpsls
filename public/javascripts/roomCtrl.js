@@ -1,4 +1,4 @@
-app.controller('roomCtrl', ['$scope', 'socket', 'profile', function($scope, socket, profile) {
+app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($scope, $state, socket, profile) {
   $scope.welcome = 'Hi this is the room page';
-  $scope.caviat = 'mow';
+  $scope.caviat = $state.current;
 }]);

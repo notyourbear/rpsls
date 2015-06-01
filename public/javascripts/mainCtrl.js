@@ -1,4 +1,4 @@
-app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$location', 'socket', 'roomDiv', 'profile', function($scope, $rootScope, $compile, $location, socket, roomDiv, profile) {
+app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$location', '$state', 'socket', 'roomDiv', 'profile', function($scope, $rootScope, $compile, $location, $state, socket, roomDiv, profile) {
 
   $scope.welcome = 'Hi this is the main page';
 
@@ -18,6 +18,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$location', 'so
     
     //joins a game room
     socket.emit('joinRoom', id);
+    $state.go('room');
   };
 
   $scope.addName = function(){
