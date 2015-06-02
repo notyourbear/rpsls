@@ -136,7 +136,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
     
   socket.on('createdRoom', function(id){
     profile.currentRoomId = id;
-
+    
     //enter room route
     $state.go('room');
   });
