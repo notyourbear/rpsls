@@ -22,6 +22,25 @@ app.set('port', port);
  */
 var server = http.createServer(app);
 
+
+/**
+  * Supporting functions 
+  */
+  var findCorrectRoom = function(roomId){
+    var theRoom;
+
+    for (var i = 0; i < rooms.length; i++){
+      //find correct room
+        if(rooms[i].id === roomId){
+          theRoom = rooms[i];
+        }
+      }
+
+    return theRoom;
+
+  };
+
+
 /**
  * socket.io 
  */
@@ -55,21 +74,11 @@ io.on('connection', function(user){
   });
 
   user.on('joinGame', function(){
-    var bool;
+    var room = findCorrectRoom(this.player.room);
+    var bool = room.addToGame(this.player.userName);
 
-    //run through all the rooms:
-    for (var i = 0; i < rooms.length; i++){
-      //find correct room
-        if(rooms[i].id === this.player.room){
-          //try to add person to room
-          bool = rooms[i].addToGame(this.player.userName);
-
-          //spit out response to frontend
-          user.emit('joinGame', bool, rooms[i].game);
-        }
-    }
-
-    
+    user.emit('joinGame', bool, room.game);
+  
   });
 
   user.on('addName', function(name){
@@ -116,23 +125,20 @@ io.on('connection', function(user){
   });
 
   user.on('joinRoom', function(id){
-    //run through all rooms
-    for (var i = 0; i < rooms.length; i++){
-      if(rooms[i].id === id){
-        //update user's player object with current room
-        this.player.room = id;
+    var room = findCorrectRoom(id);
 
-        //add player to room object
-        rooms[i].addPerson(user.player);
+    //update user's player object with current room
+    this.player.room = room.id;
 
-        //also join player into room's socket
-        this.join(id);
+    //add player to room object
+    room.addPerson(user.player);
 
-        
-        //console log out rooms
-        console.log(rooms);
-      }
-    }
+    //also join player into room's socket
+    this.join(id);
+
+    //console log out rooms
+    console.log(rooms);
+
   });
 
   user.on('checkRoom', function(id){
@@ -142,25 +148,21 @@ io.on('connection', function(user){
     var players;
 
     console.log('this is the id we are checking against', id);
-    //run through all rooms
-    for (var i = 0; i < rooms.length; i++){
+    
+    var room = findCorrectRoom(id);
 
-      if(rooms[i].id === id){
-        console.log('room id ('+rooms[i].id+') is equal to asked id', id);
-        //run through all players in room
-        for (var j = 0; j < rooms[i].people.length; j++){
-          if(user.player.room !== id){
-            //check to make sure that player's associated room is not this one
-              bool = true;
-              console.log('\n\n\n\n\n\n\n\n\ntruthy!');
+    //run through all players in room
+    for (var j = 0; j < room.people.length; j++){
+      if(user.player.room !== id){
+        //check to make sure that player's associated room is not this one
+          bool = true;
+          console.log('\n\n\n\n\n\n\n\n\ntruthy!');
 
-              console.log('hey this is players', rooms[i].game);
+          console.log('hey this is players', room.game);
 
-              players = rooms[i].game;
+          players = room.game;
 
-              this.emit('checkRoom', id, true, players);
-          }
-        }
+          this.emit('checkRoom', id, true, players);
       }
     }
 
@@ -173,8 +175,11 @@ io.on('connection', function(user){
     }
   });
 
-});
+  user.on('challangerHasArrived', function(){
 
+  });
+
+});
 
 
 /**

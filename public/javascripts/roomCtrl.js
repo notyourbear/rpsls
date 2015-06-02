@@ -64,6 +64,8 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     //set person as second player on users own screen when joining a game
     if (bool) {
       $scope.playerTwo = profile.userName;
+
+      socket.emit('challengerHasArrived');
     }
 
     //set whether person is in game
