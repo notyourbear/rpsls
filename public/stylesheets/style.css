@@ -46,7 +46,6 @@ a {
   background: white;
   border: 1px black solid;
   right:0;
-  overflow: hidden
 
 }
 
@@ -58,6 +57,11 @@ a {
   border-bottom: 2px black solid;
   margin: 5px;
   text-align: center;
+}
+
+#messageSpace{
+  overflow: scroll;
+  height: 750px;
 }
 
 

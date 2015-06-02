@@ -6,7 +6,9 @@
     </div>
     <div class="sidebar">
       <h3>Chat</h3>
-      <ul id="messages"></ul>
+      <div id='messageSpace'>
+        <ul id="messages"></ul>
+      </div>
       <form class="chatForm" ng-submit='chatMsg()'>
         <input id="m" ng-model="chatMessage" name="chatMessage" autocomplete="off" placeholder="type message" /><button>Send</button>
       </form>
