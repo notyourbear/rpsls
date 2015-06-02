@@ -2,13 +2,15 @@
   <div class='y'>
     <div class='game'>
       <p>{{caviat}}</p>
-      this is where the game will go.
-
       <div class='join'>
         <button ng-hide="isInGame" ng-click='joinGame()'>Join the Game!</button>
       </div>
 
-      <div id='playfield'>&nbsp;</div>
+      <div id='playfield'>
+        <div id="userMove" class='move'>A move goes in here!</div>
+        <div id="opponentMove" class='move'>Another move goes here!</div>
+        <div id='playMessage'></div>
+      </div>
       
       <div ng-show='isInGame'>
         <div id = 'buttons'>

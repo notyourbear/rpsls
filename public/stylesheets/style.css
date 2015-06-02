@@ -117,9 +117,17 @@ a {
 }
 
 #playfield {
-  width: 100%;
+  width: 90%;
   height: 650px;
   border: 1px solid black;
+}
+
+.move {
+  width: 49.5%;
+  display: inline-block;
+  border: 1px solid black;
+  height: 300px;
+
 }
 
 #buttons {

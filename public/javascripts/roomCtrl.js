@@ -31,6 +31,9 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   $scope.play = function(playPiece){
     console.log(playPiece);
+
+    //display move on screen
+    angular.element('#userMove').html('You play ' + playPiece);
   };
 
   socket.on('chatMessage', function(user, msg){
