@@ -72,4 +72,8 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     $scope.isInGame = bool;
   });
 
+  socket.on('challengerHasArrived', function(challenger){
+    $scope.playerTwo = challenger.userName;
+  });
+
 }]);

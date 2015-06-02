@@ -175,8 +175,10 @@ io.on('connection', function(user){
     }
   });
 
-  user.on('challangerHasArrived', function(){
+  user.on('challengerHasArrived', function(){
+    var room = findCorrectRoom(this.player.room);
 
+    user.to(room.ownerId).emit('challengerHasArrived', this.player);
   });
 
 });
