@@ -7,6 +7,7 @@ app.factory('profile', function (){
         //userName,
         userName: null,
         hasName: false,
-        blah: 'mow'
+        blah: 'mow',
+        inGame: false
     };
 });

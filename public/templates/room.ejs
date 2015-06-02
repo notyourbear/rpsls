@@ -5,8 +5,10 @@
       this is where the game will go.
 
       <div class='join'>
-        <button ng-click='joinGame()'>Join the Game!</button>
+        <button ng-hide="isInGame" ng-click='joinGame()'>Join the Game!</button>
       </div>
+      
+      <div ng-show='isInGame'>hi</div>
     </div>
 
 

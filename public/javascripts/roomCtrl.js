@@ -2,6 +2,8 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   $scope.caviat = profile.currentRoomId;
 
+  $scope.isInGame = profile.inGame;
+
   $scope.chatMsg = function(){
     //emit message to other users
     if ($scope.chatMessage !== ''){
@@ -22,6 +24,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   };
 
   $scope.joinGame = function(){
+    console.log('profile.inGame:', profile.inGame);
     socket.emit('joinGame');
   };
 
@@ -36,6 +39,9 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   socket.on('joinGame', function(bool){
     console.log(bool);
+    //set profile.inGame to be true;
+    profile.inGame = bool;
+    $scope.isInGame = bool;
   });
 
 }]);
