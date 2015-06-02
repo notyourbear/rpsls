@@ -54,6 +54,22 @@ io.on('connection', function(user){
     }
   });
 
+  user.on('joinGame', function(){
+    var bool;
+
+    //run through all the rooms:
+    for (var i = 0; i < rooms.length; i++){
+      //find correct room
+        if(rooms[i].id === this.player.room){
+          //try to add person to room
+          bool = rooms[i].addToGame(this.player.id);
+        }
+    }
+
+    //spit out response to frontend
+    user.emit('joinGame', bool);
+  });
+
   user.on('addName', function(name){
     if(name !== '' && !this.player.userName){
       this.player.addUserName(name);

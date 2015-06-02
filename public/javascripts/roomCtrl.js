@@ -21,6 +21,10 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     }
   };
 
+  $scope.joinGame = function(){
+    socket.emit('joinGame');
+  };
+
   socket.on('chatMessage', function(user, msg){
     angular.element('#messages').append($('<li>').text(user+": "+msg));
 
@@ -28,6 +32,10 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
       angular.element('#messageSpace').stop().animate({
         scrollTop: angular.element("#messageSpace")[0].scrollHeight
       }, 800);
+  });
+
+  socket.on('joinGame', function(bool){
+    console.log(bool);
   });
 
 }]);
