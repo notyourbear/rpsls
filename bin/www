@@ -82,6 +82,11 @@ io.on('connection', function(user){
       //also push player into room's people list
       newRoom.addPerson(this.player);
 
+      //and push the player into the room's game object: 
+      newRoom.addToGame(this.player.id);
+
+      console.log('\n\n\n\n\n the rooms game now looks like:', newRoom.game);
+
       
       //update currentRooms list
       user.broadcast.emit('addRoom', this.player.userName, roomName, id);
