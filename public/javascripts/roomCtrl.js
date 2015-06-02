@@ -1,6 +1,7 @@
 app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($scope, $state, socket, profile) {
 
- 
+  $scope.playerOne = profile.players[0];
+  $scope.playerTwo = profile.players[1] || 'Waiting for an opponent';
 
   $scope.caviat = profile.currentRoomId;
 
@@ -53,7 +54,6 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   });
 
   socket.on('joinGame', function(bool, players){
-    console.log(bool);
     //set profile.inGame to be true;
     profile.inGame = bool;
 
@@ -61,6 +61,12 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     profile.countPlayers(players);
     console.log(profile.players);
 
+    //set person as second player on users own screen when joining a game
+    if (bool) {
+      $scope.playerTwo = profile.userName;
+    }
+
+    //set whether person is in game
     $scope.isInGame = bool;
   });
 
