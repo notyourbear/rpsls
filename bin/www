@@ -81,7 +81,7 @@ io.on('connection', function(user){
 
       
       //update currentRooms list
-      user.broadcast.emit('addRoom', this.player.userName, roomName);
+      user.broadcast.emit('addRoom', this.player.userName, roomName, id);
 
       //update created roomId
       user.emit('createdRoom', id);

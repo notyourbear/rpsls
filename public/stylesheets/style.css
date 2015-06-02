@@ -1,11 +1,29 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+
+#navBar {
+  height: 30px;
+  width: 100%;
+  background: #d3d3d3;
+}
+
+#footBar {
+  height: 30px;
+  width: 100%;
+  background: #d3d3d3;
+}
+
+#content {
+  width: 933px;
+  margin: 0 auto;
+  background: white;
+}
+
 
 .gameRoom {
   margin: 20px 0;
