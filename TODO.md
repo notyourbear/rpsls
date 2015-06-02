@@ -1,8 +1,27 @@
 (1-800-6344579)
 
 
-1. create the game logic
-  -write this on the backend.
-  -then all the buttons are going to do is talk to the backend ersion
-  -since i don't need to keep track of a lot on the front end, i don't even need to reeeeaally do anything to the profile. maybe add a wins column? a games played column? 
-2. hook up game logic into game 
+//ok:
+on creation of room, player gets pushed into to the game (as a key; Room.game[playerId]: null); 
+
+anyone who joins the room can press a button to join the game. 
+
+if the game.array has two people in it, then the join game button dissapears and the 'get in line' button appears. anyone who presses that will get put in the queue. 
+
+when in the game itself, there should be buttons to press. you choose which thing you want, then press ready. 
+
+ready submits the choice to the backend
+
+backend sets choice to the rooms game object as the key value pairing (Room.game[playerId] = choice!);
+
+when the game value length === 2... 
+    var count = 0;
+    var i;
+
+    for (i in a) {
+        if (a.hasOwnProperty(i) && i !== null) {
+            count++;
+        }
+    })
+
+then evaluate the game and send results back. also update the game object and the queue.

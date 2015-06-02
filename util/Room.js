@@ -4,6 +4,8 @@ var Room = function(name, id, ownerId, ownerUserName){
   this.ownerId = ownerId;
   this.ownerUserName = ownerUserName;
   this.people = []; //needs to be rethought
+  this.game = [];
+  this.queue = [];
 };
 
 Room.prototype.addPerson = function(person){

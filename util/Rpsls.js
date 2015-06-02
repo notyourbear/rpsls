@@ -14,6 +14,24 @@ var Rpsls = function(){
     'Scissors': {'Paper': 'cuts',
                  'Lizard': 'decapitates'}
   };
-
    
 };
+
+Rpsls.prototype.fight = function(side1, side2){
+  var winner;
+
+  if (this.outcomes[side1].hasOwnProperty(side2)){
+    winner = side1;
+  } else if (this.outcomes[side2].hasOwnProperty(side1)) {
+    winner = side2;
+  } else {
+    winner = 'tie';
+  }
+
+  return winner;
+};
+
+
+
+
+
