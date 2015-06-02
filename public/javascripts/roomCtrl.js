@@ -4,13 +4,18 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   $scope.caviat = profile.currentRoomId;
 
   $scope.chatMsg = function(){
-    socket.emit('chatMessage', $('#m').val());
-        $('#m').val('');
-        return false;
+    //emit message to other users
+    socket.emit('chatMessage', $scope.chatMessage);
+
+    //append message to own screen
+    angular.element('#messages').append($('<li>').text(profile.userName+": "+$scope.chatMessage));
+
+    //reset chatMessage text to nothing
+    $scope.chatMessage = '';
   };
 
-  socket.on('chatMessage', function(msg){
-    $('#messages').append($('<li>').text(msg));
+  socket.on('chatMessage', function(user, msg){
+    angular.element('#messages').append($('<li>').text(user+": "+msg));
   });
 
 }]);

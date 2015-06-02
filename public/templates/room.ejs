@@ -1,7 +1,16 @@
-<p>{{caviat}}</p>
-
-
-<ul id="messages"></ul>
-<form class="chatForm" ng-submit='chatMsg()'>
-  <input id="m" autocomplete="off" /><button>Send</button>
-</form>
+<div class='content'>
+  <p>{{caviat}}</p>
+  <div class='y'>
+    <div class='game'>
+      this is where the game will go. don't ask me. it's clearly not showing up yet
+    </div>
+    <div class="sidebar">
+      <h3>Chat</h3>
+      <ul id="messages"></ul>
+      <form class="chatForm" ng-submit='chatMsg()'>
+        <input id="m" ng-model="chatMessage" name="chatMessage" autocomplete="off" placeholder="type message" /><button>Send</button>
+      </form>
+    </div>
+  </div>
+  
+</div>

@@ -16,12 +16,47 @@ a {
   height: 30px;
   width: 100%;
   background: #d3d3d3;
+  position: fixed;
+  bottom: 0;
 }
 
-#content {
-  width: 933px;
+.content {
+  width: 966px;
   margin: 0 auto;
   background: white;
+}
+
+.y{
+  position: relative;
+}
+
+.game {
+  width:100%;
+  height: 800px;
+  display: inline-block;
+  background: white;
+  position: absolute;
+  top: 0;
+}
+
+.sidebar {
+  width: 300px;
+  height: 800px;
+  position: fixed;
+  background: white;
+  border: 1px black solid;
+  right:0;
+
+}
+
+.sidebar ul {
+  margin: 0 10px;
+}
+
+.sidebar h3 {
+  border-bottom: 2px black solid;
+  margin: 5px;
+  text-align: center;
 }
 
 
@@ -52,9 +87,27 @@ a {
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.chatForm { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-.chatForm input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-.chatForm button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+.chatForm { 
+  background: #000;
+  position: absolute; 
+  bottom: 0; 
+  width: 100%;
+  padding: 0; 
+}
+.chatForm input { 
+  border: 0; 
+  width: 60%; 
+  margin: .6%; 
+  padding: 10px;
+}
+.chatForm button { 
+  width: 38.5%; 
+  background: rgb(130, 224, 255); 
+  border: none; 
+  padding: 10px; }
+
 #messages { list-style-type: none; margin: 0; padding: 0; }
-#messages li { padding: 5px 10px; }
-#messages li:nth-child(odd) { background: #eee; }
+#messages li { 
+  padding: 5px 12px; 
+}
+/*#messages li:nth-child(odd) { background: #eee; }*/
