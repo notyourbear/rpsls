@@ -12,6 +12,11 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
       //append message to own screen
       angular.element('#messages').append($('<li>').text(profile.userName+": "+$scope.chatMessage));
 
+      //if message goes past overflow, make sure it's scrolled to.
+      angular.element('#messageSpace').stop().animate({
+        scrollTop: angular.element("#messageSpace")[0].scrollHeight
+      }, 800);
+
       //reset chatMessage text to nothing
       $scope.chatMessage = '';
     }
@@ -19,6 +24,11 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   socket.on('chatMessage', function(user, msg){
     angular.element('#messages').append($('<li>').text(user+": "+msg));
+
+     //if message goes past overflow, make sure it's scrolled to.
+      angular.element('#messageSpace').stop().animate({
+        scrollTop: angular.element("#messageSpace")[0].scrollHeight
+      }, 800);
   });
 
 }]);
