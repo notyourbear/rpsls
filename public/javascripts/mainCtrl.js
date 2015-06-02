@@ -91,6 +91,9 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
       //set profile.inGame to true;
         profile.inGame = true;
 
+      //push player to the profile.players
+        profile.players.push(profile.userName);
+
     }
    
   };
@@ -120,7 +123,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
     }
   });
 
-  socket.on('checkRoom', function(id, inRoom){
+  socket.on('checkRoom', function(id, inRoom, players){
     
     //if in room, console.log (already in room)
     if(!inRoom){
@@ -130,10 +133,15 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
 
       //else have user join room
       console.log('joined room!');
-      $scope.joinRoom(id);
-
+      
       //update profile with room info:
       profile.currentRoomId = id;
+
+      //update profile with players in room
+      profile.countPlayers(players);
+
+      $scope.joinRoom(id);
+
     }
   });
     

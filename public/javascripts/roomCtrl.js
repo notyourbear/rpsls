@@ -1,5 +1,7 @@
 app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($scope, $state, socket, profile) {
 
+ 
+
   $scope.caviat = profile.currentRoomId;
 
   $scope.isInGame = profile.inGame; //set up here so that creator sees buttons
@@ -21,6 +23,8 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
       //reset chatMessage text to nothing
       $scope.chatMessage = '';
+
+      console.log(profile.players);
     }
   };
 
@@ -34,6 +38,9 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
     //display move on screen
     angular.element('#userMove').html('You play ' + playPiece);
+
+    //emit move to backend:
+    socket.emit('playPiece', playPiece);
   };
 
   socket.on('chatMessage', function(user, msg){
@@ -45,10 +52,15 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
       }, 800);
   });
 
-  socket.on('joinGame', function(bool){
+  socket.on('joinGame', function(bool, players){
     console.log(bool);
     //set profile.inGame to be true;
     profile.inGame = bool;
+
+    //add player to profile.players
+    profile.countPlayers(players);
+    console.log(profile.players);
+
     $scope.isInGame = bool;
   });
 

@@ -13,7 +13,7 @@ Room.prototype.addPerson = function(person){
   console.log('added:', person);
 };
 
-Room.prototype.addToGame = function(personId){
+Room.prototype.addToGame = function(userName){
   //validate that game has less that two players in it:
   var count = 0,
       i;
@@ -24,9 +24,9 @@ Room.prototype.addToGame = function(personId){
         }
     }
 
-  if(count < 2 && !this.game.hasOwnProperty(personId)){
+  if(count < 2 && !this.game.hasOwnProperty(userName)){
     //if validated, add player as an object with a null value;
-    this.game[personId] = null;
+    this.game[userName] = null;
     return true;
   } else {
     return false;
