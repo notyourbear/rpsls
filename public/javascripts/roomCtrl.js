@@ -24,8 +24,6 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
       //reset chatMessage text to nothing
       $scope.chatMessage = '';
-
-      console.log(profile.players);
     }
   };
 
