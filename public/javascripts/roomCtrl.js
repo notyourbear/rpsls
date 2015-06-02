@@ -5,13 +5,16 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   $scope.chatMsg = function(){
     //emit message to other users
-    socket.emit('chatMessage', $scope.chatMessage);
+    if ($scope.chatMessage !== ''){
+      socket.emit('chatMessage', $scope.chatMessage);
+    
 
-    //append message to own screen
-    angular.element('#messages').append($('<li>').text(profile.userName+": "+$scope.chatMessage));
+      //append message to own screen
+      angular.element('#messages').append($('<li>').text(profile.userName+": "+$scope.chatMessage));
 
-    //reset chatMessage text to nothing
-    $scope.chatMessage = '';
+      //reset chatMessage text to nothing
+      $scope.chatMessage = '';
+    }
   };
 
   socket.on('chatMessage', function(user, msg){

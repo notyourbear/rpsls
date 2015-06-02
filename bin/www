@@ -48,7 +48,9 @@ io.on('connection', function(user){
   });
 
   user.on('chatMessage', function(message){
-    user.to(this.player.room).emit('chatMessage', this.player.userName, message);
+    if(message !== ""){
+      user.to(this.player.room).emit('chatMessage', this.player.userName, message);
+    }
   });
 
   user.on('addName', function(name){

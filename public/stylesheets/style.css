@@ -46,6 +46,7 @@ a {
   background: white;
   border: 1px black solid;
   right:0;
+  overflow: hidden
 
 }
 
