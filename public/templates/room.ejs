@@ -7,8 +7,18 @@
       <div class='join'>
         <button ng-hide="isInGame" ng-click='joinGame()'>Join the Game!</button>
       </div>
+
+      <div id='playfield'>&nbsp;</div>
       
-      <div ng-show='isInGame'>hi</div>
+      <div ng-show='isInGame'>
+        <div id = 'buttons'>
+          <div ng-click = play('Rock') class='gameButton'>Rock</div>
+          <div ng-click = play('Paper') class='gameButton'>Paper</div>
+          <div ng-click = play('Scissors') class='gameButton'>Scissors</div>
+          <div ng-click = play('Lizard') class='gameButton'>Lizard</div>
+          <div  ng-click = play('Spock') class='gameButton'>Spock</div>
+        </div>
+      </div>
     </div>
 
 

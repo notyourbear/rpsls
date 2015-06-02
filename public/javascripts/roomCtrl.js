@@ -2,7 +2,8 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   $scope.caviat = profile.currentRoomId;
 
-  $scope.isInGame = profile.inGame;
+  $scope.isInGame = profile.inGame; //set up here so that creator sees buttons
+
 
   $scope.chatMsg = function(){
     //emit message to other users
@@ -26,6 +27,10 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   $scope.joinGame = function(){
     console.log('profile.inGame:', profile.inGame);
     socket.emit('joinGame');
+  };
+
+  $scope.play = function(playPiece){
+    console.log(playPiece);
   };
 
   socket.on('chatMessage', function(user, msg){

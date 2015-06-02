@@ -115,4 +115,45 @@ a {
 #messages li { 
   padding: 5px 12px; 
 }
+
+#playfield {
+  width: 100%;
+  height: 650px;
+  border: 1px solid black;
+}
+
+#buttons {
+  margin-top: 20px;
+}
+
+.gameButton{
+  display: inline-block;
+  width: 130px;
+  padding: 40px;
+  background: #d3d3d3;
+  text-align: center;
+  margin: 0 15px;
+}
+
+.gameButton:hover{
+  background: #d4d4d4;
+}
+
+.gameButton:active{
+  background: black;
+}
+
+.readyButton{
+  background: green;
+}
+
+.readyButton:hover{
+  background: red;
+}
+
+.readyButton:active{
+  background: black;
+}
+
+
 /*#messages li:nth-child(odd) { background: #eee; }*/
