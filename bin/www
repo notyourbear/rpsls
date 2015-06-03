@@ -200,7 +200,12 @@ io.on('connection', function(user){
     var count = 0,
         i,
         play1 = [],
-        play2 = [];
+        play2 = [],
+        play1UserName,
+        play2UserName;
+
+    //update the user's property with the play piece
+    room.game[this.player.userName] = playPiece;
 
     for (i in room.game) {
         if (room.game.hasOwnProperty(i) && room.game[i] !== null) {
@@ -225,25 +230,40 @@ io.on('connection', function(user){
       //[1]: syntax
       //[2]: side that lost.
 
-      //i am still actually going to want to run id checks for names because i'll want to send back user names for both sides as well.
+
+      play1UserName = play1[0];
+      play2UserName = play2[0];
+
+      // console.log('\n\n\n\n\n\n\n\n\n\n 1:[name:id]:', play1UserName, play1[0]);
+      // console.log('2:[name:id]:', play2UserName, play2[0]);
+
 
       //check first spot in winner array to see which side actually won and emit info back to the entire rooom :/
 
+      //if tie, send the entire room that it was a tie
       if(answer[0] === 'tie') {
-        io.to(this.player.room).emit('gameEval', 'tie', playPiece);
-      } else if (answer[0] === playPiece) {
-        user.to(play1[0]).emit('gameEval', 'win', answer[0], answer[1], answer[2]);
-        user.to(play2[0]).emit('gameEval', 'loss', answer[0], answer[1], answer[2]);
+        io.to(this.player.room).emit('gameEvalTie', 'tie', playPiece);
       } else {
-        user.to(play1[0]).emit('gameEval', 'loss', answer[0], answer[1], answer[2]);
-        user.to(play2[0]).emit('gameEval', 'win', answer[0], answer[1], answer[2]);
+      
+      //send to the room the info of the eval in form of:
+      // userName of winner, game piece of winner, syntax, game piece of loser, userName of loser
+
+        //if side 1 won
+        if(answer[0] === play1[1]){
+          io.to(this.player.room).emit('gameEval', play1UserName, answer[0], answer[1], answer[2], play2UserName);
+
+        //if side 2 won
+        } else if (answer[0] === play2[1]){
+          io.to(this.player.room).emit('gameEval', play2UserName, answer[0], answer[1], answer[2], play1UserName);
+        } else {
+          //this actually should never be possible but, who knows:
+          console.log('the impossible happened. somehow we evaulated for a winner even though it shouldnt be possible', answer);
+        }
+
       }
 
       //if both aren't set... 
     } else if (count < 2) {
-
-      //update the user's property with the play piece
-      room.game[this.player.userName] = playPiece;
 
       //emit back to everyone in room that one person has made a move
       io.to(this.player.room).emit('waiting', this.player.userName);

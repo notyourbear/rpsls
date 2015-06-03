@@ -130,9 +130,25 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
           $scope.playerTwo = profile.players[1] + ' has made their move';
       }
     }
+  });
 
+  socket.on('gameEval', function(winUserName, winPiece, syntax, lossPiece, lossUserName){
     
+    var winIndex = profile.players.indexOf(winUserName);
+  
+    var message = winUserName + " threw " + winPiece + ". It was super effective! " + winPiece + " " + syntax + " " + lossPiece + "!";
 
+    //set messages:
+    if(winIndex === 0){
+      $scope.playerOne = winPiece;
+      $scope.playerTwo = lossPiece;
+    } else if (winIndex === 1) {
+      $scope.playerTwo = winPiece;
+      $scope.playerOne = lossPiece;
+    }
+
+    $scope.victoryMessage = message;
+    
   });
 
 }]);
