@@ -55,6 +55,8 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
         console.log('what. how even?');
     }
 
+    //set the piecePlayed in the profile
+    profile.playedPiece = playPiece;
 
     //emit move to backend:
     socket.emit('playPiece', playPiece);
@@ -96,7 +98,11 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   socket.on('updateProfilePlayers', function(playPiece, players){
     profile.players = [];
     profile.countPlayers(players);
-    $scope.play(playPiece);
+
+    //only actually play a piece if profile.playedPiece is null and person is in game
+    if(profile.playedPiece === null && profile.inGame){
+      $scope.play(playPiece);
+    }
   });
 
   socket.on('waiting', function(userName){
