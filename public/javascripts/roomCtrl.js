@@ -89,6 +89,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   });
 
   socket.on('challengerHasArrived', function(challenger){
+    profile.players.push(challenger.userName);
     $scope.playerTwo = challenger.userName;
   });
 
@@ -100,6 +101,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   socket.on('waiting', function(userName){
     var playerIndex = profile.players.indexOf(userName);
+    $scope.caviat = profile.players + ' ' + playerIndex;
 
     //check whether the passed back userName is in the game and you are in the game
     if (profile.userName === userName && profile.inGame){
@@ -121,11 +123,11 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     } else {
        //otherwise display a message for both users
        if(playerIndex === 0){
-        $scope.playerOne = profile.players[0] + ' has made their move';
+        $scope.playerOne = profile.players[0] + '  has made their move';
         $scope.playerTwo = 'Waiting on ' + profile.players[1] + ' to make their move';
        } else if (playerIndex === 1){
           $scope.playerOne = 'Waiting on ' + profile.players[0] + ' to make their move';
-          $scope.playerTwo = profile.players[1] + 'has made their move';
+          $scope.playerTwo = profile.players[1] + ' has made their move';
       }
     }
 

@@ -8,9 +8,8 @@ Player.prototype.addUserName = function(name) {
   this.userName = name;
 };
 
-//for testing
-Player.prototype.myNameIs = function(){
-  console.log('Hi, my name is', this.userName);
+Player.prototype.name = function(){
+  return this.userName;
 };
 
 module.exports = Player;
