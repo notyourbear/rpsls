@@ -181,7 +181,7 @@ io.on('connection', function(user){
   user.on('challengerHasArrived', function(){
     var room = findCorrectRoom(this.player.room);
 
-    user.to(room.ownerId).emit('challengerHasArrived', this.player);
+    io.to(this.player.room).emit('challengerHasArrived', this.player);
   });
 
   user.on('updateProfilePlayers', function(playPiece){
