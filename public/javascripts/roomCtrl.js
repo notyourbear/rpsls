@@ -32,11 +32,29 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     socket.emit('joinGame');
   };
 
+  $scope.updatePlayers = function(playPiece){
+    //i basically have to make sure that both sides have the same players in profile.players. to do that, i need to make a check to the backend first
+    socket.emit('updateProfilePlayers', playPiece);
+  };
+
   $scope.play = function(playPiece){
     console.log(playPiece);
 
-    //display move on screen
-    angular.element('#userMove').html('You play ' + playPiece);
+    var text = 'You play ' + playPiece;
+
+    //find position of user and display move on screen accordingly 
+    console.log('a user name!', profile.userName);
+    switch(profile.findPosition(profile.userName)){
+      case 1: //in first position
+        angular.element('#playerOne').html(text);
+        break;
+      case 2: //in second position
+        angular.element('#playerTwo').html(text);
+        break;
+      case false:
+        console.log('what. how even?');
+    }
+
 
     //emit move to backend:
     socket.emit('playPiece', playPiece);
@@ -72,6 +90,12 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   socket.on('challengerHasArrived', function(challenger){
     $scope.playerTwo = challenger.userName;
+  });
+
+  socket.on('updateProfilePlayers', function(playPiece, players){
+    profile.players = [];
+    profile.countPlayers(players);
+    $scope.play(playPiece);
   });
 
 }]);

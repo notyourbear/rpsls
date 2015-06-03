@@ -181,6 +181,14 @@ io.on('connection', function(user){
     user.to(room.ownerId).emit('challengerHasArrived', this.player);
   });
 
+  user.on('updateProfilePlayers', function(playPiece){
+    //find the correct room
+    var room = findCorrectRoom(this.player.room);
+
+    //send back the playerObject and the playPiece
+    user.emit('updateProfilePlayers', playPiece, room.game);
+  });
+
 });
 
 

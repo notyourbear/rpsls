@@ -7,18 +7,20 @@
       </div>
 
       <div id='playfield'>
-        <div id="userMove" class='move'>{{playerOne}}</div>
-        <div id="opponentMove" class='move'>{{playerTwo}}</div>
+        <div id='playerOne' class='move'>{{playerOne}}
+        </div>
+        <div id='playerTwo' class='move'>{{playerTwo}}
+        </div>
         <div id='playMessage'></div>
       </div>
       
       <div ng-show='isInGame'>
         <div id = 'buttons'>
-          <div ng-click = play('Rock') class='gameButton'>Rock</div>
-          <div ng-click = play('Paper') class='gameButton'>Paper</div>
-          <div ng-click = play('Scissors') class='gameButton'>Scissors</div>
-          <div ng-click = play('Lizard') class='gameButton'>Lizard</div>
-          <div  ng-click = play('Spock') class='gameButton'>Spock</div>
+          <div ng-click = updatePlayers('Rock') class='gameButton'>Rock</div>
+          <div ng-click = updatePlayers('Paper') class='gameButton'>Paper</div>
+          <div ng-click = updatePlayers('Scissors') class='gameButton'>Scissors</div>
+          <div ng-click = updatePlayers('Lizard') class='gameButton'>Lizard</div>
+          <div  ng-click = updatePlayers('Spock') class='gameButton'>Spock</div>
         </div>
       </div>
     </div>

@@ -7,7 +7,6 @@ app.factory('profile', function (){
         //userName,
         userName: null,
         hasName: false,
-        blah: 'mow',
         inGame: false,
         players: [],
         countPlayers: function(gameObject){
@@ -29,6 +28,22 @@ app.factory('profile', function (){
                     }
                 }
             }
+        },
+        findPosition: function(userName){
+            //only run if two players are present
+            console.log('checking this userName', userName);
+
+            console.log('current state of the players array', this.players);
+            if (this.players.length === 2) {
+                if(userName === this.players[0]){
+                    return 1;
+                }else if (userName === this.players[1]) {
+                    return 2;
+                }
+            }
+
+            //if not found return false
+            return false;
         }
     };
 });
