@@ -17,21 +17,25 @@ var Rpsls = function(){
    
 };
 
-Rpsls.prototype.fight = function(side1, side2){
-  var winner;
+Rpsls.prototype.evaluate = function(side1, side2){
+  var winner = [];
 
   if (this.outcomes[side1].hasOwnProperty(side2)){
-    winner = side1;
+    winner.push(side1);
+    winner.push(this.outcomes[side1][side2]);
+    winner.push(side2);
   } else if (this.outcomes[side2].hasOwnProperty(side1)) {
-    winner = side2;
+    winner.push(side2);
+    winner.push(this.outcomes[side2][side1]);
+    winner.push(side1);
   } else {
-    winner = 'tie';
+    winner.push('tie');
   }
 
   return winner;
 };
 
-
+module.exports = Rpsls;
 
 
 

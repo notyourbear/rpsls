@@ -9,6 +9,7 @@ var debug = require('debug')('rpsls:server');
 var http = require('http');
 var Player = require('../util/Player.js');
 var Room = require('../util/Room.js');
+var Rpsls = require('../util/Rpsls.js');
 var uuid = require('node-uuid');
 
 /**
@@ -39,6 +40,8 @@ var server = http.createServer(app);
     return theRoom;
 
   };
+
+  var rpsls = new Rpsls();
 
 
 /**
@@ -136,7 +139,7 @@ io.on('connection', function(user){
     //also join player into room's socket
     this.join(id);
 
-    //console log out rooms
+    //c`onsole log out rooms
     console.log(rooms);
 
   });
@@ -187,6 +190,63 @@ io.on('connection', function(user){
 
     //send back the playerObject and the playPiece
     user.emit('updateProfilePlayers', playPiece, room.game);
+  });
+
+  user.on('playPiece', function(playPiece){
+    //get correct room
+    var room = findCorrectRoom(this.player.room);
+
+    //check if keys for both players are set
+    var count = 0,
+        i,
+        play1 = [],
+        play2 = [];
+
+    for (i in room.game) {
+        if (room.game.hasOwnProperty(i) && room.game[i] !== null) {
+            count++;
+
+            //obtain some values just in case everything is as we want
+            if (count === 1){
+              play1.push(i);
+              play1.push(room.game[i]);
+            } else if (count === 2) {
+              play2.push(i);
+              play2.push(room.game[i]);
+            }
+        }
+    }
+
+    //if both are set evaluate game
+    if(count === 2){
+      var answer = rpsls.evaluate(play1[1], play2[1]);
+
+      //check first spot in winner array to see which side actually won and send both users appropriate messages 
+
+      //i should also emit back to the entire rooom :/
+
+      if(answer[0] === 'tie') {
+        user.to(play1[0]).emit('gameEval', 'tie', playPiece);
+        user.to(play2[0]).emit('gameEval', 'tie', playPiece);
+      } else if (answer[0] === playPiece) {
+        user.to(play1[0]).emit('gameEval', 'win', answer[0], answer[1], answer[2]);
+        user.to(play2[0]).emit('gameEval', 'loss', answer[0], answer[1], answer[2]);
+      } else {
+        user.to(play1[0]).emit('gameEval', 'loss', answer[0], answer[1], answer[2]);
+        user.to(play2[0]).emit('gameEval', 'win', answer[0], answer[1], answer[2]);
+      }
+
+      //if both aren't set... 
+    } else if (count < 2) {
+
+      //update the user's property with the play piece
+      room.game[this.player.userName] = playPiece;
+
+      //emit back to everyone in room that one person has made a move
+      io.to(this.player.room).emit('waiting', this.player.userName);
+      
+    }
+
   });
 
 });

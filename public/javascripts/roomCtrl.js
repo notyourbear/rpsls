@@ -98,4 +98,39 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     $scope.play(playPiece);
   });
 
+  socket.on('waiting', function(userName){
+    var playerIndex = profile.players.indexOf(userName);
+
+    //check whether the passed back userName is in the game and you are in the game
+    if (profile.userName === userName && profile.inGame){
+      //set the other user's message to being...waiting for dude
+      
+      if(playerIndex === 0){
+        $scope.playerTwo = 'Waiting on ' + profile.players[1] + ' to make their move';
+      } else if (playerIndex === 1){
+        $scope.playerOne = 'Waiting on ' + profile.players[0] + ' to make their move';
+      }
+    
+    } else if (profile.inGame){
+     // else if you are in the game but have not made a move
+      if(playerIndex === 0){
+        $scope.playerOne = profile.players[0] + ' has made their move';
+      } else if (playerIndex === 1){
+        $scope.playerTwo = profile.players[1] + ' has made their move';
+      }
+    } else {
+       //otherwise display a message for both users
+       if(playerIndex === 0){
+        $scope.playerOne = profile.players[0] + ' has made their move';
+        $scope.playerTwo = 'Waiting on ' + profile.players[1] + ' to make their move';
+       } else if (playerIndex === 1){
+          $scope.playerOne = 'Waiting on ' + profile.players[0] + ' to make their move';
+          $scope.playerTwo = profile.players[1] + 'has made their move';
+      }
+    }
+
+    
+
+  });
+
 }]);

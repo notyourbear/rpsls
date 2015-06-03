@@ -11,6 +11,12 @@ when in the game itself, there should be buttons to press. you choose which thin
 
 ready submits the choice to the backend
 
+
+1. get room 
+2. set key value
+3. if both key values are set eval otherwise send back 'waiting on other dude'
+4. when both are set, meow meow meow
+
 backend sets choice to the rooms game object as the key value pairing (Room.game[playerId] = choice!);
 
 when the game value length === 2... 
