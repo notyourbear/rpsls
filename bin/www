@@ -220,14 +220,17 @@ io.on('connection', function(user){
     //if both are set evaluate game
     if(count === 2){
       var answer = rpsls.evaluate(play1[1], play2[1]);
+      //answer is made up in the following way: 
+      //[0]: side that won
+      //[1]: syntax
+      //[2]: side that lost.
 
-      //check first spot in winner array to see which side actually won and send both users appropriate messages 
+      //i am still actually going to want to run id checks for names because i'll want to send back user names for both sides as well.
 
-      //i should also emit back to the entire rooom :/
+      //check first spot in winner array to see which side actually won and emit info back to the entire rooom :/
 
       if(answer[0] === 'tie') {
-        user.to(play1[0]).emit('gameEval', 'tie', playPiece);
-        user.to(play2[0]).emit('gameEval', 'tie', playPiece);
+        io.to(this.player.room).emit('gameEval', 'tie', playPiece);
       } else if (answer[0] === playPiece) {
         user.to(play1[0]).emit('gameEval', 'win', answer[0], answer[1], answer[2]);
         user.to(play2[0]).emit('gameEval', 'loss', answer[0], answer[1], answer[2]);
