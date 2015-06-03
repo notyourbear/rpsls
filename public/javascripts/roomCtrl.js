@@ -3,10 +3,39 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   $scope.playerOne = profile.players[0];
   $scope.playerTwo = profile.players[1] || 'Waiting for an opponent';
 
-  $scope.caviat = profile.currentRoomId;
-
   $scope.isInGame = profile.inGame; //set up here so that creator sees buttons
 
+  //helper functions
+  var victory = function(msg, winPiece, lossPiece, winIndex){
+    var count = 5;
+    console.log('hi');
+    angular.element('#playMessage').html(count);
+
+    var timer = setInterval(function() {
+            angular.element('#playMessage').html(count--);
+            console.log(count);
+             if(count === 0){
+                clearInterval(timer);
+                setTimeout(function(){
+                  //display victory msg
+                  angular.element('#playMessage').html(msg);
+
+                  //display results
+                  if(winIndex === 0){
+                    angular.element('#playerOne').html(winPiece);
+                    angular.element('#playerTwo').html(lossPiece);
+                  } else if (winIndex === 1) {
+                    angular.element('#playerTwo').html(winPiece);
+                    angular.element('#playerOne').html(lossPiece);
+                  }
+
+                },1000);
+             }
+        }, 1000);
+  };
+  
+
+  //scope functions
 
   $scope.chatMsg = function(){
     //emit message to other users
@@ -107,7 +136,6 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   socket.on('waiting', function(userName){
     var playerIndex = profile.players.indexOf(userName);
-    $scope.caviat = profile.players + ' ' + playerIndex;
 
     //check whether the passed back userName is in the game and you are in the game
     if (profile.userName === userName && profile.inGame){
@@ -144,17 +172,33 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   
     var message = winUserName + " threw " + winPiece + ". It was super effective! " + winPiece + " " + syntax + " " + lossPiece + "!";
 
-    //set messages:
-    if(winIndex === 0){
-      $scope.playerOne = winPiece;
-      $scope.playerTwo = lossPiece;
-    } else if (winIndex === 1) {
-      $scope.playerTwo = winPiece;
-      $scope.playerOne = lossPiece;
-    }
+    //set messages
+    console.log('playing victory!');
+    victory(message, winPiece, lossPiece, winIndex);
+     // var count = 5,
+     //    timer = setInterval(function() {
+     //        $scope.victoryMessage = count;
+     //        count--;
+     //        console.log(count);
+     //         if(count === 0){
+     //            clearInterval(timer);
+     //            setTimeout(function(){
+     //              //display victory msg
+     //              $scope.victoryMessage = msg;
 
-    $scope.victoryMessage = message;
-    
+     //              //display results
+     //              if(winIndex === 0){
+     //                $scope.playerOne = winPiece;
+     //                $scope.playerTwo = lossPiece;
+     //              } else if (winIndex === 1) {
+     //                $scope.playerTwo = winPiece;
+     //                $scope.playerOne = lossPiece;
+     //              }
+
+     //            },1000);
+     //         }
+     //    }, 1000);
+
   });
 
 }]);
