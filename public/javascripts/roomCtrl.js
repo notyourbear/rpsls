@@ -5,34 +5,64 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   $scope.isInGame = profile.inGame; //set up here so that creator sees buttons
 
+  var reset = function(){
+    //emit to backend -- and i only need one person to do that.
+    console.log('reset got called!');
+    if(profile.inGame && profile.players[0] === profile.userName ) {
+      socket.emit('startReset');
+    }
+    
+  };
+
   //helper functions
-  var victory = function(msg, winPiece, lossPiece, winIndex){
-    var count = 5;
-    console.log('hi');
-    angular.element('#playMessage').html(count);
+  var victory = function(msg, winPiece, lossPiece, winIndex, cb){
+    var count = 3;
+
+    //display initial time;
+    angular.element('#timer').text(count);
+
+
 
     var timer = setInterval(function() {
-            angular.element('#playMessage').html(count--);
-            console.log(count);
+            //start countdown from 3 down
+            count--;
+            angular.element('#timer').text(count);
+
              if(count === 0){
+                //display message
                 clearInterval(timer);
                 setTimeout(function(){
                   //display victory msg
-                  angular.element('#playMessage').html(msg);
+                  angular.element('#timer').text(msg);
 
                   //display results
                   if(winIndex === 0){
-                    angular.element('#playerOne').html(winPiece);
-                    angular.element('#playerTwo').html(lossPiece);
+                    $scope.playerOne = winPiece;
+                    $scope.playerTwo = lossPiece;
+                  
+                    setTimeout(function(){
+                      reset();
+                    },7500);
+                  
                   } else if (winIndex === 1) {
-                    angular.element('#playerTwo').html(winPiece);
-                    angular.element('#playerOne').html(lossPiece);
+
+                    $scope.playerOne =winPiece;
+                    $scope.playerTwo =lossPiece;
+                    
+                    setTimeout(function(){
+                      reset();
+                    },7500);
+                  
                   }
 
                 },1000);
              }
         }, 1000);
+
+
   };
+
+ 
   
 
   //scope functions
@@ -75,10 +105,10 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     console.log('a user name!', profile.userName);
     switch(profile.findPosition(profile.userName)){
       case 1: //in first position
-        angular.element('#playerOne').html(text);
+        $scope.playerOne = text;
         break;
       case 2: //in second position
-        angular.element('#playerTwo').html(text);
+        $scope.playerTwo = text;
         break;
       case false:
         console.log('what. how even?');
@@ -174,30 +204,26 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
     //set messages
     console.log('playing victory!');
-    victory(message, winPiece, lossPiece, winIndex);
-     // var count = 5,
-     //    timer = setInterval(function() {
-     //        $scope.victoryMessage = count;
-     //        count--;
-     //        console.log(count);
-     //         if(count === 0){
-     //            clearInterval(timer);
-     //            setTimeout(function(){
-     //              //display victory msg
-     //              $scope.victoryMessage = msg;
+    
+    victory(message, winPiece, lossPiece, winIndex, reset);
+    
 
-     //              //display results
-     //              if(winIndex === 0){
-     //                $scope.playerOne = winPiece;
-     //                $scope.playerTwo = lossPiece;
-     //              } else if (winIndex === 1) {
-     //                $scope.playerTwo = winPiece;
-     //                $scope.playerOne = lossPiece;
-     //              }
+  });
 
-     //            },1000);
-     //         }
-     //    }, 1000);
+  socket.on('startReset', function(){
+    //how to reset the game.
+    //set playedPiece = null
+    profile.playedPiece = null;
+
+    console.log('reset in process!');
+    
+    //reset scopes;
+    $scope.playerOne = profile.players[0];
+    $scope.playerTwo = profile.players[1];
+    $scope.victoryMessage = "";
+
+    //reset timer
+    angular.element('#timer').html('');
 
   });
 

@@ -34,5 +34,15 @@ Room.prototype.addToGame = function(userName){
 
 };
 
+Room.prototype.resetGame = function(){
+  var i;
+
+  for (i in this.game){
+    if (this.game.hasOwnProperty(i)){
+      this.game[i] = null;
+    }
+  }
+};
+
 
 module.exports = Room;

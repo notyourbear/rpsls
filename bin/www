@@ -272,6 +272,19 @@ io.on('connection', function(user){
 
   });
 
+  user.on('startReset', function(){
+    // backend:
+    //find room:
+    var room = findCorrectRoom(this.player.room);
+
+    //set room.game to have null vals
+    room.resetGame();
+
+    //fire back to front end
+    io.to(this.player.room).emit('startReset');
+
+  });
+
 });
 
 
