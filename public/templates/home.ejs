@@ -9,7 +9,19 @@
   </div>
 
   <div style='margin: 20px 0;' id='games'>
+    
+    <div ng-repeat="(rooms, room) in allTheRooms">
+      {{room.name}}
+    </div>
+
+
+
+
+
+
+
     <div id='rooms'></div>
+
     <div id='addRooms'>
       <button ng-hide="createRoom" id="addRoomsBtn" ng-click="addRoomField()">Create a new game</button>
       <div ng-show="createRoom" id='addRoomConfig'>
