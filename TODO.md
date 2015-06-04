@@ -13,5 +13,6 @@ issues:
 ...on room delete, send out message to update rooms...
 
 
-//rewrite create room logic to make use of ng-repeat
+//ok. so on disconnecting and then connecting to another room, all fucking messages get shown more than once. it only gets sent once, so its on the front end. because once again i am using jquery. switch the messages to ng-repeat.
 
+also write an on disconnect get out of room thing -- more important
