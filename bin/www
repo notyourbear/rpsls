@@ -224,6 +224,10 @@ io.on('connection', function(user){
 
     //if both are set evaluate game
     if(count === 2){
+      //emit that the second player has moved
+      io.to(this.player.room).emit('waitNoMore', this.player.userName);
+
+
       var answer = rpsls.evaluate(play1[1], play2[1]);
       //answer is made up in the following way: 
       //[0]: side that won

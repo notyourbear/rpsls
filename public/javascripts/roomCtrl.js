@@ -196,6 +196,24 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     }
   });
 
+  socket.on('waitNoMore', function(userName){
+    //find the player index
+    var playerIndex = profile.players.indexOf(userName),
+        text = userName + ' has made their move.';
+
+    //check that it's not the user, because we don't have to update for him
+    if(userName !== profile.userName || !profile.inGame) {
+      //set that player has moved
+
+      if(playerIndex === 0){
+        $scope.playerOne = text;
+      } else if (playerIndex === 1){
+        $scope.playerTwo = text;
+      }
+
+    }
+  });
+
   socket.on('gameEval', function(winUserName, winPiece, syntax, lossPiece, lossUserName){
     
     var winIndex = profile.players.indexOf(winUserName);
