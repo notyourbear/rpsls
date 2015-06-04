@@ -38,7 +38,7 @@ var server = http.createServer(app);
 /**
  * socket.io 
  */
-var io = require('socket.io')(server);
+var io = require('socket.io').listen(server);
 
 var players = {};
 var rooms = {};
