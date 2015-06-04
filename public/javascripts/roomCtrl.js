@@ -15,6 +15,45 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   };
 
   //helper functions
+  var leaveTheGame = function(bool, player){
+    var playerIndex = profile.players.indexOf(player);
+
+    //check that playerIndex is not -1 
+
+    if(playerIndex !== -1){
+
+      //if the player has been in game and requested leave...
+      if(profile.inGame && profile.requestLeave){
+        //...set profile.inGame to be player's status;
+        profile.inGame = bool;
+
+        //...switch the join room button on/off
+        $scope.isInGame = bool;
+
+        //reset profile.requestLeave
+        profile.requestLeave = false;
+      }
+
+      //if player should actually not be a part of the game anymore...
+      if(!bool){
+        //change for everyone:
+        //...take the player out of the profile.players array
+        profile.players.splice(playerIndex, 1);
+
+        //...update screens with player positions
+
+        if(profile.players.length === 1) { //in case another person was already in game
+          $scope.playerOne = profile.players[0];
+          $scope.playerTwo = 'Waiting for an opponent';
+        } else if (profile.players.length === 0) {
+          $scope.playerOne = 'Waiting for a player';
+          $scope.playerTwo = 'Waiting for an opponent';
+        }
+        console.log('on leaving, players looks like:', profile.players);
+      }
+    }
+  };
+
   var victory = function(msg, winPiece, lossPiece, winIndex, cb){
     var count = 3;
 
@@ -100,8 +139,17 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
       //set requestLeave to true for later check
       profile.requestLeave = true;
 
+      //emit leave request to back end
       socket.emit('leaveGame');
     }
+  };
+
+  $scope.leaveRoom = function(){
+    //set requestRoomLeave to true for a later check
+    profile.requestRoomLeave = true;
+
+    //emit leave request to back end with the inGame status for a backend check
+    socket.emit('leaveRoom', profile.inGame);
   };
 
   $scope.updatePlayers = function(playPiece){
@@ -160,34 +208,37 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   socket.on('leaveGame', function(bool, player){
     var playerIndex = profile.players.indexOf(player);
 
-    //if the player has been in game and requested leave...
-    if(profile.inGame && profile.requestLeave){
-      //...set profile.inGame to be player's status;
-      profile.inGame = bool;
+    leaveTheGame(bool, player);
+  });
 
-      //...switch the join room button on/off
-      $scope.isInGame = bool;
+  socket.on('startRoomLeave', function(bool, player){
+  // run through leave game.
+    leaveTheGame(bool, player);
 
-      //reset profile.requestLeave
-      profile.requestLeave = false;
-    }
+    //check for whether user made request to leave
+    if(profile.requestRoomLeave){
+      // then:
+        // -change profile's:
+        //   -inGame to false;
+        //   -playedPiece to null
+        //   -currentRoomId to null
+      profile.inGame = false;
+      profile.playedPiece = null;
+      profile.currentRoomId = null;
+      profile.requestRoomLeave = false;
 
-    //if player should actually not be a part of the game anymore...
-    if(!bool){
-      //change for everyone:
-      //...take the player out of the profile.players array
-      profile.players.splice(playerIndex, 1);
+      //emit to backend to finish leave
+      // socket.emit('completeRoomLeave');
+    } else {
+      //tell user that somebody is leaving the room
 
-      //...update screens with player positions
+      angular.element('#messages').append($('<li>').text(player + 'has left the room'));
 
-      if(profile.players.length === 1) { //in case another person was already in game
-        $scope.playerOne = profile.players[0];
-        $scope.playerTwo = 'Waiting for an opponent';
-      } else if (profile.players.length === 0) {
-        $scope.playerOne = 'Waiting for a player';
-        $scope.playerTwo = 'Waiting for an opponent';
-      }
-      console.log('on leaving, players looks like:', profile.players);
+     //if message goes past overflow, make sure it's scrolled to.
+      angular.element('#messageSpace').stop().animate({
+        scrollTop: angular.element("#messageSpace")[0].scrollHeight
+      }, 800);
+
     }
   });
 

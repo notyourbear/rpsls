@@ -28,15 +28,6 @@ var server = http.createServer(app);
   * Supporting functions 
   */
   var findCorrectRoom = function(roomId){
-
-    // for (var i = 0; i < rooms.length; i++){
-    //   //find correct room
-    //     if(rooms[i].id === roomId){
-    //       theRoom = rooms[i];
-    //     }
-    //   }
-
-
     return rooms[roomId];
 
   };
@@ -96,6 +87,72 @@ io.on('connection', function(user){
 
   });
 
+  user.on('leaveRoom', function(inGame){
+    var room = findCorrectRoom(this.player.room),
+        roomId = this.player.room,
+        i,
+        j,
+        indexOfPlayer,
+        leftGame;
+
+    // if player was also in game while trying to leave the room
+    // run through leave game stuff;
+    if(inGame){
+      leftGame = room.leaveFromGame(this.player.userName);
+    }
+
+    // in room: take person out of people
+    //console.log before
+    console.log('before taking player out of people in room array:', room.people);
+    console.log('how many people?', room.people.length);
+
+    //run through all people
+    // for(i = 0; i < room.people.length; i++){
+    //   //run through params in each person to check against user's id
+    //   for(j in room.people[i]){
+    //     if(room.people[i].hasOwnProperty(j)){
+    //       if(j === user.player.id){
+    //         //when user found, record index
+    //         indexOfPlayer = i;
+    //       }
+    //     }
+    //   }
+    //   }
+
+    // room.people.splice(i, 1);
+
+    //console.log after
+    console.log('after taking player out of people in room array:', room.people);
+    console.log('how many people?', room.people.length);
+
+    console.log('backend leaving start complete');
+
+    io.to(roomId).emit('startRoomLeave', leftGame, this.player.userName);
+
+  });
+
+  user.on('completeRoomLeave', function(){
+    var room = findCorrectRoom(this.player.room),
+        roomId = this.player.room;
+
+    // if room has 0 people in it, delete the room
+    if(room.people.length === 0){
+      delete rooms[roomId];
+      console.log('room got deleted');
+    }
+
+    // on socket:
+    //   -leave room
+    this.leave(roomId);
+
+    // in player:
+    //   -this.room = null
+    this.player.room = null;
+
+    //set user bool to false
+    user.bool = false;
+  });
+
   user.on('addName', function(name){
     if(name !== '' && !this.player.userName){
       this.player.addUserName(name);
@@ -148,7 +205,7 @@ io.on('connection', function(user){
     this.player.room = room.id;
 
     //add player to room object
-    room.addPerson(user.player);
+    room.addPerson(this.player);
 
     //also join player into room's socket
     this.join(id);
