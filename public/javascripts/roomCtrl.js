@@ -212,8 +212,10 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   });
 
   socket.on('startRoomLeave', function(bool, player){
-  // run through leave game.
+    // run through leave game.
     leaveTheGame(bool, player);
+
+    console.log('this is the fact that i want to leave this infernal room:', profile.requestRoomLeave);
 
     //check for whether user made request to leave
     if(profile.requestRoomLeave){
@@ -240,6 +242,18 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
         scrollTop: angular.element("#messageSpace")[0].scrollHeight
       }, 800);
 
+    }
+  });
+
+  socket.on('userHasJoined', function(userName, hasEntered){
+
+    if (!hasEntered) { //dumb hack fix for only displaying enter message once
+      angular.element('#messages').append($('<li>').text(userName + ' has joined the room'));
+
+       //if message goes past overflow, make sure it's scrolled to.
+        angular.element('#messageSpace').stop().animate({
+          scrollTop: angular.element("#messageSpace")[0].scrollHeight
+        }, 800);
     }
   });
 

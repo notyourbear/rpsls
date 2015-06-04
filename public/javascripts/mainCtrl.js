@@ -106,25 +106,25 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
   });
 
   socket.on('currentRooms', function(availableRooms){
-    
-    //console log out available rooms for testing
-    console.log(availableRooms);
-
-    //display current rooms. since this happens on connection, the server will keep trying to run this over and over. so create/set a bool that will make sure it can only run once
-    var i;
-
     if(!$scope.bool){
+      //console log out available rooms for testing
+      console.log(availableRooms);
+
+      //display current rooms. since this happens on connection, the server will keep trying to run this over and over. so create/set a bool that will make sure it can only run once
+      var i;
+
+    
       for (i in availableRooms){
         if(availableRooms.hasOwnProperty(i)){
           //add each room
           $scope.addRoom(availableRooms[i].ownerUserName, availableRooms[i].name, availableRooms[i].id);
         }
       }
-    }
+    
     
       //set bool to true. will only run once now thanks to if check above
       $scope.bool = true;
-    // }
+    }
   });
 
   socket.on('checkRoom', function(id, inRoom, players){

@@ -145,9 +145,13 @@ io.on('connection', function(user){
 
     setTimeout(function(){
       user.emit('currentRooms', rooms);
-    }, 1500);
+      console.log('hey i am displaying roomz');
+    }, 1000);
 
     console.log('leave Completed');
+
+    //dumb entermessage hack
+    this.player.hasEntered = false;
   });
 
   user.on('addName', function(name){
@@ -209,8 +213,14 @@ io.on('connection', function(user){
     //also join player into room's socket
     this.join(id);
 
-    //c`onsole log out rooms
+    //console log out rooms
     console.log(rooms);
+
+    
+    //emit to room that someone has joined
+    io.to(room.id).emit('userHasJoined', this.player.userName, this.player.hasEntered);
+
+    this.player.hasEntered = true;
 
   });
 
