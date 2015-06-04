@@ -28,16 +28,16 @@ var server = http.createServer(app);
   * Supporting functions 
   */
   var findCorrectRoom = function(roomId){
-    var theRoom;
 
-    for (var i = 0; i < rooms.length; i++){
-      //find correct room
-        if(rooms[i].id === roomId){
-          theRoom = rooms[i];
-        }
-      }
+    // for (var i = 0; i < rooms.length; i++){
+    //   //find correct room
+    //     if(rooms[i].id === roomId){
+    //       theRoom = rooms[i];
+    //     }
+    //   }
 
-    return theRoom;
+
+    return rooms[roomId];
 
   };
 
@@ -50,20 +50,22 @@ var server = http.createServer(app);
 var io = require('socket.io')(server);
 
 var players = {};
-var rooms = [];
+var rooms = {};
 
 io.on('connection', function(user){
+  //on connection (once, and only once), i want to emit all the available rooms to the user. so i need a bool to keep track of the fact that I've sent it out once.
   user.bool = false;
 
-  console.log('a user has connected');
+  if (!user.bool){
+    user.emit('currentRooms', rooms);
+    user.bool = true;
+  }
+
   user.player = new Player(user.id);
   console.log('user.player', user.player);
   console.log('rooms right now', rooms);
 
-  if (rooms.length > 0 && !user.bool){
-    user.emit('currentRooms', rooms);
-    user.bool = true;
-  }
+ 
 
   user.on('disconnect', function(){
     console.log('a user has left');
@@ -111,7 +113,7 @@ io.on('connection', function(user){
       var newRoom = new Room(roomName, id, this.player.id, this.player.userName);
 
       //add room to rooms array
-      rooms.push(newRoom);
+      rooms[id]=newRoom;
       
       //also create socket room for the room
       this.player.room = id;
@@ -126,6 +128,8 @@ io.on('connection', function(user){
       newRoom.addToGame(this.player.userName);
 
       console.log('\n\n\n\n\n the rooms game now looks like:', newRoom.game);
+
+      console.log(findCorrectRoom(id));
 
       
       //update currentRooms list

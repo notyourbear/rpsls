@@ -1,6 +1,11 @@
-1. need to make an emit to room when second person plays their hand.
-
-4. add a way to back out back to the main room
-
-
 curvytron
+
+
+1. rewrite room storage logic, searching for rooms
+
+-check that rooms appear on page as intended (also rewrite)
+
+-check that rooms are found correctly on the back end
+
+
+2. then get a way to the main screen with a back button
