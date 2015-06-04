@@ -12,6 +12,9 @@ app.factory('profile', function (){
         requestRoomLeave: false,
         playedPiece: null,
         players: [],
+        lastChatMsg: null, //messageDuplication hack
+        lastReceivedChatMsg: null, //messageDuplication hack
+        lastReceivedChatSender: null,
         countPlayers: function(gameObject){
             var isAPlayer;
 

@@ -109,16 +109,19 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   $scope.chatMsg = function(){
     //emit message to other users
     if ($scope.chatMessage !== ''){
-      socket.emit('chatMessage', $scope.chatMessage);
-    
-
-      //append message to own screen
       angular.element('#messages').append($('<li>').text(profile.userName+": "+$scope.chatMessage));
 
-      //if message goes past overflow, make sure it's scrolled to.
-      angular.element('#messageSpace').stop().animate({
-        scrollTop: angular.element("#messageSpace")[0].scrollHeight
-      }, 800);
+       //if message goes past overflow, make sure it's scrolled to.
+        angular.element('#messageSpace').stop().animate({
+          scrollTop: angular.element("#messageSpace")[0].scrollHeight
+        }, 800);
+
+
+
+      socket.emit('chatMessage', $scope.chatMessage);
+  
+      //messageDuplication hack
+      profile.lastChatMsg = $scope.chatMessage;
 
       //reset chatMessage text to nothing
       $scope.chatMessage = '';
@@ -183,12 +186,18 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   };
 
   socket.on('chatMessage', function(user, msg){
-    angular.element('#messages').append($('<li>').text(user+": "+msg));
+    //message duplication hack
+    if(msg !== profile.lastChatMsg && (msg !== profile.lastReceivedChatMsg && user !== profile.lastReceivedChatSender)){
+      angular.element('#messages').append($('<li>').text(user+": "+msg));
 
-     //if message goes past overflow, make sure it's scrolled to.
-      angular.element('#messageSpace').stop().animate({
-        scrollTop: angular.element("#messageSpace")[0].scrollHeight
-      }, 800);
+       //if message goes past overflow, make sure it's scrolled to.
+        angular.element('#messageSpace').stop().animate({
+          scrollTop: angular.element("#messageSpace")[0].scrollHeight
+        }, 800);
+
+        profile.lastReceivedChatSender = user;
+        profile.lastReceivedChatMsg = msg;
+      }
   });
 
   socket.on('joinGame', function(bool){
