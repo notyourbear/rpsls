@@ -9,8 +9,30 @@ var Room = function(name, id, ownerId, ownerUserName){
 };
 
 Room.prototype.addPerson = function(person){
-  this.people.push(person);
-  console.log('added:', person);
+  var index = this.checkForPerson(person.id);
+  
+  if(index === -1){
+    this.people.push(person);
+    console.log('added:', person);
+  }
+  
+};
+
+Room.prototype.checkForPerson = function(userId){
+  //run through this.people
+  var i, j;
+  for (i = 0; i < this.people.length; i++){
+    //check for user
+    for (j in this.people[i]) {
+      if(this.people[i].hasOwnProperty(j)){
+        //check for id
+        if (this.people[i][j] === userId){
+          return i;
+        }
+      }
+    }
+  }
+  return -1;
 };
 
 Room.prototype.addToGame = function(userName){

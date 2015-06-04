@@ -213,6 +213,8 @@ io.on('connection', function(user){
     //add player to room object
     room.addPerson(this.player);
 
+    console.log('this is all the players in the room now: ', room.people);
+
     //also join player into room's socket
     this.join(id);
 
