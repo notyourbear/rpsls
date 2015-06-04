@@ -34,6 +34,20 @@ Room.prototype.addToGame = function(userName){
 
 };
 
+Room.prototype.leaveFromGame = function(userName){
+  //check that userName is actually in game:
+  if(this.game.hasOwnProperty(userName)){
+    delete this.game[userName];
+    
+    //return false to say that user is no longer in game
+    return false;
+  } else {
+
+    //return true in case player was not taken out of game (and player is still in game)
+    return true;
+  }
+};
+
 Room.prototype.resetGame = function(){
   var i;
 

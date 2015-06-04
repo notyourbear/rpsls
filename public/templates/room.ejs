@@ -1,9 +1,14 @@
 <div class='content'>
   <div class='y'>
     <div class='game'>
+
       <div class='join'>
         <button ng-hide="isInGame" ng-click='joinGame()'>Join the Game!</button>
       </div>
+      <div class="leaveGame">
+        <button ng-show='isInGame' ng-click='leaveGame()'>Stop playing</button>
+      </div>
+      
       <div id='playfield'>
         <div id='playerOne' class='move'>{{playerOne}}
         </div>

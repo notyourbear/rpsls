@@ -8,6 +8,7 @@ app.factory('profile', function (){
         userName: null,
         hasName: false,
         inGame: false,
+        requestLeave: false,
         playedPiece: null,
         players: [],
         countPlayers: function(gameObject){

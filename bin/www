@@ -84,6 +84,16 @@ io.on('connection', function(user){
   
   });
 
+  user.on('leaveGame', function(){
+    var room = findCorrectRoom(this.player.room);
+
+    var bool = room.leaveFromGame(this.player.userName);
+
+    //emit to room that player is leaving game;
+    io.to(this.player.room).emit('leaveGame', bool, this.player.userName);
+
+  });
+
   user.on('addName', function(name){
     if(name !== '' && !this.player.userName){
       this.player.addUserName(name);

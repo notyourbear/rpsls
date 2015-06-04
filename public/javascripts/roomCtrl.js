@@ -51,7 +51,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
                     
                     setTimeout(function(){
                       reset();
-                    },7500);
+                    },4000);
                   
                   }
 
@@ -87,8 +87,21 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   };
 
   $scope.joinGame = function(){
-    console.log('profile.inGame:', profile.inGame);
-    socket.emit('joinGame');
+
+    //only send request if not already in game
+    if(!profile.inGame){
+      socket.emit('joinGame');
+    }
+  };
+
+  $scope.leaveGame = function(){
+    //double check that player actually is in game
+    if(profile.inGame){
+      //set requestLeave to true for later check
+      profile.requestLeave = true;
+
+      socket.emit('leaveGame');
+    }
   };
 
   $scope.updatePlayers = function(playPiece){
@@ -131,35 +144,75 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   });
 
   socket.on('joinGame', function(bool, players){
-    //set profile.inGame to be true;
+    //set profile.inGame to be player's status;
     profile.inGame = bool;
 
+    //switch the join room button on/off
+    $scope.isInGame = bool;
+
     //add player to profile.players
-    profile.countPlayers(players);
-    console.log(profile.players);
+    // profile.countPlayers(players);
 
     //set person as second player on users own screen when joining a game
-    if (bool) {
-      $scope.playerTwo = profile.userName;
-
+    if(bool){
       socket.emit('challengerHasArrived');
     }
 
-    //set whether person is in game
-    $scope.isInGame = bool;
+  });
+
+  socket.on('leaveGame', function(bool, player){
+    var playerIndex = profile.players.indexOf(player);
+
+    //if the player has been in game and requested leave...
+    if(profile.inGame && profile.requestLeave){
+      //...set profile.inGame to be player's status;
+      profile.inGame = bool;
+
+      //...switch the join room button on/off
+      $scope.isInGame = bool;
+
+      //reset profile.requestLeave
+      profile.requestLeave = false;
+    }
+
+    //if player should actually not be a part of the game anymore...
+    if(!bool){
+      //change for everyone:
+      //...take the player out of the profile.players array
+      profile.players.splice(playerIndex, 1);
+
+      //...update screens with player positions
+
+      if(profile.players.length === 1) { //in case another person was already in game
+        $scope.playerOne = profile.players[0];
+        $scope.playerTwo = 'Waiting for an opponent';
+      } else if (profile.players.length === 0) {
+        $scope.playerOne = 'Waiting for a player';
+        $scope.playerTwo = 'Waiting for an opponent';
+      }
+      console.log('on leaving, players looks like:', profile.players);
+    }
   });
 
   socket.on('challengerHasArrived', function(challenger){
+    console.log('on arrival, profile players be:', profile.players);
+
+    //check profile.players for screen position:
+    if(profile.players.length === 0) {
+      $scope.playerOne = challenger.userName;
+    } else if (profile.players.length === 1){
+      $scope.playerTwo = challenger.userName;
+    }
+
     profile.players.push(challenger.userName);
-    $scope.playerTwo = challenger.userName;
   });
 
   socket.on('updateProfilePlayers', function(playPiece, players){
-    profile.players = [];
+    // profile.players = [];
     profile.countPlayers(players);
 
-    //only actually play a piece if profile.playedPiece is null and person is in game
-    if(profile.playedPiece === null && profile.inGame){
+    //only actually play a piece if profile.playedPiece is null, person is in game, and the playPiece is not null
+    if(profile.playedPiece === null && profile.inGame && playPiece !== null){
       $scope.play(playPiece);
     }
   });
