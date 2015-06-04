@@ -201,13 +201,16 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     var winIndex = profile.players.indexOf(winUserName);
   
     var message = winUserName + " threw " + winPiece + ". It was super effective! " + winPiece + " " + syntax + " " + lossPiece + "!";
-
-    //set messages
-    console.log('playing victory!');
     
     victory(message, winPiece, lossPiece, winIndex, reset);
-    
+  });
 
+  socket.on('gameEvalTie', function(playPiece){
+    
+    var message = 'Tie!!';
+
+    //prempt victory function into doing what i need it to
+    victory(message, playPiece, playPiece, 0, reset);
   });
 
   socket.on('startReset', function(){

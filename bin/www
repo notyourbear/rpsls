@@ -242,7 +242,7 @@ io.on('connection', function(user){
 
       //if tie, send the entire room that it was a tie
       if(answer[0] === 'tie') {
-        io.to(this.player.room).emit('gameEvalTie', 'tie', playPiece);
+        io.to(this.player.room).emit('gameEvalTie', playPiece);
       } else {
       
       //send to the room the info of the eval in form of:
