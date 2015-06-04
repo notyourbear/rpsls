@@ -143,15 +143,12 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
       }, 800);
   });
 
-  socket.on('joinGame', function(bool, players){
+  socket.on('joinGame', function(bool){
     //set profile.inGame to be player's status;
     profile.inGame = bool;
 
     //switch the join room button on/off
     $scope.isInGame = bool;
-
-    //add player to profile.players
-    // profile.countPlayers(players);
 
     //set person as second player on users own screen when joining a game
     if(bool){
@@ -207,9 +204,9 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     profile.players.push(challenger.userName);
   });
 
-  socket.on('updateProfilePlayers', function(playPiece, players){
+  socket.on('updateProfilePlayers', function(playPiece){
     // profile.players = [];
-    profile.countPlayers(players);
+    // profile.countPlayers(players);
 
     //only actually play a piece if profile.playedPiece is null, person is in game, and the playPiece is not null
     if(profile.playedPiece === null && profile.inGame && playPiece !== null){

@@ -80,7 +80,7 @@ io.on('connection', function(user){
     var room = findCorrectRoom(this.player.room);
     var bool = room.addToGame(this.player.userName);
 
-    user.emit('joinGame', bool, room.game);
+    user.emit('joinGame', bool);
   
   });
 
@@ -198,8 +198,8 @@ io.on('connection', function(user){
     //find the correct room
     var room = findCorrectRoom(this.player.room);
 
-    //send back the playerObject and the playPiece
-    user.emit('updateProfilePlayers', playPiece, room.game);
+    //send back the playPiece
+    user.emit('updateProfilePlayers', playPiece);
   });
 
   user.on('playPiece', function(playPiece){
