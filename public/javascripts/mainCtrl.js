@@ -113,10 +113,12 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
     //display current rooms. since this happens on connection, the server will keep trying to run this over and over. so create/set a bool that will make sure it can only run once
     var i;
 
-    for (i in availableRooms){
-      if(availableRooms.hasOwnProperty(i)){
-        //add each room
-        $scope.addRoom(availableRooms[i].ownerUserName, availableRooms[i].name, availableRooms[i].id);
+    if(!$scope.bool){
+      for (i in availableRooms){
+        if(availableRooms.hasOwnProperty(i)){
+          //add each room
+          $scope.addRoom(availableRooms[i].ownerUserName, availableRooms[i].name, availableRooms[i].id);
+        }
       }
     }
     

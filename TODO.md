@@ -32,5 +32,7 @@ on the click of the button,
     -playedPiece to null
     -currentRoomId to null
 
+
+somethings wrong with adding players to the room.player correctly in the back end. 
      
 

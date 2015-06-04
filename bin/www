@@ -150,7 +150,13 @@ io.on('connection', function(user){
     this.player.room = null;
 
     //set user bool to false
-    user.bool = false;
+    // user.bool = false;
+
+    setTimeout(function(){
+      user.emit('currentRooms', rooms);
+    }, 1500);
+
+    console.log('leave Completed');
   });
 
   user.on('addName', function(name){

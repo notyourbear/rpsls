@@ -227,12 +227,13 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
       profile.currentRoomId = null;
       profile.requestRoomLeave = false;
 
-      //emit to backend to finish leave
-      // socket.emit('completeRoomLeave');
+      // emit to backend to finish leave
+      socket.emit('completeRoomLeave');
+      $state.go('home');
     } else {
       //tell user that somebody is leaving the room
 
-      angular.element('#messages').append($('<li>').text(player + 'has left the room'));
+      angular.element('#messages').append($('<li>').text(player + ' has left the room'));
 
      //if message goes past overflow, make sure it's scrolled to.
       angular.element('#messageSpace').stop().animate({
