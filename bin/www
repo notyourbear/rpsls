@@ -99,6 +99,7 @@ io.on('connection', function(user){
     }
 
     deleteEmptyRooms(rooms);
+    io.emit('currentRooms', rooms);
   });
 
   user.on('chatMessage', function(message){
