@@ -122,15 +122,6 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
       }
     }
     
-
-
-    // if (availableRooms.length > 0 && !$scope.bool){
-    //   for (var i = 0; i < availableRooms.length; i++){
-        
-    //     //add each room
-    //     $scope.addRoom(availableRooms[i].ownerUserName, availableRooms[i].name, availableRooms[i].id);
-    //   }
-
       //set bool to true. will only run once now thanks to if check above
       $scope.bool = true;
     // }
