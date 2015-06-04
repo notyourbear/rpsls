@@ -11,7 +11,18 @@
   <div style='margin: 20px 0;' id='games'>
     
     <div ng-repeat="(rooms, room) in allTheRooms">
-      {{room.name}}
+      <div class='gameRoom'>
+        <div class='gameRoomTitle'>
+          {{room.name}}
+        </div>
+        by: {{room.ownerUserName}}
+        <div>
+          people in room: {{room.people.length}}
+        </div>
+        <div ng-click="checkRoom(room.id)" class="joinButton">
+          Join Room
+        </div>
+      </div>
     </div>
 
 

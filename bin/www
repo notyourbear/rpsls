@@ -201,6 +201,9 @@ io.on('connection', function(user){
   user.on('joinRoom', function(id){
     var room = findCorrectRoom(id);
 
+    console.log('this is the room', room);
+    console.log('this is the id', id);
+
     //update user's player object with current room
     this.player.room = room.id;
 

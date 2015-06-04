@@ -9,7 +9,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
 
 
   $scope.checkRoom = function(id){
-    
+    console.log(id);
     //emit to backend to know whether user is in room (true or false)
     socket.emit('checkRoom', id);
   };
@@ -126,7 +126,6 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
       console.log(availableRooms);
 
       //display current rooms. since this happens on connection, the server will keep trying to run this over and over. so create/set a bool that will make sure it can only run once
-      var i;
 
       $scope.allTheRooms = availableRooms;
     
