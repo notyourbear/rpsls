@@ -35,7 +35,7 @@
   <div id='createUserName'>
 
     <div ng-hide="named">
-      CREATE YOUR USER NAME TO START PLAYING
+      Create your username to start playing
       <form ng-submit="addName()">
         <input ng-model='userName' name='userName' placeholder='Enter a Username' type="text">
         <button id='nameSubmit' type="submit" name="submit">Ok</button>
@@ -43,7 +43,7 @@
     </div>
 
     <div ng-show="named" id='addRooms'>
-      JOIN A ROOM OR CREATE YOUR OWN <br/>
+      Join a room below or create your own <br/>
       <div ng-show="createRoom" id='addRoomConfig'>
         <form ng-submit='addRoom()'>
           <input ng-model='roomName' name='roomName' placeholder='Name your room' type='text'>
