@@ -1,5 +1,5 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -7,9 +7,14 @@ a {
 }
 
 #navBar {
-  height: 30px;
+  height: 80px;
   width: 100%;
   background: #d3d3d3;
+}
+
+#navTitle {
+  display: inline-block;
+  font-size: 1.5em;
 }
 
 #footBar {
@@ -23,7 +28,7 @@ a {
 .content {
   width: 966px;
   margin: 0 auto;
-  background: white;
+  background: #d3d3d3;
 }
 
 .y{
