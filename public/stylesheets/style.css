@@ -227,7 +227,7 @@ a {
 #playfield {
   width: 78%;
   height: 400px;
-  margin-left: 5%;
+  margin: 5% 0 0 5%;
 }
 
 .move {
@@ -236,12 +236,15 @@ a {
   display: inline-block;
   border: 1px solid black;
   height: 300px;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 #vs {
-  padding: 50px;
+  padding: 5%;
   margin-top: 50px;
   display: inline-block;
+  font-size: 2.5em;
 }
 
 #buttons {
@@ -405,6 +408,16 @@ a {
 
 .leaveGameInt:active{
   background: black;
+}
+
+#playMessage{
+  font-size: 2.5em;  
+  margin: 15px 0 0 35%;  
+}
+
+#timer{
+  margin: 15px 0 0 5%;
+  font-size: 2.5em;
 }
 
 
