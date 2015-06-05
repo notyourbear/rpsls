@@ -210,6 +210,14 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     //set person as second player on users own screen when joining a game
     if(bool){
       socket.emit('challengerHasArrived');
+    } else {
+      angular.element('#messages').append($('<li>').text("Can't join. The game is full"));
+
+       //if message goes past overflow, make sure it's scrolled to.
+        angular.element('#messageSpace').stop().animate({
+          scrollTop: angular.element("#messageSpace")[0].scrollHeight
+        }, 800);
+
     }
 
   });

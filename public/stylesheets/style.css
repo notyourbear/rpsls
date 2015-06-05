@@ -1,11 +1,5 @@
-/* colors:
-   base: #2980B9;
-   yellow: #FFC82C;
-   orange: #FFA22C;
-   red: #FF622C;
-   silver: #ecf0f1;
-*/
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-size: 13.5px;
@@ -91,27 +85,40 @@ a {
   background: #ecf0f1;
 }
 
-.y{
+/* colors:
+   base: #72B0D9;
+   yellow: #FFC82C;
+   orange: #FFA22C;
+   red: #FF622C;
+   silver: #ecf0f1;
+*/
+
+.contentRoom {
+  width: 100%;
+  background: #ecf0f1;
+  height: 600px;
+}
+
+
+.gameView{
   position: relative;
 }
 
 .game {
   width:100%;
-  height: 800px;
+  height: 600px;
   display: inline-block;
-  background: white;
   position: absolute;
   top: 0;
 }
 
 .sidebar {
-  width: 300px;
-  height: 800px;
-  position: fixed;
-  background: white;
+  width: 20%;
+  height: 600px;
+  position: absolute;
+  background: #ecf0f1;
   border: 1px black solid;
-  right:0;
-
+  right: 0;
 }
 
 .sidebar ul {
@@ -120,27 +127,22 @@ a {
 
 .sidebar h3 {
   border-bottom: 2px black solid;
-  margin: 5px;
+  margin: 8px;
+  padding-bottom: 5px;
   text-align: center;
 }
 
 #messageSpace{
   overflow: scroll;
-  height: 720px;
+  height: 500px;
 }
+
+/* HOME SCREEN */
 
 #games {
   padding: 0 3% 0 10%;
   width: 100%;
 }
-
-/* colors:
-   base: #72B0D9;
-   yellow: #FFC82C;
-   orange: #FFA22C;
-   red: #FF622C;
-   silver: #ecf0f1;
-*/
 
 .gameRoomBorder{
   background: #FFA22C;
@@ -176,14 +178,21 @@ a {
 }
 
 .joinButton:hover {
-  background: maroon;
+  background: #C76F00;
 }
 
 .joinButton:active {
-  background: black;
+  background: #C73300;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+ /*
+ colors:
+   base: #2980B9;
+   yellow: #FFC82C;
+   orange: #FFA22C;
+   red: #FF622C;
+   silver: #ecf0f1;
+*/
 
 .chatForm { 
   background: #000;
@@ -195,32 +204,44 @@ a {
 .chatForm input { 
   border: 0; 
   width: 60%; 
-  margin: .6%; 
+  margin: .5%; 
   padding: 10px;
 }
 .chatForm button { 
   width: 38.5%; 
-  background: rgb(130, 224, 255); 
+  background: #72B0D9; 
   border: none; 
-  padding: 10px; }
+  padding: 10px; 
+}
 
-#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+}
+
 #messages li { 
   padding: 5px 12px; 
 }
 
 #playfield {
-  width: 90%;
-  height: 650px;
-  border: 1px solid black;
+  width: 78%;
+  height: 400px;
+  margin-left: 5%;
 }
 
 .move {
-  width: 49.5%;
+  vertical-align: top;
+  width: 40%;
   display: inline-block;
   border: 1px solid black;
   height: 300px;
+}
 
+#vs {
+  padding: 50px;
+  margin-top: 50px;
+  display: inline-block;
 }
 
 #buttons {
@@ -229,32 +250,142 @@ a {
 
 .gameButton{
   display: inline-block;
-  width: 130px;
+  width: 11%;
+  height: 140px;
   padding: 40px;
-  background: #d3d3d3;
   text-align: center;
-  margin: 0 15px;
+  margin: 0 0 0 4%;
 }
 
-.gameButton:hover{
-  background: #d4d4d4;
+#rock{
+  background-image: url(../images/Rock.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;;
+  -moz-background-size: 100%;;
+  -o-background-size: 100%;;
+  background-size: 100%;
 }
 
-.gameButton:active{
+#rock:hover{
+  background-image: url(../images/Rock2.png);
+}
+
+#rock:active{
+  background-image: url(../images/Rock3.png);
+}
+
+#paper{
+  background-image: url(../images/Paper.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;;
+  -moz-background-size: 100%;;
+  -o-background-size: 100%;;
+  background-size: 100%;
+}
+
+#paper:hover{
+  background-image: url(../images/Paper2.png);
+}
+
+#paper:active{
+  background-image: url(../images/Paper3.png);
+}
+
+#scissors{
+  background-image: url(../images/Scissors.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;;
+  -moz-background-size: 100%;;
+  -o-background-size: 100%;;
+  background-size: 100%;
+}
+
+#scissors:hover{
+  background-image: url(../images/Scissors2.png);
+}
+
+#scissors:active{
+  background-image: url(../images/Scissors3.png);
+}
+
+#lizard{
+  background-image: url(../images/Lizard.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;;
+  -moz-background-size: 100%;;
+  -o-background-size: 100%;;
+  background-size: 100%;
+}
+
+#lizard:hover{
+  background-image: url(../images/Lizard2.png);
+}
+
+#lizard:active{
+  background-image: url(../images/Lizard3.png);
+}
+
+#spock{
+  background-image: url(../images/Spock.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;;
+  -moz-background-size: 100%;;
+  -o-background-size: 100%;;
+  background-size: 100%;
+}
+
+#spock:hover{
+  background-image: url(../images/Spock2.png);
+}
+
+#spock:active{
+  background-image: url(../images/Spock3.png);
+}
+
+
+.leaveRoom{
+  width: 100px;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1em;
+  background:  #FF622C;
+  position: absolute;
+  top: -9%;
+  left: 2%;
+  display: inline-block;
+}
+
+.join{
+  padding: 2px;
+  text-align: center;
+  font-size: 1em;
+  background:  #FFA22C;
+  position: absolute;
+  bottom: 15%;
+  left: 36.5%;
+  display: inline-block;
+}
+
+.joinInt{
+  background: #ecf0f1;
+  width: 115px;
+  padding: 15px 0;
+}
+
+.joinInt:hover{
+  background: #FFA22C;
+}
+
+.joinInt:active{
   background: black;
 }
 
-.readyButton{
-  background: green;
-}
-
-.readyButton:hover{
-  background: red;
-}
-
-.readyButton:active{
-  background: black;
-}
 
 
-/*#messages li:nth-child(odd) { background: #eee; }*/
+/* colors:
+   base: #72B0D9;
+   yellow: #FFC82C;
+   orange: #FFA22C;
+   red: #FF622C;
+   silver: #ecf0f1;
+*/

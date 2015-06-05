@@ -1,13 +1,9 @@
-<div class='content'>
-  <div class='y'>
+<div class='contentRoom'>
+  <div class='gameView'>
     <div class='game'>
-      <div class="leaveRoom">
-        <button ng-click='leaveRoom()'>Leave Room</button>
+      <div class="leaveRoom" ng-click='leaveRoom()'>  Leave Room
       </div>
-
-      <div class='join'>
-        <button ng-hide="isInGame" ng-click='joinGame()'>Join the Game!</button>
-      </div>
+    
       <div class="leaveGame">
         <button ng-show='isInGame' ng-click='leaveGame()'>Stop playing</button>
       </div>
@@ -15,6 +11,7 @@
       <div id='playfield'>
         <div id='playerOne' class='move'>{{playerOne}}
         </div>
+        <span id='vs'>VS</span>
         <div id='playerTwo' class='move'>{{playerTwo}}
         </div>
         <div id='playMessage'>
@@ -22,14 +19,20 @@
         </div>
         <div id='timer'></div>
       </div>
+
+      <div class='join' ng-hide="isInGame">
+        <div class='joinInt' ng-click='joinGame()'>
+          Join the Game!
+        </div>
+      </div>
       
       <div ng-show='isInGame'>
         <div id = 'buttons'>
-          <div ng-click = updatePlayers('Rock') class='gameButton'>Rock</div>
-          <div ng-click = updatePlayers('Paper') class='gameButton'>Paper</div>
-          <div ng-click = updatePlayers('Scissors') class='gameButton'>Scissors</div>
-          <div ng-click = updatePlayers('Lizard') class='gameButton'>Lizard</div>
-          <div  ng-click = updatePlayers('Spock') class='gameButton'>Spock</div>
+          <div id='rock' ng-click = updatePlayers('Rock') class='gameButton'>&nbsp;</div>
+          <div id='paper' ng-click = updatePlayers('Paper') class='gameButton'>&nbsp;</div>
+          <div id='scissors' ng-click = updatePlayers('Scissors') class='gameButton'>&nbsp;</div>
+          <div id='lizard' ng-click = updatePlayers('Lizard') class='gameButton'>&nbsp;</div>
+          <div id='spock' ng-click = updatePlayers('Spock') class='gameButton'>&nbsp;</div>
         </div>
       </div>
     </div>
