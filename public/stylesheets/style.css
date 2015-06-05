@@ -367,7 +367,7 @@ a {
 }
 
 .joinInt{
-  background: #ecf0f1;
+  background: #72B0D9;
   width: 115px;
   padding: 15px 0;
 }
@@ -377,6 +377,33 @@ a {
 }
 
 .joinInt:active{
+  background: black;
+}
+
+.leaveGame{
+  padding: 2px;
+  text-align: center;
+  font-size: 1em;
+  background:  #FFA22C;
+  position: absolute;
+  top: -9%;
+  left: 13.5%;
+  display: inline-block;
+}
+
+.leaveGameInt{
+  width: 100px;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 1em;
+  background:  #FFC82C;
+}
+
+.leaveGameInt:hover{
+  background: #FFA22C;
+}
+
+.leaveGameInt:active{
   background: black;
 }
 

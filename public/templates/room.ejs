@@ -25,6 +25,12 @@
           Join the Game!
         </div>
       </div>
+    
+      <div class='leaveGame' ng-show="isInGame">
+        <div class="leaveGameInt" ng-click='leaveGame()'>
+          Stop playing
+        </div>
+      </div>
       
       <div ng-show='isInGame'>
         <div id = 'buttons'>
