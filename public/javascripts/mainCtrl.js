@@ -6,6 +6,7 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
   var userName = null;
 
   $scope.roomName = '';
+  $scope.createRoom = true;
 
 
   $scope.checkRoom = function(id){

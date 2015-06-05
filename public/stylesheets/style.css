@@ -1,5 +1,18 @@
+/* colors:
+   base: #2980B9;
+   yellow: #FFC82C;
+   orange: #FFA22C;
+   red: #FF622C;
+   silver: #ecf0f1;
+*/
+
+
 body {
-  font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 13.5px;
+  height: 100%;
+  background: #2980B9;
+  font-family: 'Oxygen', sans-serif;
+
 }
 
 a {
@@ -7,14 +20,61 @@ a {
 }
 
 #navBar {
-  height: 80px;
+  height: 70px;
   width: 100%;
-  background: #d3d3d3;
+  background: #72B0D9;
 }
 
 #navTitle {
+  font-size: 2.75em;
+  text-align: center;
+}
+
+#subTitle {
+  text-align: center;
+}
+
+#rules {
+  width: 100%;
+  padding: 30px 10%;
+
+  background-image: url(../images/spockdraw.png);
+  background-repeat: no-repeat;
+  background-position: 950px 75%;
+}
+
+.instructions{
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1.4em;
+  padding: 25px;
+}
+
+.instructions img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+#createUserName {
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+  background: #FFA22C;
+  padding: 25px;
+}
+#createUserName form {
+  padding: 15px;
+}
+
+#createUserName input {
+  padding: 10px;
+  background: #ecf0f1;
+}
+
+#nameSubmit {
+  width: 60px;
+  padding: 11px;
+  background: #ecf0f1;
 }
 
 #footBar {
@@ -26,9 +86,9 @@ a {
 }
 
 .content {
-  width: 966px;
+  width: 100%;
   margin: 0 auto;
-  background: #d3d3d3;
+  background: #ecf0f1;
 }
 
 .y{
@@ -69,22 +129,50 @@ a {
   height: 720px;
 }
 
+#games {
+  padding: 0 3% 0 10%;
+  width: 100%;
+}
+
+/* colors:
+   base: #72B0D9;
+   yellow: #FFC82C;
+   orange: #FFA22C;
+   red: #FF622C;
+   silver: #ecf0f1;
+*/
+
+.gameRoomBorder{
+  background: #FFA22C;
+  display: inline-block;
+  float: left;
+  margin: 25px;
+  padding: 2px;
+}
 
 .gameRoom {
-  margin: 20px 0;
-  padding: 20px;
-  border: 1px black solid;
+  padding: 10px;
+  width: 160px;
+  background: #ecf0f1;
+}
+
+.gameRoomTitle {
+  font-size: 1.8em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gamePeople {
+  text-align: center;
 }
 
 .joinButton {
-  float: right;
-  width: 120px;
-  height: 20px;
-  background: silver;
+  width: 140px;
+  background: #FFA22C;
   display: inline-block;
   text-align: center;
   padding: 15px 0;
-  margin: -40px 0 0 0;
+  margin: 10px 0;
 }
 
 .joinButton:hover {

@@ -14,7 +14,7 @@ app.factory('profile', function (){
         players: [],
         lastChatMsg: null, //messageDuplication hack
         lastReceivedChatMsg: null, //messageDuplication hack
-        lastReceivedChatSender: null,
+        lastReceivedChatSender: null, //messageDuplication hack
         countPlayers: function(gameObject){
             var isAPlayer;
 

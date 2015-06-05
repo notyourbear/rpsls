@@ -1,46 +1,81 @@
 <div class='content'>
-  <p>{{welcome}}</p>
-
-  <div ng-hide="named">
-    <form ng-submit="addName()">
-      <input ng-model='userName' name='userName' placeholder='Enter a Username' type="text">
-      <input type="submit" name="submit" value="submit">
-    </form>
+  <div id="rules">
+    <div class="instructions">
+      <img align='left' src="images/Rock.png" alt="Rock">
+      <h2>Rock</h2>
+      crushes Scissors<br/>
+      crushes Lizard
+    </div>
+    <div class="instructions">
+      <img align='left' src="images/Scissors.png" alt="Scissors">
+      <h2>Scissors</h2> 
+      cuts Paper <br/>
+      decapitates Lizard
+    </div>
+    <div class="instructions">
+      <img align='left' src="images/Paper.png" alt="Paper">
+      <h2>Paper</h2>
+      covers Rock <br/> 
+      disproves Spock
+    </div>
+    <div class="instructions">
+      <img align='left' src="images/Lizard.png" alt="Lizard">
+      <h2>Lizard</h2>
+      poisons Spock <br/>
+      eats Paper
+    </div>
+    <div class="instructions">
+      <img align='left' src="images/Spock.png" alt="Spock">
+      <h2>Spock</h2> 
+      smashes Scissors <br/>
+      vaporizes Rock
+    </div>
   </div>
 
-  <div style='margin: 20px 0;' id='games'>
-    
-    <div ng-repeat="(rooms, room) in allTheRooms">
-      <div class='gameRoom'>
-        <div class='gameRoomTitle'>
-          {{room.name}}
-        </div>
-        by: {{room.ownerUserName}}
-        <div>
-          people in room: {{room.people.length}}
-        </div>
-        <div ng-click="checkRoom(room.id)" class="joinButton">
-          Join Room
-        </div>
-      </div>
+  <div id='createUserName'>
+
+    <div ng-hide="named">
+      ENTER A USER NAME TO PLAY
+      <form ng-submit="addName()">
+        <input ng-model='userName' name='userName' placeholder='Enter a Username' type="text">
+        <button id='nameSubmit' type="submit" name="submit">Ok</button>
+      </form>
     </div>
 
-
-
-
-
-
-
-    <div id='rooms'></div>
-
-    <div id='addRooms'>
-      <button ng-hide="createRoom" id="addRoomsBtn" ng-click="addRoomField()">Create a new game</button>
+    <div ng-show="named" id='addRooms'>
+      JOIN A ROOM OR CREATE YOUR OWN <br/>
       <div ng-show="createRoom" id='addRoomConfig'>
         <form ng-submit='addRoom()'>
-          <input ng-model='roomName' name='roomName' placeholder='Enter a Room name' type='text'>
-          <input type='submit' name='submit' value='submit'>
+          <input ng-model='roomName' name='roomName' placeholder='Name your room' type='text'>
+          <input type='submit' name='submit' value='Create Room'>
         </form>
       </div>
     </div>
+
+
+  </div>
+  
+
+  <div id='games'>
+
+    <div ng-repeat="(rooms, room) in allTheRooms ">
+      <div class='gameRoomBorder'>
+        <div class='gameRoom'>
+          <div class='gameRoomTitle'>
+            {{room.name}}
+          </div>
+          <div class='gamePeople'>
+            people in room: {{room.people.length}}
+          </div>
+          <div ng-show='named' ng-click="checkRoom(room.id)" class="joinButton">
+            Join Room
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+   
   </div>
 </div>
