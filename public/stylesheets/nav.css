@@ -1,20 +1,47 @@
 /*white: #ebeff0
-light-blue: #73b2d9*/
+light-blue: #73b2d9
+gold: #cc9712
+*/
 
 .site-title {
-  text-align: center;
-  background: #73b2d9;
+  background: black;
   padding-bottom: 20px;
 }
 
+.site-title .title-row {
+  background: #cc9712;
+  margin-top: 20px;
+  height: 2.5em;
+}
+
+.site-title .title-row-right {
+  margin-left: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.site-title .title-card {
+  border-right: 5px solid #cc9712;
+  height: 2.5em;
+  margin-top: 20px;
+  margin-right: 1px;
+}
+
 .site-title h1 {
-  font-size: 3em;
+  margin-top: 0;
+  background: black;
+  color: #cc9712;
+  text-align: center;
+  font-size: 1.65em;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  margin-bottom: 0;
 }
 
 .site-title h2 {
-  font-size: 1.25em;
+  font-size: .8em;
+  text-align: center;
   margin-top: 0;
   letter-spacing: 1px;
+  color: #cc9712;
 }
