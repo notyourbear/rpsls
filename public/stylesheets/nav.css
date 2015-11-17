@@ -1,0 +1,17 @@
+/*white: #ebeff0
+light-blue: #73b2d9*/
+
+.site-title {
+  text-align: center;
+  background: #73b2d9;
+  padding-bottom: 20px;
+}
+
+.site-title h1 {
+  font-size: 2.5em;
+}
+
+.site-title h2 {
+  font-size: 1.15em;
+  margin-top: 0;
+}
