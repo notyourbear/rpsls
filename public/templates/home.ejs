@@ -1,8 +1,6 @@
 <div class="container-fluid">
+  
   <div class="row instrucs">
-
-
-    
     <div ng-repeat="instruction in instructions" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-6 instruction">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-2">
@@ -23,32 +21,37 @@
         </div>
       </div> 
     </div>
-
   </div>
-</div>
-<div class='content'>
-  <div id='createUserName'>
 
-    <div ng-hide="named">
-      Create your username to start playing
-      <form ng-submit="addName()">
-        <input ng-model='userName' name='userName' placeholder='Enter a Username' type="text">
-        <button id='nameSubmit' type="submit" name="submit">Ok</button>
-      </form>
-    </div>
-
-    <div ng-show="named" id='addRooms'>
-      Join a room below or create your own <br/>
-      <div ng-show="createRoom" id='addRoomConfig'>
-        <form ng-submit='addRoom()'>
-          <input ng-model='roomName' name='roomName' placeholder='Name your room' type='text'>
-          <input type='submit' name='submit' value='Create Room'>
+  <div class="row userName">
+    <div class="col-xs-10 col-xs-offset-1">
+      <div ng-hide="named">
+        <h1>Create your username to start playing:</h1>
+        <form class='form-inline' ng-submit="addName()">
+          <input class='form-control' ng-model='userName' name='userName' placeholder='Enter a Username' type="text">
+          <button class="btn" id='nameSubmit' type="submit" name="submit">Ok</button>
         </form>
       </div>
+    
+
+      <div ng-show="named" id='addRooms'>
+        <h1>Join a room below or create your own:</h1>
+        <div ng-show="createRoom" id='addRoomConfig'>
+          <form class='form-inline' ng-submit='addRoom()'>
+            <input class='form-control' ng-model='roomName' name='roomName' placeholder='Name your room' type='text'>
+            <button class="btn" type="submit" name="submit">Ok</button>
+            <!-- <input class='form-control' type='submit' name='submit' value='Create Room'> -->
+          </form>
+        </div>
+      </div>
     </div>
-
-
+    
   </div>
+
+
+</div>
+<div class='content'>
+
   
 
   <div id='games'>

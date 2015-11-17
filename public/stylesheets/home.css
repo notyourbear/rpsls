@@ -1,5 +1,8 @@
-/*white: #ebeff0
-light-blue: #73b2d9*/
+/*
+white: #ebeff0
+light-blue: #73b2d9
+orange: #FFA22C
+*/
 
 .instrucs {
   background: #ebeff0;
@@ -56,5 +59,29 @@ light-blue: #73b2d9*/
   background: #73b2d9;
   color: #ebeff0;
   border-radius: 50px;
+}
+
+.userName {
+  background: #FFA22C;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.userName h1 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.userName input {
+  padding: 21px 10px;
+  border-radius: 5px;
+}
+
+.userName button {
+  border-radius: 5px;
+  padding: 11px;
+  width: 60px;
+  background: #ecf0f1;
 }
 
