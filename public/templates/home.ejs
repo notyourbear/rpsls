@@ -3,14 +3,14 @@
   <div class="row instrucs">
     <div ng-repeat="instruction in instructions" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-6 instruction">
       <div class="row">
-        <div class="col-xs-6 col-xs-offset-2">
+        <div class="col-xs-8 col-xs-offset-2">
           <div class="fawesome-background">
             <i class="fa fa-{{instruction.fawesome}} fa-3x inst"></i>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
+        <div class="col-xs-10 col-xs-offset-2">
           <div class="text-background">
             <div class="text">
               <h2>{{instruction.title}}</h2>
@@ -32,7 +32,6 @@
           <button class="btn" id='nameSubmit' type="submit" name="submit">Ok</button>
         </form>
       </div>
-    
 
       <div ng-show="named" id='addRooms'>
         <h1>Join a room below or create your own:</h1>
@@ -40,40 +39,52 @@
           <form class='form-inline' ng-submit='addRoom()'>
             <input class='form-control' ng-model='roomName' name='roomName' placeholder='Name your room' type='text'>
             <button class="btn" type="submit" name="submit">Ok</button>
-            <!-- <input class='form-control' type='submit' name='submit' value='Create Room'> -->
           </form>
         </div>
       </div>
     </div>
-    
   </div>
 
+  <div id="games" class="row">
+    
+    <div ng-repeat="(rooms, room) in allTheRooms" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-6 game-room">
 
-</div>
-<div class='content'>
 
-  
-
-  <div id='games'>
-
-    <div ng-repeat="(rooms, room) in allTheRooms ">
-      <div class='gameRoomBorder'>
-        <div class='gameRoom'>
-          <div class='gameRoomTitle'>
-            {{room.name}}
+      <div class="outer-border">
+        <div class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <h1>{{room.name}}</h1>
+            </div>
           </div>
-          <div class='gamePeople'>
-            people in room: {{room.people.length}}
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>People in Room: {{room.people.length}}
+              </h2>
+            </div>
           </div>
-          <div ng-show='named' ng-click="checkRoom(room.id)" class="joinButton">
-            Join Room
+          <div class="row">
+            <div class="col-xs-12">
+              <div class='btn btn-default btn-block join-room' ng-show='named' ng-click="checkRoom(room.id)">
+                Join Room
+              </div>
+            </div>
           </div>
+         
+      
+          
         </div>
       </div>
+
+
 
     </div>
 
 
-   
   </div>
+
+
+
+
 </div>
+

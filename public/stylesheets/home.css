@@ -18,7 +18,7 @@ orange: #FFA22C
 }
 
 .instrucs .text-background {
-  background: rgba(235, 239, 240, .7);
+  background: rgba(235, 239, 240, 0.8);
   border-radius: 4px;
   color: black;
   width: 100%;
@@ -45,12 +45,17 @@ orange: #FFA22C
 
 .instrucs h2 {
   margin-top: 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.5em;
 }
 
 .instrucs p {
   font-size: 1.1em;
-  margin-top: 0;
-  margin-bottom: 4px;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .instrucs i {
@@ -69,8 +74,10 @@ orange: #FFA22C
 }
 
 .userName h1 {
-  font-size: 1.5em;
+  font-size: 1.75em;
   margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .userName input {
@@ -85,3 +92,40 @@ orange: #FFA22C
   background: #ecf0f1;
 }
 
+#games {
+  padding-top: 30px;
+  margin-bottom: 80px;
+}
+
+.game-room .outer-border{
+  background: #FFA22C;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.game-room .content {
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.game-room h1 {
+  font-size: 1.25em;
+  letter-spacing: 1px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.game-room h2 {
+  font-size: 1em;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.game-room .join-room {
+  background: #FFA22C;
+}
+
+.game-room .join-room:hover {
+  opacity: 0.8;
+}

@@ -8,10 +8,13 @@ light-blue: #73b2d9*/
 }
 
 .site-title h1 {
-  font-size: 2.5em;
+  font-size: 3em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .site-title h2 {
-  font-size: 1.15em;
+  font-size: 1.25em;
   margin-top: 0;
+  letter-spacing: 1px;
 }
