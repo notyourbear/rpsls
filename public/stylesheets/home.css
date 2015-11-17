@@ -1,0 +1,60 @@
+/*white: #ebeff0
+light-blue: #73b2d9*/
+
+.instrucs {
+  background: #ebeff0;
+  background-image: url(../images/spockdraw.png);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+.instrucs .instruction{
+  padding-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.instrucs .text-background {
+  background: rgba(235, 239, 240, .7);
+  border-radius: 4px;
+  color: black;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.instrucs .text-background:hover {
+  background: rgba(235, 239, 240, 1);
+  border-radius: 4px;
+  color: black;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.instrucs .text {
+  padding: 5px;
+}
+
+.instrucs p, h2 {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.instrucs h2 {
+  margin-top: 0;
+}
+
+.instrucs p {
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.instrucs i {
+  padding: 25px;
+  border: 2px solid #73b2d9;
+  background: #73b2d9;
+  color: #ebeff0;
+  border-radius: 50px;
+}
+

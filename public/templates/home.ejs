@@ -1,37 +1,32 @@
-<div class='content'>
-  <div id="rules">
-    <div class="instructions">
-      <img align='left' src="images/Rock.png" alt="Rock">
-      <h2>Rock</h2>
-      crushes Scissors<br/>
-      crushes Lizard
-    </div>
-    <div class="instructions">
-      <img align='left' src="images/Scissors.png" alt="Scissors">
-      <h2>Scissors</h2> 
-      cuts Paper <br/>
-      decapitates Lizard
-    </div>
-    <div class="instructions">
-      <img align='left' src="images/Paper.png" alt="Paper">
-      <h2>Paper</h2>
-      covers Rock <br/> 
-      disproves Spock
-    </div>
-    <div class="instructions">
-      <img align='left' src="images/Lizard.png" alt="Lizard">
-      <h2>Lizard</h2>
-      poisons Spock <br/>
-      eats Paper
-    </div>
-    <div class="instructions">
-      <img align='left' src="images/Spock.png" alt="Spock">
-      <h2>Spock</h2> 
-      smashes Scissors <br/>
-      vaporizes Rock
-    </div>
-  </div>
+<div class="container-fluid">
+  <div class="row instrucs">
 
+
+    
+    <div ng-repeat="instruction in instructions" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-6 instruction">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+          <div class="fawesome-background">
+            <i class="fa fa-{{instruction.fawesome}} fa-3x inst"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <div class="text-background">
+            <div class="text">
+              <h2>{{instruction.title}}</h2>
+              <p>{{instruction.ins1}}</p>
+              <p>{{instruction.ins2}}</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+  </div>
+</div>
+<div class='content'>
   <div id='createUserName'>
 
     <div ng-hide="named">

@@ -2,6 +2,50 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
 
   $scope.welcome = 'Hi this is the main page';
 
+  $scope.instructions = [
+    {
+      title: 'Rock',
+      ins1: 'crushes Scissors',
+      ins2: 'crushes Lizard',
+      fawesome: 'hand-rock-o'
+    },
+    {
+      title: 'Scissors',
+      ins1: 'cuts Paper',
+      ins2: 'decapitates Lizard',
+      fawesome: 'hand-scissors-o'
+    },
+    {
+      title: 'Paper',
+      ins1: 'covers Rock',
+      ins2: 'disproves Spock',
+      fawesome: 'hand-paper-o'
+    },
+    {
+      title: 'Lizard',
+      ins1: 'poisons Spock',
+      ins2: 'eats Paper',
+      fawesome: 'hand-lizard-o'
+    },
+    {
+      title: 'Spock',
+      ins1: 'smashes Scissors',
+      ins2: 'vaporizes Rock',
+      fawesome: 'hand-spock-o'
+    }
+  ];
+
+  $scope.addOffset = function(i){
+    if (i === 0){
+      return "col-md-offset-1";
+    }
+  };
+
+
+
+
+
+
   var hasCreatedRoom = false;  //for room creation check
   var userName = null;
 
