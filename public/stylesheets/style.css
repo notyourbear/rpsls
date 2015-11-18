@@ -90,6 +90,13 @@ a {
   color: white;
 }
 
+
+@media (max-width: 414px) {
+  #footBar {
+    display: none;
+  }
+}
+
 .content {
   width: 100%;
   margin: 0 auto;

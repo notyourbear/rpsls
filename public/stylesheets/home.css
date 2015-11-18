@@ -207,6 +207,7 @@ red: #cc6666;
 .game-room .outer-border{
   background: #cc6666;
   padding: 4px;
+  margin-bottom: 24px;
 }
 
 .game-room .content {
@@ -234,7 +235,7 @@ red: #cc6666;
 
 .game-room .join-room {
   background: transparent;
-  margin-top: -2px;
+  margin-top: 2px;
   border: 3px solid black !important;
   float: right;
   color: black;
@@ -250,22 +251,92 @@ red: #cc6666;
 
 @media (max-width: 414px) {
   .instructions-banner p {
-    font-size: 1.2em;
-    line-height: 1em; 
+    font-size: 1.1em !important;
+    line-height: 1.2em; 
+  }
+
+  .userName-left p {
+    font-size: 1.35em;
+    line-height: 1.85em;
+  }
+
+  .create-title h1 {
+    font-size: 1em;
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+
+  .create-userroom input {
+    line-height: 3.5em;
+  }
+
+  .create-userroom button {
+    margin-top: -18px;
   }
 }
 
 @media (max-width: 376px) {
   .instructions-banner p {
-    font-size: 1em;
+    font-size: 1em !important;
     line-height: 1.35em; 
+  }
+
+  .userName-left p {
+    font-size: 1.25em;
+    line-height: 2em;
+  }
+
+  .create-title h1 {
+    font-size: .85em;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+
+  .instruction {
+    width: 42%;
+    margin-left: 3%;
+  }
+
+  .instrucs h2 {
+    font-size: 1.15em;
   }
 }
 
 @media (max-width: 321px) {
   .instructions-banner p {
-    font-size: .85em;
+    font-size: .8em !important;
     line-height: 1.5em; 
+  }
+
+  .create-title h1 {
+    font-size: .7em;
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+
+  .userName-left p {
+    font-size: 1em;
+    line-height: 2.5em;
+  }
+
+  .create-userroom input {
+    line-height: 3.5em;
+  }
+
+  .create-userroom button {
+    margin-top: -18px;
+  }
+
+  .create-userroom .form-control {
+    width: 70%;
+  }
+
+  .instrucs h2 {
+    font-size: .85em;
+  }
+
+  .instrucs p {
+    font-size: .85em;
   }
 }
 
@@ -275,12 +346,6 @@ red: #cc6666;
   }
 }
 
-@media only screen and (max-width : 749px) {
-  .create-title h1 {
-    font-size: 1em;
-    margin-top: 1px;
-  }
-}
 
 @media only screen and (min-width : 750px) {
   .create-title h1 {

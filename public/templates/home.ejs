@@ -3,7 +3,7 @@
   <div class="row instrucs">
     <div class="row">
       <div class="col-xs-4 instructions-banner instructions-banner-left">
-      <p>How to play</p>
+      <p>How to play:</p>
       </div>
       <div class="col-xs-1 instructions-banner-center"></div>
       <div class="col-xs-1 instructions-banner instructions-banner-right"></div>
@@ -94,36 +94,40 @@
   </div>
 
   <div id="games" class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="row">
     
-    <div ng-repeat="(rooms, room) in allTheRooms" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-5 game-room">
+        <div ng-repeat="(rooms, room) in allTheRooms" class="col-md-3 col-sm-4 col-xs-6 game-room">
 
 
-      <div class="outer-border">
-        <div class="content">
-          <div class="row">
-            <div class="col-xs-12">
-              <h1>{{room.name}}</h1>
+          <div class="outer-border">
+            <div class="content">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h1>{{room.name}}</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <h2>People in Room: {{room.people.length}}
+                  </h2>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class='btn btn-default btn-lg join-room' ng-show='named' ng-click="checkRoom(room.id)">
+                  Join Room
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <h2>People in Room: {{room.people.length}}
-              </h2>
-            </div>
-          </div>
-
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class='btn btn-default btn-lg join-room' ng-show='named' ng-click="checkRoom(room.id)">
-              Join Room
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   
 
+      </div> 
+    </div>
   </div>
 </div>
 
