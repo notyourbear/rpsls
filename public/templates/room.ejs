@@ -96,11 +96,73 @@
         </div>
         
       </div>
-
-
-
     </div>
 
+    <div class="row gameplayButtons">
+      <div ng-hide='isInGame' class="col-xs-12">
+          <div class="col-xs-1">
+            <div id='rock' ng-click = updatePlayers('Rock') class='gameButton'>
+              <i class="fa fa-hand-rock-o fa-4x"></i>
+              <span>
+                Rock
+              </span>
+            </div>
+          </div>
+
+          <div class="col-xs-1">
+            <div id='paper' ng-click = updatePlayers('Paper') class='gameButton'>
+              <i class="fa fa-hand-paper-o fa-4x"></i>
+              <span>
+                Paper
+              </span>
+            </div>
+          </div>
+
+          <div class="col-xs-1">
+            <div id='scissors' ng-click = updatePlayers('Scissors') class='gameButton'>
+              <i class="fa fa-hand-scissors-o fa-4x"></i>
+              <span>
+                Scissors
+              </span>
+            </div>
+          </div>
+
+          <div class="col-xs-1">
+            <div id='lizard' ng-click = updatePlayers('Lizard') class='gameButton'>
+              <i class="fa fa-hand-lizard-o fa-4x"></i>
+              <span>
+                Lizard
+              </span>
+            </div>
+          </div>
+
+          <div class="col-xs-1">
+            <div id='spock' ng-click = updatePlayers('Spock') class='gameButton'>
+              <i class="fa fa-hand-spock-o fa-4x"></i>
+              <span>
+                Spock
+              </span>
+            </div>
+            
+          </div>
+
+
+          <div id = 'buttons'>
+            
+            
+            
+            
+            
+          </div>
+        
+
+
+
+      </div>
+    </div>
+
+
+    
     
 
 
@@ -115,35 +177,9 @@
 
 <div class='contentRoom'>
   <div class='gameView'>
-    <div class='game'>
+<!--     <div class='game'>
    
-    
-      
-      
-    <!--   <div id='playfield'>
-        <div id='playerOne' class='move'>{{playerOne}}
-        </div>
-        <span id='vs'>VS</span>
-        <div id='playerTwo' class='move'>{{playerTwo}}
-        </div>
-        <div id='playMessage'>
-          {{victoryMessage}}
-        </div>
-        <div id='timer'></div>
-      </div> -->
 
-      <!-- <div class='join' ng-hide="isInGame">
-        <div class='joinInt' ng-click='joinGame()'>
-          Join the Game!
-        </div>
-      </div> -->
-    
-  <!--     <div class='leaveGame' ng-show="isInGame">
-        <div class="leaveGameInt" ng-click='leaveGame()'>
-          Stop playing
-        </div>
-      </div> -->
-      
       <div ng-show='isInGame'>
         <div id = 'buttons'>
           <div id='rock' ng-click = updatePlayers('Rock') class='gameButton'>&nbsp;</div>
@@ -153,7 +189,7 @@
           <div id='spock' ng-click = updatePlayers('Spock') class='gameButton'>&nbsp;</div>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
     <div class="sidebar">

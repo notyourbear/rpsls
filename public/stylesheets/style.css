@@ -188,99 +188,14 @@ a {
   margin-bottom: 30px;
 }
 
-.gameButton{
+/*.gameButton{
   display: inline-block;
-  width: 11%;
   height: 140px;
   padding: 0 50px 20px;
   text-align: center;
   margin: 0 0 0 4%;
-}
+}*/
 
-#rock{
-  background-image: url(../images/Rock.png);
-  background-repeat: no-repeat;
-  -webkit-background-size: 100%;;
-  -moz-background-size: 100%;;
-  -o-background-size: 100%;;
-  background-size: 100%;
-}
-
-#rock:hover{
-  background-image: url(../images/Rock2.png);
-}
-
-#rock:active{
-  background-image: url(../images/Rock3.png);
-}
-
-#paper{
-  background-image: url(../images/Paper.png);
-  background-repeat: no-repeat;
-  -webkit-background-size: 100%;;
-  -moz-background-size: 100%;;
-  -o-background-size: 100%;;
-  background-size: 100%;
-}
-
-#paper:hover{
-  background-image: url(../images/Paper2.png);
-}
-
-#paper:active{
-  background-image: url(../images/Paper3.png);
-}
-
-#scissors{
-  background-image: url(../images/Scissors.png);
-  background-repeat: no-repeat;
-  -webkit-background-size: 100%;;
-  -moz-background-size: 100%;;
-  -o-background-size: 100%;;
-  background-size: 100%;
-}
-
-#scissors:hover{
-  background-image: url(../images/Scissors2.png);
-}
-
-#scissors:active{
-  background-image: url(../images/Scissors3.png);
-}
-
-#lizard{
-  background-image: url(../images/Lizard.png);
-  background-repeat: no-repeat;
-  -webkit-background-size: 100%;;
-  -moz-background-size: 100%;;
-  -o-background-size: 100%;;
-  background-size: 100%;
-}
-
-#lizard:hover{
-  background-image: url(../images/Lizard2.png);
-}
-
-#lizard:active{
-  background-image: url(../images/Lizard3.png);
-}
-
-#spock{
-  background-image: url(../images/Spock.png);
-  background-repeat: no-repeat;
-  -webkit-background-size: 100%;;
-  -moz-background-size: 100%;;
-  -o-background-size: 100%;;
-  background-size: 100%;
-}
-
-#spock:hover{
-  background-image: url(../images/Spock2.png);
-}
-
-#spock:active{
-  background-image: url(../images/Spock3.png);
-}
 
 
 .join{
