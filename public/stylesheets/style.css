@@ -335,17 +335,6 @@ a {
   background: black;
 }
 
-#playMessage{
-  font-size: 2em;  
-  margin: 10px 0 0 35%;  
-}
-
-#timer{
-  margin: 10px 0 0 5%;
-  font-size: 2em;
-}
-
-
 
 /* colors:
    base: #72B0D9;

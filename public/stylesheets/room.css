@@ -1,6 +1,7 @@
 /*
 playerOne : #ffcc99;
 playerTwo : #ff9966;
+gold: #cc9712;
 */
 
 .rpsRoom{
@@ -82,7 +83,7 @@ playerTwo : #ff9966;
 
 .rpsRoom .playfield {
   background: black;
-  height: 200px;
+  height: 300px;
 }
 
 .playfield #playerOneBg {
@@ -162,13 +163,33 @@ playerTwo : #ff9966;
 }
 
 .playfield #playerTwo {
-  margin-top: 50px;
+  margin-top: 90px;
   text-transform: uppercase;
   text-align: center;
   font-size: 1.15em;
   padding: 10px 0;
   color: #ff9966;
   border-top: 30px solid #ff9966;
+}
+
+.playfield .messageField {
+  color: #cc9712;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.messageField .messg {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.messg #timer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 0;
+  border-top: 6px solid #cc9712;
+  border-top-left-radius: 6px;
 }
 
 

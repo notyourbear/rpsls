@@ -26,64 +26,82 @@
     </div>
     
     <div class="row playfield">
-      <div class="col-xs-5 col-sm-4">
-        <div id='playerOneBg' class="row">
-          <div class="col-xs-2 col-sm-3 playerOneBgLeft">
+      <div class="col-xs-12">
+        <div class="row">
+          
+       
+          <div class="col-xs-5 col-sm-4">
+            <div id='playerOneBg' class="row">
+              <div class="col-xs-2 col-sm-3 playerOneBgLeft">
+              </div>
+              <div class="col-xs-3 col-sm-2 playerOneBgCenter">
+              </div>
+              <div class="col-xs-1 col-sm-1 playerOneBgSpace">
+              </div>
+              <div class="col-xs-1 col-sm-3 playerOneBgRight">
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-4 col-sm-3" id="playerOne">
+                {{playerOne}}
+              </div>
+            </div>
           </div>
-          <div class="col-xs-3 col-sm-2 playerOneBgCenter">
+          
+          <div id="vs" class="col-xs-1 col-sm-1">
+            <span class="v">
+              V
+            </span>
+            <span class="s">
+              S
+            </span>
           </div>
-          <div class="col-xs-1 col-sm-1 playerOneBgSpace">
+
+          <div class="col-xs-5 col-sm-4">
+
+            <div class="row">
+              <div class="col-xs-offset-8 col-xs-4 col-sm-3 col-sm-offset-8" id="playerTwo">
+                {{playerTwo}}
+              </div>
+            </div>
+
+            <div id='playerTwoBg' class="row">
+              <div class="col-xs-1 col-sm-offset-2 col-sm-2 playerTwoBgLeft">
+              </div>
+              <div class="col-xs-1 col-sm-2 playerTwoBgSpace">
+              </div>
+              <div class="col-xs-3 col-sm-2 playerTwoBgCenter">
+              </div>
+              <div class="col-xs-2 col-sm-3 playerTwoBgRight">
+              </div>
+            </div>  
           </div>
-          <div class="col-xs-1 col-sm-3 playerOneBgRight">
+
+       </div>
+      </div>
+
+      <div class="row messageField">
+        <div class="row">
+          <div class="col-xs-12 messg">
+            
+            <div class="col-xs-1" id="playMessage">
+              {{victoryMessage}}
+            </div>
+            <div class="col-xs-7" id='timer'>
+              the message will totally go here
+            </div>
+
           </div>
         </div>
         
-        <div class="row">
-          <div class="col-xs-4 col-sm-3" id="playerOne">
-            {{playerOne}}
-          </div>
-        </div>
-      </div>
-      
-      <div id="vs" class="col-xs-1 col-sm-1">
-        <span class="v">
-          V
-        </span>
-        <span class="s">
-          S
-        </span>
-      </div>
-
-      <div class="col-xs-5 col-sm-4">
-
-        <div class="row">
-          <div class="col-xs-offset-8 col-xs-4 col-sm-3 col-sm-offset-8" id="playerTwo">
-            {{playerTwo}}
-          </div>
-        </div>
-
-        <div id='playerTwoBg' class="row">
-          <div class="col-xs-1 col-sm-offset-2 col-sm-2 playerTwoBgLeft">
-          </div>
-          <div class="col-xs-1 col-sm-2 playerTwoBgSpace">
-          </div>
-          <div class="col-xs-3 col-sm-2 playerTwoBgCenter">
-          </div>
-          <div class="col-xs-2 col-sm-3 playerTwoBgRight">
-          </div>
-        </div>  
       </div>
 
 
 
     </div>
 
-     
-        <div id='playMessage'>
-          {{victoryMessage}}
-        </div>
-        <div id='timer'></div>
-        </div>
+    
 
 
     
