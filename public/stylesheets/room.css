@@ -204,13 +204,13 @@ gold: #cc9712;
 
 .gameplayButtonInstrucs .gpbi-right{
   border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
 }
 
 .gameplayButtonInstrucs .gpbit{
   background: black;
   color: #9999ff;
-  font-size: 22px;
+  font-size: 18px;
+  line-height: 28px;
   height: 30px;
   border-right: 5px solid #9999ff;
   margin-right: 10px;
