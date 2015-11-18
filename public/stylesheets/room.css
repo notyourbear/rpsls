@@ -1,3 +1,8 @@
+/*
+playerOne : #ffcc99;
+playerTwo : #ff9966;
+*/
+
 .rpsRoom{
   background: black;
 }
@@ -52,4 +57,99 @@
 .leaveGameBtn button:hover{
   background: white;
 }
+
+.rpsRoom .playfield {
+  background: black;
+  height: 200px;
+}
+
+.playfield #playerOneBg {
+  margin-top: 2px;
+}
+
+#playerOneBg .playerOneBgLeft {
+  background: #ffcc99;
+  height: 18px;
+  border-top-left-radius: 15px;
+}
+
+#playerOneBg .playerOneBgCenter {
+  background: #ffcc99;
+  height: 8px;
+}
+
+#playerOneBg .playerOneBgRight {
+  background: #ffcc99;
+  height: 8px;
+}
+
+#playerOneBg .playerOneBgSpace {
+  background: black;
+  height: 8px;
+  margin-right: 10px;
+  border-right: 10px solid #ffcc99;
+}
+
+.playfield #playerOne {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.15em;
+  padding: 10px 0;
+  color: #ffcc99;
+  border-bottom: 30px solid #ffcc99;
+}
+
+.playfield #vs {
+  padding: 80px 0;
+  font-size: 1.5em;
+}
+
+#vs .v {
+  color: #ffcc99;
+}
+
+#vs .s {
+  margin-left: -2px;
+  color: #ff9966;
+}
+
+#playerTwoBg .playerTwoBgLeft {margin-top: 10px;
+  background: #ff9966;
+  height: 8px;
+}
+
+#playerTwoBg .playerTwoBgCenter {
+  margin-top: 10px;
+  background: #ff9966;
+  height: 8px;
+  margin-right: -10px;
+}
+
+#playerTwoBg .playerTwoBgRight {
+  background: #ff9966;
+  height: 18px;
+  border-bottom-right-radius: 15px;
+}
+
+#playerTwoBg .playerTwoBgSpace {
+  margin-top: 10px;
+  background: black;
+  height: 8px;
+  margin-left: 10px;
+  border-left: 5px solid #ff9966;
+}
+
+.playfield #playerTwo {
+  margin-top: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.15em;
+  padding: 10px 0;
+  color: #ff9966;
+  border-top: 30px solid #ff9966;
+}
+
+
+
+
 

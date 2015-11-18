@@ -131,15 +131,6 @@ a {
   background: #C73300;
 }
 
- /*
- colors:
-   base: #2980B9;
-   yellow: #FFC82C;
-   orange: #FFA22C;
-   red: #FF622C;
-   silver: #ecf0f1;
-*/
-
 .chatForm { 
   background: #000;
   position: absolute; 
@@ -171,26 +162,26 @@ a {
 }
 
 #playfield {
-  width: 78%;
+/*  width: 78%;
   height: 400px;
-  margin: 5% 0 0 5%;
+  margin: 5% 0 0 5%;*/
 }
 
 .move {
-  vertical-align: top;
+/*  vertical-align: top;
   width: 40%;
   display: inline-block;
   border: 1px solid black;
   height: 300px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.5em;*/
 }
 
 #vs {
-  padding: 5%;
+/*  padding: 5%;
   margin-top: 50px;
   display: inline-block;
-  font-size: 2.5em;
+  font-size: 2.5em;*/
 }
 
 #buttons {

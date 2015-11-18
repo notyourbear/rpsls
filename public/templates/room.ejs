@@ -1,5 +1,6 @@
 <div class="row rpsRoom">
   <div class="col-xs-10 col-xs-offset-1">
+
     <div class="row gameButtons">
       <div class="col-md-2 col-sm-3 col-xs-4 leaveRoomBtn">
         <button class="btn btn-block leaveRoom" ng-click='leaveRoom()'>  
@@ -14,6 +15,67 @@
         </button>
       </div>
     </div>
+    
+    <div class="row playfield">
+      <div class="col-xs-5 col-sm-4">
+        <div id='playerOneBg' class="row">
+          <div class="col-xs-2 col-sm-3 playerOneBgLeft">
+          </div>
+          <div class="col-xs-3 col-sm-2 playerOneBgCenter">
+          </div>
+          <div class="col-xs-1 col-sm-1 playerOneBgSpace">
+          </div>
+          <div class="col-xs-1 col-sm-3 playerOneBgRight">
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-8 col-sm-3" id="playerOne">
+            {{playerOne}}
+          </div>
+        </div>
+      </div>
+      
+      <div id="vs" class="col-xs-2 col-sm-1">
+        <span class="v">
+          V
+        </span>
+        <span class="s">
+          S
+        </span>
+      </div>
+
+      <div class="col-xs-5 col-sm-4">
+
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-8 col-sm-3 col-sm-offset-8" id="playerTwo">
+            {{playerTwo}}
+          </div>
+        </div>
+
+        <div id='playerTwoBg' class="row">
+          <div class="col-xs-1 col-sm-offset-2 col-sm-2 playerTwoBgLeft">
+          </div>
+          <div class="col-xs-1 col-sm-2 playerTwoBgSpace">
+          </div>
+          <div class="col-xs-3 col-sm-2 playerTwoBgCenter">
+          </div>
+          <div class="col-xs-2 col-sm-3 playerTwoBgRight">
+          </div>
+        </div>  
+      </div>
+
+
+
+    </div>
+
+     
+        <div id='playMessage'>
+          {{victoryMessage}}
+        </div>
+        <div id='timer'></div>
+        </div>
+
 
     
 
@@ -31,7 +93,7 @@
     
       
       
-      <div id='playfield'>
+    <!--   <div id='playfield'>
         <div id='playerOne' class='move'>{{playerOne}}
         </div>
         <span id='vs'>VS</span>
@@ -41,7 +103,7 @@
           {{victoryMessage}}
         </div>
         <div id='timer'></div>
-      </div>
+      </div> -->
 
       <div class='join' ng-hide="isInGame">
         <div class='joinInt' ng-click='joinGame()'>
@@ -49,11 +111,11 @@
         </div>
       </div>
     
-      <div class='leaveGame' ng-show="isInGame">
+  <!--     <div class='leaveGame' ng-show="isInGame">
         <div class="leaveGameInt" ng-click='leaveGame()'>
           Stop playing
         </div>
-      </div>
+      </div> -->
       
       <div ng-show='isInGame'>
         <div id = 'buttons'>
