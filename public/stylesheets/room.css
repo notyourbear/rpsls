@@ -200,7 +200,7 @@ gold: #cc9712;
 
 .gameButton {
   background: white;
-  width: 150%;
+  width: 80px;
   height: 100px;
   text-align: right;
   padding-right: 5px;
@@ -214,19 +214,55 @@ gold: #cc9712;
   text-transform: uppercase;
 }
 
+.gameplayButtons #rock {
+  background: #3888ff;
+}
+
+.gameplayButtons #paper {
+  background: #8bdcfc;
+  margin-left: 30px;
+}
+
+.gameplayButtons #scissors {
+  background: #a69935;
+  margin-left: 60px;
+}
+
+.gameplayButtons #lizard {
+  background: #d15f13;
+  margin-left: 90px;
+}
+
+.gameplayButtons #spock {
+  background: #92a9b0;
+  margin-left: 120px;
+}
 
 @media (max-width: 414px) {
   .leaveRoomBtn button {
-    width: 130%;
+    width: 150%;
   } 
 
   .leaveRoomBtn span {
-    font-size: .8em;
-    right: 15px;
+    font-size: .7em;
+    right: 5px;
+  }
+
+  .leaveGameBtn button {
+    width: 120%;
   }
 
   .leaveGameBtn span {
     font-size: .8em;
+  }
+
+  .joinGameBtn button {
+    width: 180%;
+  }
+
+  .joinGameBtn span {
+    font-size: .8em;
+    right: -5px;
   }
 
   .playfield #playerOne {
@@ -246,12 +282,15 @@ gold: #cc9712;
 
 @media (max-width: 376px) {
   .leaveRoomBtn span {
-    font-size: .8em;
-    right: 15px;
+    font-size: .7em;
   }
 
   .leaveGameBtn span {
-    font-size: .8em;
+    font-size: .7em;
+  }
+
+  .joinGameBtn span {
+    font-size: .7em;
   }
 
   #playerOneBg .playerOneBgSpace {
@@ -276,14 +315,27 @@ gold: #cc9712;
 }
 
 @media (max-width: 321px) {
+  .leaveRoomBtn button {
+    width: 180%;
+  }
+
   .leaveRoomBtn span {
-    font-size: .65em;
-    right: 15px;
+    font-size: .6em;
+    right: 1px;
   }
 
   .leaveGameBtn span {
-    font-size: .65em;
-    right: 10px;
+    font-size: .6em;
+    right: 5px;
+  }
+
+  .joinGameBtn button {
+    width: 200%;
+  }
+
+  .joinGameBtn span {
+    font-size: .6em;
+    right: -5px;
   }
 
   .playfield #vs {
