@@ -192,19 +192,46 @@ gold: #cc9712;
   border-top-left-radius: 6px;
 }
 
+.gameplayButtonInstrucs {
+  margin-top: 40px;
+  margin-left: -150px;
+}
+
+.gameplayButtonInstrucs .gpbi{
+  background: #9999ff;
+  height: 30px;
+}
+
+.gameplayButtonInstrucs .gpbi-right{
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.gameplayButtonInstrucs .gpbit{
+  background: black;
+  color: #9999ff;
+  font-size: 22px;
+  height: 30px;
+  border-right: 5px solid #9999ff;
+  margin-right: 10px;
+  text-transform: uppercase;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
 .gameplayButtons {
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 50px;
   background: black;
 }
 
 .gameButton {
   background: white;
-  width: 80px;
-  height: 100px;
+  width: 85px;
+  height: 110px;
   text-align: right;
   padding-right: 5px;
-  padding-top: 25px;
+  padding-top: 35px;
 }
 
 .gameButton span {
