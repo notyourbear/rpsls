@@ -27,6 +27,32 @@ gold: #cc9712
   margin-right: 1px;
 }
 
+.site-title .beneath-title-row-left{
+  background: #cc9712;
+  margin-top: 10px;
+  height: 1.5em;
+  border-top-left-radius: 10px;
+}
+
+.site-title .border-left {
+  border-left: 5px solid #cc9712;
+  margin-left: 10px;
+  background: black !important;
+}
+
+.site-title .beneath-title-row-right {
+  margin-left: -10px;
+  background: #cc9712;
+  margin-top: 10px;
+  height: 1.5em;
+}
+
+.site-title .beneath-title-row {
+  background: #cc9712;
+  margin-top: 10px;
+  height: 1.5em;
+}
+
 .site-title h1 {
   margin-top: 0;
   background: black;
