@@ -1,19 +1,33 @@
 <div class="container-fluid">
   
   <div class="row instrucs">
+    <div class="row">
+      <div class="col-xs-4 instructions-banner instructions-banner-left">
+      <p>How to play</p>
+      </div>
+      <div class="col-xs-1 instructions-banner-center"></div>
+      <div class="col-xs-1 instructions-banner instructions-banner-right"></div>
+    </div>
+    
+
     <div ng-repeat="instruction in instructions" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-6 instruction">
       <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
-          <div class="fawesome-background">
-            <i class="fa fa-{{instruction.fawesome}} fa-3x inst"></i>
+        <div class="col-xs-10 col-xs-offset-2">
+          <div class="fawesome-background" style="background-color: {{instruction.background}}">
+            <div class="fawesome">
+              <i class="fa fa-{{instruction.fawesome}} fa-2x inst"></i>
+              <h2>
+                {{instruction.title}}
+              </h2>
+            </div>
           </div>
+
         </div>
       </div>
       <div class="row">
         <div class="col-xs-10 col-xs-offset-2">
-          <div class="text-background">
+          <div>
             <div class="text">
-              <h2>{{instruction.title}}</h2>
               <p>{{instruction.ins1}}</p>
               <p>{{instruction.ins2}}</p>
             </div>
@@ -23,31 +37,65 @@
     </div>
   </div>
 
-  <div class="row userName">
-    <div class="col-xs-10 col-xs-offset-1">
+  <div class="row">
+    <div class="col-xs-6 col-md-6 userName userName-left">
+      <p>
+        to start playing:
+      </p>
+    </div>
+    <div class="col-xs-4 col-md-4 create-title">
       <div ng-hide="named">
-        <h1>Create your username to start playing:</h1>
-        <form class='form-inline' ng-submit="addName()">
-          <input class='form-control' ng-model='userName' name='userName' placeholder='Enter a Username' type="text">
-          <button class="btn" id='nameSubmit' type="submit" name="submit">Ok</button>
+        <h1>Create your username</h1>
+      </div>
+      <div ng-show="named" id='addRooms'>
+        <h1>Join or create a room</h1>
+      </div>
+    </div>
+    <div class="col-xs-2 col-md- 1 userName"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-2 col-sm-7 col-sm-offset-6 create-userroom">
+      <div ng-hide="named">
+        <form class='form-inline' ng-submit="addName()">  
+          <div class="form-group">
+            <input class='form-control' ng-model='userName' name='userName' placeholder='Enter Username' type="text">
+            <button class="btn" id='nameSubmit' type="submit" name="submit">
+              <span class='sub-button'>Ok</span>
+            </button>
+          </div>
         </form>
       </div>
-
-      <div ng-show="named" id='addRooms'>
-        <h1>Join a room below or create your own:</h1>
-        <div ng-show="createRoom" id='addRoomConfig'>
-          <form class='form-inline' ng-submit='addRoom()'>
+      <div ng-show="named" ng-show="createRoom" id='addRoomConfig'>
+        <form class='form-inline' ng-submit='addRoom()'>
+          <div class="form-group">
             <input class='form-control' ng-model='roomName' name='roomName' placeholder='Name your room' type='text'>
-            <button class="btn" type="submit" name="submit">Ok</button>
-          </form>
-        </div>
+            <button class="btn" type="submit" name="submit">
+              Ok
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+       <!--  
+
+      
+         -->
       </div>
     </div>
   </div>
 
   <div id="games" class="row">
     
-    <div ng-repeat="(rooms, room) in allTheRooms" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-6 game-room">
+    <div ng-repeat="(rooms, room) in allTheRooms" ng-class="addOffset($index)" class="col-md-2 col-sm-4 col-xs-5 game-room">
 
 
       <div class="outer-border">
@@ -63,28 +111,19 @@
               </h2>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class='btn btn-default btn-block join-room' ng-show='named' ng-click="checkRoom(room.id)">
-                Join Room
-              </div>
+
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class='btn btn-default btn-lg join-room' ng-show='named' ng-click="checkRoom(room.id)">
+              Join Room
             </div>
           </div>
-         
-      
-          
         </div>
       </div>
-
-
-
     </div>
-
+  
 
   </div>
-
-
-
-
 </div>
 

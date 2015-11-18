@@ -7,31 +7,36 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$compile', '$state', 'socke
       title: 'Rock',
       ins1: 'crushes Scissors',
       ins2: 'crushes Lizard',
-      fawesome: 'hand-rock-o'
+      fawesome: 'hand-rock-o',
+      background: '#3888ff'
     },
     {
       title: 'Scissors',
       ins1: 'cuts Paper',
       ins2: 'decapitates Lizard',
-      fawesome: 'hand-scissors-o'
+      fawesome: 'hand-scissors-o',
+      background: '#a69935'
     },
     {
       title: 'Paper',
       ins1: 'covers Rock',
       ins2: 'disproves Spock',
-      fawesome: 'hand-paper-o'
+      fawesome: 'hand-paper-o',
+      background: '#8bdcfc'
     },
     {
       title: 'Lizard',
       ins1: 'poisons Spock',
       ins2: 'eats Paper',
-      fawesome: 'hand-lizard-o'
+      fawesome: 'hand-lizard-o',
+      background: '#d15f13'
     },
     {
       title: 'Spock',
       ins1: 'smashes Scissors',
       ins2: 'vaporizes Rock',
-      fawesome: 'hand-spock-o'
+      fawesome: 'hand-spock-o',
+      background: '#92a9b0'
     }
   ];
 

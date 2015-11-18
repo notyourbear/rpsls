@@ -2,13 +2,13 @@
 white: #ebeff0
 light-blue: #73b2d9
 orange: #FFA22C
+gold: #cc9712
+purple: #9999ff;
+red: #cc6666;
 */
 
 .instrucs {
-  background: #ebeff0;
-  background-image: url(../images/spockdraw.png);
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
+  background: black;
 }
 
 .instrucs .instruction{
@@ -33,99 +33,247 @@ orange: #FFA22C
   margin-top: 10px;
 }
 
+.instrucs .fawesome-background {
+  height: 200px;
+  text-align: right;
+  background: #73b2d9;
+}
+
+.instrucs .fawesome {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+}
 
 .instrucs .text {
   padding: 5px;
+  color: #67b4eb;
+  text-transform: uppercase;
+  text-align: right;
 }
 
 .instrucs p, h2 {
   margin-left: 3px;
-  margin-right: 3px;
 }
 
 .instrucs h2 {
+  color: black;
   margin-top: 0;
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 .instrucs p {
   font-size: 1.1em;
   letter-spacing: 1px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-right: -5px;
 }
 
 .instrucs i {
-  padding: 25px;
-  border: 2px solid #73b2d9;
-  background: #73b2d9;
-  color: #ebeff0;
-  border-radius: 50px;
+  padding: 25px 10px;
+  color: black;
+}
+
+.instructions-banner {
+  background: #9999ff;
+  text-align: center;
+  height: 2em;
+}
+
+.instructions-banner-left {  
+}
+
+.instructions-banner-center {
+  background: black;
+  border-right: 5px solid #9999ff;
+  height: 2em;
+}
+
+.instructions-banner p {
+  font-size: 1.5em;
+  text-align: right;
+  text-transform: uppercase;
+  line-height: .9em; 
+}
+
+.instructions-banner-right {
+  margin-left: 10px;
+  border-bottom-right-radius: 10px; 
+  border-top-right-radius: 10px;
 }
 
 .userName {
-  background: #FFA22C;
-  padding-top: 10px;
-  padding-bottom: 20px;
+  background: #9999ff;
   text-align: center;
+  height: 2.5em;
 }
 
-.userName h1 {
+.userName-left {
+  margin-left: -10px;
+  text-align: right;
+  text-transform: uppercase;
+  padding-bottom: 0;
+}
+
+.userName-left p {
   font-size: 1.75em;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  text-align: right;
   text-transform: uppercase;
 }
 
-.userName input {
-  padding: 21px 10px;
-  border-radius: 5px;
+.create-title{
+  background: black;
+  border-left: 5px solid #9999ff;
+  margin-left: 10px;
+  height: 2.5em;
 }
 
-.userName button {
-  border-radius: 5px;
-  padding: 11px;
+.create-title h1 {
+  font-size: 1.6em;
+  margin-top: 6px;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9999ff;
+}
+
+.create-userroom {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.create-userroom input {
+  border-radius: 0;
+  background: #ffcc99;
+  border-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  text-align: right;
+  padding-top: 4px;
+  height: 44px;
+}
+
+.create-userroom button {
+  border-radius: 0;
+  position: relative;
+  padding: 21px !important;
   width: 60px;
-  background: #ecf0f1;
+  height: 20px;
+  background: #9999ff !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.create-userroom .sub-button {
+  color: white;
+  text-align: right;
+  position: absolute;
+  bottom: 3px;
+  right: 12px;
+  font-size: 1.1em;
+}
+
+.create-userroom .form-control {
+  width: 74%;
+  display: inline;
+}
+
+.create-userroom .form-control::-webkit-input-placeholder { 
+  color: black; 
+  text-align: right;
+}
+.create-userroom  .form-control:-moz-placeholder { 
+  color: black; 
+  text-align: right;
+}
+.create-userroom  .form-control::-moz-placeholder { 
+  color: black; 
+  text-align: right;
+}
+.create-userroom  .form-control:-ms-input-placeholder { 
+  color: black; 
+  text-align: right;
 }
 
 #games {
-  padding-top: 30px;
+  padding-top: 20px;
   margin-bottom: 80px;
 }
 
 .game-room .outer-border{
-  background: #FFA22C;
+  background: #cc6666;
   padding: 4px;
-  border-radius: 5px;
 }
 
 .game-room .content {
-  background: white;
-  padding: 10px;
-  border-radius: 5px;
+  background: #cc6666;
+  padding: 8px;
 }
 
 .game-room h1 {
-  font-size: 1.25em;
-  letter-spacing: 1px;
+  text-align: right;
+  font-size: 1.45em;
+  font-weight: 700;
+  letter-spacing: 2px;
   margin-top: 0;
   text-transform: uppercase;
 }
 
 .game-room h2 {
-  font-size: 1em;
-  margin-top: 20px;
+  font-size: 1.15em;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: 30px;
+  margin-bottom: 0;
   text-align: right;
 }
 
 .game-room .join-room {
-  background: #FFA22C;
+  background: transparent;
+  margin-top: -2px;
+  border: 3px solid black !important;
+  float: right;
+  color: black;
+  border-radius: 0;
+  border-color: transparent;
+  text-transform: uppercase;
 }
 
 .game-room .join-room:hover {
-  opacity: 0.8;
+  border: 3px solid white !important;
+  color: white;
+}
+
+@media (min-width: 700px) {
+  .create-userroom input[type=text]{
+    padding-top: 20px;
+  }
+}
+
+@media only screen and (max-width : 749px) {
+  .create-title h1 {
+    font-size: 1em;
+    margin-top: 1px;
+  }
+}
+
+@media only screen and (min-width : 750px) {
+  .create-title h1 {
+    margin-top: 8px;
+    font-size: 1.45em;
+  }
+}
+
+@media (min-width: 990px) {
+  .create-title h1 {
+    margin-top: 3px;
+    font-size: 1.75em;
+  }
 }

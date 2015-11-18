@@ -1,10 +1,15 @@
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+body, html { 
+    overflow-x: hidden; 
+    overflow-y: auto;
+}
 
 body {
   font-size: 13.5px;
   height: 100%;
-  background: #2980B9;
+  background: black;
   font-family: 'Oxygen', sans-serif;
 
 }
@@ -74,10 +79,15 @@ a {
 #footBar {
   height: 30px;
   width: 100%;
-  background: #ecf0f1;
+  background: #cc9712;
   position: fixed;
   bottom: 0;
   text-align: center;
+  padding-top: 4px;
+}
+
+#footBar a {
+  color: white;
 }
 
 .content {
