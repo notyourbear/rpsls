@@ -58,16 +58,83 @@ gold: #cc9712
   background: black;
   color: #cc9712;
   text-align: center;
-  font-size: 1.45em;
+  font-size: 1.35em;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0;
 }
 
 .site-title h2 {
-  font-size: .8em;
+  font-size: .78em;
   text-align: center;
   margin-top: 0;
   letter-spacing: 1px;
   color: #cc9712;
+}
+
+@media (min-width: 700px) {
+  .site-title h1 {
+    margin-top: 0;
+    background: black;
+    color: #cc9712;
+    text-align: center;
+    font-size: 1.45em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+  }
+
+  .site-title h2 {
+    font-size: .8em;
+    text-align: center;
+    margin-top: 0;
+    letter-spacing: 1px;
+    color: #cc9712;
+  }
+}
+
+@media (max-width: 376px) {
+  .site-title h1 {
+    margin-top: 0;
+    background: black;
+    color: #cc9712;
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+  }
+
+  .site-title h2 {
+    font-size: .8em;
+    text-align: center;
+    margin-top: 0;
+    letter-spacing: 1px;
+    color: #cc9712;
+  }
+
+  .site-title .beneath-title-row-right {
+    margin-left: -20px;
+  }
+}
+
+@media (max-width: 321px) {
+  .site-title h1 {
+    margin-top: 0;
+    background: black;
+    color: #cc9712;
+    text-align: center;
+    font-size: .98em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+  }
+
+  .site-title h2 {
+    font-size: .7em;
+    text-align: center;
+    margin-top: 1px;
+    letter-spacing: 1px;
+    color: #cc9712;
+  }
 }
