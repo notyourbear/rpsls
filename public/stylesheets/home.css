@@ -84,9 +84,6 @@ red: #cc6666;
   height: 2em;
 }
 
-.instructions-banner-left {  
-}
-
 .instructions-banner-center {
   background: black;
   border-right: 5px solid #9999ff;
@@ -249,6 +246,27 @@ red: #cc6666;
 .game-room .join-room:hover {
   border: 3px solid white !important;
   color: white;
+}
+
+@media (max-width: 414px) {
+  .instructions-banner p {
+    font-size: 1.2em;
+    line-height: 1em; 
+  }
+}
+
+@media (max-width: 376px) {
+  .instructions-banner p {
+    font-size: 1em;
+    line-height: 1.35em; 
+  }
+}
+
+@media (max-width: 321px) {
+  .instructions-banner p {
+    font-size: .85em;
+    line-height: 1.5em; 
+  }
 }
 
 @media (min-width: 700px) {
