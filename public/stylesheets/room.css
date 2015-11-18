@@ -150,6 +150,41 @@ playerTwo : #ff9966;
 }
 
 
+@media (max-width: 414px) {
+  .leaveRoomBtn span {
+    font-size: .7em;
+  }
+
+  .leaveGameBtn span {
+    font-size: .7em;
+  }
+}
+
+@media (max-width: 376px) {
+  .leaveRoomBtn span {
+    font-size: .7em;
+    right: 35px;
+  }
+
+  .leaveGameBtn span {
+    font-size: .7em;
+  }
+
+}
+
+@media (max-width: 321px) {
+  .leaveRoomBtn span {
+    font-size: .55em;
+    right: 35px;
+  }
+
+  .leaveGameBtn span {
+    font-size: .55em;
+  }
+}
+
+
+
 
 
 
