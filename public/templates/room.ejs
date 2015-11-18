@@ -1,12 +1,35 @@
+<div class="row rpsRoom">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="row gameButtons">
+      <div class="col-md-2 col-sm-3 col-xs-4 leaveRoomBtn">
+        <button class="btn btn-block leaveRoom" ng-click='leaveRoom()'>  
+          <span>Leave Room</span>
+        </button>
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-4 leaveGameBtn">
+        <button class="btn btn-block leaveGame" ng-show='isInGame' ng-click='leaveGame()'>
+          <span>
+            Stop Playing
+          </span>
+        </button>
+      </div>
+    </div>
+
+    
+
+  </div>
+</div>
+
+
+
+
+
 <div class='contentRoom'>
   <div class='gameView'>
     <div class='game'>
-      <div class="leaveRoom" ng-click='leaveRoom()'>  Leave Room
-      </div>
+   
     
-      <div class="leaveGame">
-        <button ng-show='isInGame' ng-click='leaveGame()'>Stop playing</button>
-      </div>
+      
       
       <div id='playfield'>
         <div id='playerOne' class='move'>{{playerOne}}
