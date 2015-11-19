@@ -1,0 +1,118 @@
+#chat {
+  position: absolute;
+  right: 0;
+  top: 94px;
+  width: 20%;
+  z-index:10;
+  padding-left: 10%;
+  transition: all 1s;
+}
+
+.open {
+  padding-left: 0 !important;
+}
+
+#chat #chat-title {
+  color: green;
+  background: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top-left-radius: 25px;
+}
+
+#chat-title h1 {
+  font-size: 1.1em;
+  margin: 0 0 10px 45px;
+  padding: 15px 0 5px;
+  text-align: left;
+}
+
+/* HOME SCREEN */
+
+/*#games {
+  padding: 0 3% 0 10%;
+  width: 100%;
+}
+*/
+.chatForm { 
+  background: black;
+  position: absolute; 
+  bottom: 0; 
+  width: 100%;
+  padding: 0;
+  margin-left: 10px; 
+}
+
+.chatForm input { 
+  border: 0; 
+  height: 40px;
+  width: 65%; 
+  margin: .5%; 
+  padding: 10px;
+  background: green;
+  padding-top: 20px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.chatForm input::-webkit-input-placeholder {
+    color: red;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.chatForm input::-moz-input-placeholder {
+    color: red;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.chatForm input:-moz-input-placeholder {
+    color: red;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.chatForm input::-ms-input-placeholder {
+    color: red;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+#messageSpace{
+  overflow: scroll;
+  height: 500px;
+  background: black;
+  margin-left: 10px;
+}
+
+#messages { 
+  background: white;
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+}
+
+#messages li { 
+  position: relative;
+  border-top: 5px solid black;
+  padding: 5px 12px;
+  margin: 0;
+}
+
+.chatForm .chat-btn {
+  border-radius: 0;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  width: 27%;
+  height: 40px;
+  margin-right: 5px;
+  margin-bottom: 12px;
+  line-height: 35px;
+  padding-left: 15px;
+  text-transform: uppercase;
+}

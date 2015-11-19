@@ -135,36 +135,24 @@
   </div>
 </div>
 
-
-
-
-
-<div class='contentRoom'>
-  <div class='gameView'>
-<!--     <div class='game'>
-   
-
-      <div ng-show='isInGame'>
-        <div id = 'buttons'>
-          <div id='rock' ng-click = updatePlayers('Rock') class='gameButton'>&nbsp;</div>
-          <div id='paper' ng-click = updatePlayers('Paper') class='gameButton'>&nbsp;</div>
-          <div id='scissors' ng-click = updatePlayers('Scissors') class='gameButton'>&nbsp;</div>
-          <div id='lizard' ng-click = updatePlayers('Lizard') class='gameButton'>&nbsp;</div>
-          <div id='spock' ng-click = updatePlayers('Spock') class='gameButton'>&nbsp;</div>
-        </div>
-      </div>
-    </div> -->
-
-
-    <div class="sidebar">
-      <h3>Chat</h3>
-      <div id='messageSpace'>
-        <ul id="messages"></ul>
-      </div>
-      <form class="chatForm" ng-submit='chatMsg()'>
-        <input id="m" ng-model="chatMessage" name="chatMessage" autocomplete="off" placeholder="type message" /><button>Send</button>
-      </form>
-    </div>
+<div id="chat">
+  <div id="chat-title">
+    <h1>Chat</h1>
   </div>
-  
+  <div id='messageSpace'>
+    <ul id="messages"></ul>
+  </div>
+  <form class="chatForm" ng-submit='chatMsg()'>
+    <input id="m" ng-model="chatMessage" name="chatMessage" autocomplete="off" placeholder="type message" />
+    <button class='btn chat-btn'>Send</button>
+  </form>
 </div>
+
+
+<script>
+  $('#chat-title').on('click', function(){
+
+    $('#chat').toggleClass('open');
+  });
+</script>
+
