@@ -139,13 +139,15 @@
   <div id="chat-title">
     <h1>Chat</h1>
   </div>
-  <div id='messageSpace'>
-    <ul id="messages"></ul>
+  <div id="chat-messages">
+    <div id='messageSpace'>
+      <ul id="messages"></ul>
+    </div>
+    <form class="chatForm" ng-submit='chatMsg()'>
+      <input id="m" ng-model="chatMessage" name="chatMessage" autocomplete="off" placeholder="type message" />
+      <button class='btn chat-btn'>Send</button>
+    </form>
   </div>
-  <form class="chatForm" ng-submit='chatMsg()'>
-    <input id="m" ng-model="chatMessage" name="chatMessage" autocomplete="off" placeholder="type message" />
-    <button class='btn chat-btn'>Send</button>
-  </form>
 </div>
 
 
@@ -153,6 +155,8 @@
   $('#chat-title').on('click', function(){
 
     $('#chat').toggleClass('open');
+    $('#chat-messages').slideToggle(function(el){
+    });
   });
 </script>
 
