@@ -115,7 +115,7 @@ gold: #cc9712;
 
 .playfield #playerOne {
   text-transform: uppercase;
-  text-align: center;
+  text-align: right;
   font-size: 1.15em;
   padding: 10px 0;
   color: #ffcc99;
@@ -165,7 +165,7 @@ gold: #cc9712;
 .playfield #playerTwo {
   margin-top: 90px;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   font-size: 1.15em;
   padding: 10px 0;
   color: #ff9966;
