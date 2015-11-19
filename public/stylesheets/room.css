@@ -234,6 +234,7 @@ gold: #cc9712;
   padding-top: 65px;
   cursor: pointer;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .gameButton span {
@@ -307,6 +308,17 @@ gold: #cc9712;
     margin-left: 69%;
     margin-top: 60px;
   }
+
+  .gameplayButtonInstrucs {
+    margin-top: 20px;
+    margin-left: -40px;
+  }
+
+  .gameplayButtonInstrucs .gpbit{
+    font-size: 10px;
+    line-height: 10px;
+    letter-spacing: 2px;
+  }
 }
 
 @media (max-width: 376px) {
@@ -339,6 +351,33 @@ gold: #cc9712;
     width: 30px;
     margin-left: 75%;
     margin-top: 60px;
+  }
+
+  .playfield .messageField {
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 140%;
+  }
+
+  .gameplayButtonInstrucs {
+    margin-top: 10px;
+    margin-left: -35px;
+  }
+
+  .gameplayButtonInstrucs .gpbit{
+    font-size: 10px;
+    line-height: 10px;
+    letter-spacing: 2px;
+  }
+
+  .gameButton {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 65px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
   }
 
 }
@@ -393,6 +432,25 @@ gold: #cc9712;
     margin-left: 0;
     border-left: 0px solid #ff9966;
   }
+
+  .playfield .messageField {
+    font-size: .9em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 140%;
+  }
+
+  .gameButton {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 65px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 90px;
+    height: 150px;
+  }
+
 
 }
 
