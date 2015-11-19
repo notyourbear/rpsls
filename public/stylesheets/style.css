@@ -1,6 +1,3 @@
-
-
-
 body, html { 
     overflow-x: hidden; 
     overflow-y: auto;
@@ -39,24 +36,6 @@ a {
   }
 }
 
-.contentRoom {
-  width: 100%;
-  background: #ecf0f1;
-  height: 600px;
-}
-
-
-.gameView{
-  position: relative;
-}
-
-.game {
-  width:100%;
-  height: 600px;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-}
 
 .sidebar {
   width: 20%;
@@ -90,46 +69,7 @@ a {
   width: 100%;
 }
 */
-.gameRoomBorder{
-  background: #FFA22C;
-  display: inline-block;
-  float: left;
-  margin: 25px;
-  padding: 2px;
-}
 
-.gameRoom {
-  padding: 10px;
-  width: 160px;
-  background: #ecf0f1;
-}
-
-.gameRoomTitle {
-  font-size: 1.8em;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.gamePeople {
-  text-align: center;
-}
-
-.joinButton {
-  width: 140px;
-  background: #FFA22C;
-  display: inline-block;
-  text-align: center;
-  padding: 15px 0;
-  margin: 10px 0;
-}
-
-.joinButton:hover {
-  background: #C76F00;
-}
-
-.joinButton:active {
-  background: #C73300;
-}
 
 .chatForm { 
   background: #000;
@@ -161,95 +101,13 @@ a {
   padding: 5px 12px; 
 }
 
-#playfield {
-/*  width: 78%;
-  height: 400px;
-  margin: 5% 0 0 5%;*/
-}
-
-.move {
-/*  vertical-align: top;
-  width: 40%;
-  display: inline-block;
-  border: 1px solid black;
-  height: 300px;
-  text-align: center;
-  font-size: 1.5em;*/
-}
-
-#vs {
-/*  padding: 5%;
-  margin-top: 50px;
-  display: inline-block;
-  font-size: 2.5em;*/
-}
-
 #buttons {
   margin-bottom: 30px;
 }
 
-/*.gameButton{
-  display: inline-block;
-  height: 140px;
-  padding: 0 50px 20px;
-  text-align: center;
-  margin: 0 0 0 4%;
-}*/
 
 
-
-.join{
-  padding: 2px;
-  text-align: center;
-  font-size: 1em;
-  background:  #FFA22C;
-  position: absolute;
-  bottom: 15%;
-  left: 36.5%;
-  display: inline-block;
-}
-
-.joinInt{
-  background: #72B0D9;
-  width: 115px;
-  padding: 15px 0;
-}
-
-.joinInt:hover{
-  background: #FFA22C;
-}
-
-.joinInt:active{
-  background: black;
-}
-
-.leaveGame{
-  padding: 2px;
-  text-align: center;
-  font-size: 1em;
-  background:  #FFA22C;
-  position: absolute;
-  top: -9%;
-  left: 13.5%;
-  display: inline-block;
-}
-
-.leaveGameInt{
-  width: 100px;
-  padding: 8px 0;
-  text-align: center;
-  font-size: 1em;
-  background:  #FFC82C;
-}
-
-.leaveGameInt:hover{
-  background: #FFA22C;
-}
-
-.leaveGameInt:active{
-  background: black;
-}
-
+  
 
 /* colors:
    base: #72B0D9;

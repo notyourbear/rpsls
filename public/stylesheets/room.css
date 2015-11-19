@@ -209,8 +209,8 @@ gold: #cc9712;
 .gameplayButtonInstrucs .gpbit{
   background: black;
   color: #9999ff;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 30px;
   height: 30px;
   border-right: 5px solid #9999ff;
   margin-right: 10px;
@@ -232,6 +232,7 @@ gold: #cc9712;
   text-align: right;
   padding-right: 5px;
   padding-top: 35px;
+  cursor: pointer;
 }
 
 .gameButton span {
@@ -263,6 +264,10 @@ gold: #cc9712;
 .gameplayButtons #spock {
   background: #92a9b0;
   margin-left: 120px;
+}
+
+#spock:hover, #lizard:hover, #scissors:hover, #paper:hover, #rock:hover {
+  background: white;
 }
 
 @media (max-width: 414px) {
