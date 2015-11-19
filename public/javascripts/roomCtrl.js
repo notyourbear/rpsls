@@ -5,6 +5,34 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   $scope.isInGame = profile.inGame; //set up here so that creator sees buttons
 
+  $scope.gameplayButtons = [
+    {
+      id: 'rock',
+      name: 'Rock',
+      fawesome: 'hand-rock-o'
+    },
+    {
+      id: 'paper',
+      name: 'Paper',
+      fawesome: 'hand-paper-o'
+    },
+    {
+      id: 'scissors',
+      name: 'Scissors',
+      fawesome: 'hand-scissors-o'
+    },
+    {
+      id: 'lizard',
+      name: 'Lizard',
+      fawesome: 'hand-lizard-o'
+    },
+    {
+      id: 'spock',
+      name: 'Spock',
+      fawesome: 'hand-spock-o'
+    }
+  ];
+
   var reset = function(){
     //emit to backend -- and i only need one person to do that.
     console.log('reset got called!');

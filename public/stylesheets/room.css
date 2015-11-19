@@ -227,12 +227,13 @@ gold: #cc9712;
 
 .gameButton {
   background: white;
-  width: 85px;
-  height: 110px;
+  width: 105px;
+  height: 150px;
   text-align: right;
-  padding-right: 5px;
-  padding-top: 35px;
+  padding-right: 10px;
+  padding-top: 65px;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .gameButton span {
@@ -248,22 +249,18 @@ gold: #cc9712;
 
 .gameplayButtons #paper {
   background: #8bdcfc;
-  margin-left: 30px;
 }
 
 .gameplayButtons #scissors {
   background: #a69935;
-  margin-left: 60px;
 }
 
 .gameplayButtons #lizard {
   background: #d15f13;
-  margin-left: 90px;
 }
 
 .gameplayButtons #spock {
   background: #92a9b0;
-  margin-left: 120px;
 }
 
 #spock:hover, #lizard:hover, #scissors:hover, #paper:hover, #rock:hover {
