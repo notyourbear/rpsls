@@ -137,7 +137,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   $scope.chatMsg = function(){
     //emit message to other users
     if ($scope.chatMessage !== ''){
-      angular.element('#messages').append($('<li>').text(profile.userName+": "+$scope.chatMessage));
+      angular.element('#messages').append($('<li>').html("<span class='chat-profile-name'><p>" + profile.userName + ":</p></span> <span class='chat-message-text'><p>"+$scope.chatMessage+"</p></span>"));
 
        //if message goes past overflow, make sure it's scrolled to.
         angular.element('#messageSpace').stop().animate({

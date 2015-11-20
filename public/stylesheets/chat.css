@@ -105,7 +105,7 @@
 #messages li { 
   position: relative;
   border-top: 5px solid black;
-  padding: 5px 12px;
+  padding: 5px 0px;
   margin: 0;
 }
 
@@ -121,4 +121,30 @@
   text-align: right;
   text-transform: uppercase;
   background: #cc6666;
+
+}
+
+.chat-profile-name {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: .8em;
+  position: absolute;
+  left: 2%;
+  top: 5%;
+  letter-spacing: 1px;
+}
+
+.chat-message-text {
+  margin-left: 10%;
+  margin-top: 9%;
+  padding-top: 0;
+  margin-right: 8%;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: .8em;
+  letter-spacing: 1px;
+}
+
+.chat-message-text p {
+  margin: 0;
 }
