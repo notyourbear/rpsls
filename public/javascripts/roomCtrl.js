@@ -90,7 +90,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   };
 
   var victory = function(msg, winPiece, lossPiece, winIndex, cb){
-    var count = 3;
+    var count = 2;
 
     //display initial time;
     angular.element('#timer').text(count);
@@ -116,7 +116,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
                   
                     setTimeout(function(){
                       reset();
-                    },7500);
+                    },800);
                   
                   } else if (winIndex === 1) {
 
@@ -125,7 +125,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
                     
                     setTimeout(function(){
                       reset();
-                    },4000);
+                    },800);
                   
                   }
 
@@ -224,8 +224,13 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
 
   socket.on('chatMessage', function(user, msg){
     //message duplication hack
-    if(msg !== profile.lastChatMsg && (msg !== profile.lastReceivedChatMsg && user !== profile.lastReceivedChatSender)){
-      angular.element('#messages').append($('<li>').text(user+": "+msg));
+    if(user !== profile.userName){
+
+      // angular.element('#messages').append($('<li>').text(user+": "+msg));
+
+      angular.element('#messages')
+        .append($('<li>')
+        .html("<span class='chat-profile-name'><p>" + user + ":</p></span> <span class='chat-message-text'><p>"+msg+"</p></span>"));
 
        //if message goes past overflow, make sure it's scrolled to.
         angular.element('#messageSpace').stop().animate({
@@ -302,7 +307,7 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   socket.on('userHasJoined', function(userName, hasEntered){
 
     if (!hasEntered) { //dumb hack fix for only displaying enter message once
-      angular.element('#messages').append($('<li>').text(userName + ' has joined the room'));
+      angular.element('#messages').append($('<li>').html("<span style='margin-left:10px'>" + userName + " has joined the room</span>"));
 
        //if message goes past overflow, make sure it's scrolled to.
         angular.element('#messageSpace').stop().animate({
