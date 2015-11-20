@@ -18,6 +18,11 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   border-top-left-radius: 15px;
+  cursor: pointer;
+}
+
+#chat #chat-title:hover {
+  background: white;
 }
 
 #chat-title h1 {
