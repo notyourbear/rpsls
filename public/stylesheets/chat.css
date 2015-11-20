@@ -17,7 +17,7 @@
   background: #cc99cc;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-top-left-radius: 25px;
+  border-top-left-radius: 15px;
 }
 
 #chat-title h1 {
@@ -28,28 +28,32 @@
 }
 
 #chat-messages {
-  display: none;
-  opacity: 1;
+  opacity: 0;
+  transition: opacity 1s;
 }
 .chatForm { 
-  background: black;
+  background: transparent;
   position: absolute; 
   bottom: 0; 
   width: 100%;
   padding: 0;
-  margin-left: 10px; 
+   
+}
+
+.chatForm .form-group{
 }
 
 .chatForm input { 
   border: 0; 
+  border-radius: 0;
   height: 40px;
-  width: 65%; 
   margin: .5%; 
   padding: 10px;
   background: #cc99cc;
   padding-top: 20px;
   text-align: right;
   text-transform: uppercase;
+  border-bottom-left-radius: 15px;
 }
 
 .chatForm input::-webkit-input-placeholder {
@@ -82,9 +86,9 @@
 
 #messageSpace{
   overflow: scroll;
-  height: 500px;
-  background: black;
-  margin-left: 10px;
+  height: 400px;
+  background: transparent;
+  margin-bottom: 110px;
 }
 
 #messages { 
@@ -94,7 +98,7 @@
   padding: 0; 
 }
 
-#messages:nth-child(even){
+#messages li:nth-child(even){
   background: #ff9900;
 }
 
@@ -107,14 +111,14 @@
 
 .chatForm .chat-btn {
   border-radius: 0;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  width: 27%;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  margin-left: 50%;
+  width: 50%;
   height: 40px;
-  margin-right: 5px;
-  margin-bottom: 12px;
+  margin-top: 5px;
   line-height: 35px;
-  padding-left: 15px;
+  text-align: right;
   text-transform: uppercase;
   background: #cc6666;
 }
