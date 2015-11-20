@@ -153,3 +153,28 @@
 .chat-message-text p {
   margin: 0;
 }
+
+@media (max-width: 414px) {
+  #chat {
+    position: relative;
+    width: 80%;
+    transition: all 1s;
+    margin-top: -20px;
+    margin-left: 20%;
+  }
+
+  #messageSpace{
+    height: 500px;
+    background: transparent;
+    margin-bottom: 0
+  }
+
+  .chatForm { 
+    bottom: -110px;     
+  }
+
+  .chat-message-text {
+    font-size: 1em;
+  }
+
+}
