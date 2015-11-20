@@ -309,6 +309,10 @@ gold: #cc9712;
     right: -5px;
   }
 
+  .playfield #vs {
+    margin-left: -20px;
+  }
+
   .playfield #playerOne {
     font-size: .9em;
     width: 30px;
@@ -319,7 +323,7 @@ gold: #cc9712;
     text-align: left;
     font-size: .9em;
     width: 30px;
-    margin-left: 69%;
+    
     margin-top: 60px;
   }
 
@@ -332,6 +336,14 @@ gold: #cc9712;
     font-size: 10px;
     line-height: 10px;
     letter-spacing: 2px;
+  }
+
+  #player-one-game-object .fa-3x {
+    font-size: 2em;
+  }
+
+  #player-two-game-object .fa-3x {
+    font-size: 2em;
   }
 }
 
@@ -363,7 +375,6 @@ gold: #cc9712;
   .playfield #playerTwo {
     font-size: .9em;
     width: 30px;
-    margin-left: 75%;
     margin-top: 60px;
   }
 

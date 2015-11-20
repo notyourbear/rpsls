@@ -449,3 +449,6 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   });
 
 }]);
+
+
+
