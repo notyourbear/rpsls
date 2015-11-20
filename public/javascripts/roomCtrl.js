@@ -1,7 +1,14 @@
 app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($scope, $state, socket, profile) {
 
+  var setHtml = function(id, theHtml){
+    angular.element("#"+ id).html(theHtml);
+  };
+
   $scope.playerOne = profile.players[0];
   $scope.playerTwo = profile.players[1] || 'Waiting for an opponent';
+
+  $scope.playerOneObject = "11";
+  $scope.playerTwoObject = "";
 
   $scope.isInGame = profile.inGame; //set up here so that creator sees buttons
 
@@ -192,15 +199,17 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     console.log(playPiece);
 
     var text = 'You play ' + playPiece;
+    var piece = playPiece.toLowerCase();
+    var html = "<i class='fa fa-hand-"+piece+"-o fa-3x'></i>";
 
     //find position of user and display move on screen accordingly 
     console.log('a user name!', profile.userName);
     switch(profile.findPosition(profile.userName)){
       case 1: //in first position
-        $scope.playerOne = text;
+        angular.element("#player-one-game-object").append(html);
         break;
       case 2: //in second position
-        $scope.playerTwo = text;
+        angular.element("#player-two-game-object").append(html);
         break;
       case false:
         console.log('what. how even?');
@@ -333,26 +342,27 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
       //set the other user's message to being...waiting for dude
       
       if(playerIndex === 0){
-        $scope.playerTwo = 'Waiting on ' + profile.players[1] + ' to make their move';
+        setHtml('player-two-game-object', 'Waiting on move');
       } else if (playerIndex === 1){
-        $scope.playerOne = 'Waiting on ' + profile.players[0] + ' to make their move';
+        setHtml('player-one-game-object', 'Waiting on move');
       }
     
     } else if (profile.inGame){
      // else if you are in the game but have not made a move
       if(playerIndex === 0){
-        $scope.playerOne = profile.players[0] + ' has made their move';
+        setHtml('player-one-game-object', 'Move has been made');
       } else if (playerIndex === 1){
-        $scope.playerTwo = profile.players[1] + ' has made their move';
+        setHtml('player-two-game-object', 'Move has been made');
+        
       }
     } else {
        //otherwise display a message for both users
        if(playerIndex === 0){
-        $scope.playerOne = profile.players[0] + '  has made their move';
-        $scope.playerTwo = 'Waiting on ' + profile.players[1] + ' to make their move';
+        setHtml('player-two-game-object', 'Waiting on move');
+        setHtml('player-one-game-object', 'Move has been made');
        } else if (playerIndex === 1){
-          $scope.playerOne = 'Waiting on ' + profile.players[0] + ' to make their move';
-          $scope.playerTwo = profile.players[1] + ' has made their move';
+          setHtml('player-one-game-object', 'Waiting on move');
+          setHtml('player-two-game-object', 'Move has been made');
       }
     }
   });
@@ -360,24 +370,38 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   socket.on('waitNoMore', function(userName){
     //find the player index
     var playerIndex = profile.players.indexOf(userName),
-        text = userName + ' has made their move.';
+        html = 'Move has been made';
 
     //check that it's not the user, because we don't have to update for him
     if(userName !== profile.userName || !profile.inGame) {
       //set that player has moved
 
       if(playerIndex === 0){
-        $scope.playerOne = text;
+        setHtml('player-one-game-object', html);
       } else if (playerIndex === 1){
-        $scope.playerTwo = text;
+        setHtml('player-two-game-object', html);
       }
 
     }
   });
 
   socket.on('gameEval', function(winUserName, winPiece, syntax, lossPiece, lossUserName){
+
+    var winningPiece = winPiece.toLowerCase();
+    var winningHtml = "<i class='fa fa-hand-"+winningPiece+"-o fa-3x'></i>";
+
+    var loserPiece = lossPiece.toLowerCase();
+    var loserHtml = "<i class='fa fa-hand-"+loserPiece+"-o fa-3x'></i>";
     
     var winIndex = profile.players.indexOf(winUserName);
+
+    if(winIndex === 0){
+      setHtml('player-one-game-object', winningHtml);
+      setHtml('player-two-game-object', loserHtml);
+    } else if (winIndex === 1){
+      setHtml('player-one-game-object', loserHtml);
+      setHtml('player-two-game-object', winningHtml);
+    }
   
     var message = winUserName + " threw " + winPiece + ". It was super effective! " + winPiece + " " + syntax + " " + lossPiece + "!";
     
@@ -385,6 +409,12 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
   });
 
   socket.on('gameEvalTie', function(playPiece){
+
+    var piece = playPiece.toLowerCase();
+    var html = "<i class='fa fa-hand-"+piece+"-o fa-3x'></i>";
+
+    setHtml('player-one-game-object', html);
+    setHtml('player-two-game-object', html);
     
     var message = 'Tie!!';
 
@@ -403,6 +433,10 @@ app.controller('roomCtrl', ['$scope', '$state', 'socket', 'profile', function($s
     $scope.playerOne = profile.players[0];
     $scope.playerTwo = profile.players[1];
     $scope.victoryMessage = "";
+
+    //reset html 
+    setHtml('player-one-game-object', '');
+    setHtml('player-two-game-object', '');
 
     //reset timer
     angular.element('#timer').html('');
