@@ -25,7 +25,7 @@ var server = http.createServer(app);
 
 
 /**
-  * Supporting functions 
+  * Supporting functions
   */
   var findCorrectRoom = function(roomId){
     return rooms[roomId];
@@ -36,10 +36,8 @@ var server = http.createServer(app);
     var i;
     for (i in rooms) {
       if(rooms.hasOwnProperty(i)){
-        console.log('room ' + rooms[i] + 'has this many people,', rooms[i].people.length);
         if(rooms[i].people.length === 0){
           delete rooms[i];
-          console.log('room has been deleted');
         }
       }
     }
@@ -50,7 +48,7 @@ var server = http.createServer(app);
 
 
 /**
- * socket.io 
+ * socket.io
  */
 var io = require('socket.io').listen(server);
 
@@ -67,12 +65,8 @@ io.on('connection', function(user){
   }
 
   user.player = new Player(user.id);
-  console.log('user.player', user.player);
-  console.log('rooms right now', rooms);
-
 
   user.on('disconnect', function(){
-    console.log('a user has left');
 
     if(user.player.room !== null){
       // copyPaste leaveGame:
@@ -83,7 +77,6 @@ io.on('connection', function(user){
           indexOfPlayer,
           leftGame;
 
-      console.log("HEY I LEFT. THIS IS THE ROOM I WAS IN", room);
       // if player was also in game while trying to leave the room
       // run through leave game stuff;
       leftGame = room.leaveFromGame(this.player.userName);
@@ -104,7 +97,6 @@ io.on('connection', function(user){
 
   user.on('chatMessage', function(message){
     if(message !== ""){
-      console.log(this.player.userName, message);
       io.to(this.player.room).emit('chatMessage', this.player.userName, message);
     }
   });
@@ -114,7 +106,7 @@ io.on('connection', function(user){
     var bool = room.addToGame(this.player.userName);
 
     user.emit('joinGame', bool);
-  
+
   });
 
   user.on('leaveGame', function(){
@@ -149,8 +141,6 @@ io.on('connection', function(user){
       room.people.splice(indexOfPlayer, 1);
     }
 
-    console.log('backend leaving start complete');
-
     io.to(roomId).emit('startRoomLeave', leftGame, this.player.userName);
 
   });
@@ -162,7 +152,6 @@ io.on('connection', function(user){
     // if room has 0 people in it, delete the room
     if(room.people.length === 0){
       delete rooms[roomId];
-      console.log('room got deleted');
     }
 
     // on socket:
@@ -178,10 +167,7 @@ io.on('connection', function(user){
 
     setTimeout(function(){
       io.emit('currentRooms', rooms);
-      console.log('hey i am displaying roomz');
     }, 650);
-
-    console.log('leave Completed');
 
     //dumb entermessage hack
     this.player.hasEntered = false;
@@ -190,10 +176,7 @@ io.on('connection', function(user){
   user.on('addName', function(name){
     if(name !== '' && !this.player.userName){
       this.player.addUserName(name);
-      console.log('name added!', this.player.userName);
-      console.log('this.player', this.player);
       players[user.id] = this.player;
-      console.log('all the players', players);
     }
   });
 
@@ -205,7 +188,7 @@ io.on('connection', function(user){
 
       //add room to rooms array
       rooms[id]=newRoom;
-      
+
       //also create socket room for the room
       this.player.room = id;
 
@@ -215,27 +198,20 @@ io.on('connection', function(user){
       //also push player into room's people list
       newRoom.addPerson(this.player);
 
-      //and push the player into the room's game object: 
+      //and push the player into the room's game object:
       newRoom.addToGame(this.player.userName);
 
-      console.log('\n\n\n\n\n the rooms game now looks like:', newRoom.game);
-
-      console.log(findCorrectRoom(id));
-      
       //update currentRooms list
       io.emit('currentRooms', rooms);
 
       //update created roomId
       user.emit('createdRoom', id);
-     
+
     }
   });
 
   user.on('joinRoom', function(id){
     var room = findCorrectRoom(id);
-
-    console.log('this is the room', room);
-    console.log('this is the id', id);
 
     //update user's player object with current room
     this.player.room = room.id;
@@ -243,15 +219,9 @@ io.on('connection', function(user){
     //add player to room object
     room.addPerson(this.player);
 
-    console.log('this is all the players in the room now: ', room.people);
-
     //also join player into room's socket
     this.join(id);
 
-    //console log out rooms
-    console.log(rooms);
-
-    
     //emit to room that someone has joined
     io.to(room.id).emit('userHasJoined', this.player.userName, this.player.hasEntered);
 
@@ -265,8 +235,6 @@ io.on('connection', function(user){
     var checked = false;
     var players;
 
-    console.log('this is the id we are checking against', id);
-    
     var room = findCorrectRoom(id);
 
     //run through all players in room
@@ -274,9 +242,6 @@ io.on('connection', function(user){
       if(user.player.room !== id){
         //check to make sure that player's associated room is not this one
           bool = true;
-          console.log('\n\n\n\n\n\n\n\n\ntruthy!');
-
-          console.log('hey this is players', room.game);
 
           players = room.game;
 
@@ -288,7 +253,6 @@ io.on('connection', function(user){
 
     //if person is not in room
     if (!bool && checked){
-      console.log('falsy!');
       this.emit('checkRoom', id, false);
     }
   });
@@ -344,7 +308,7 @@ io.on('connection', function(user){
 
 
       var answer = rpsls.evaluate(play1[1], play2[1]);
-      //answer is made up in the following way: 
+      //answer is made up in the following way:
       //[0]: side that won
       //[1]: syntax
       //[2]: side that lost.
@@ -353,17 +317,13 @@ io.on('connection', function(user){
       play1UserName = play1[0];
       play2UserName = play2[0];
 
-      // console.log('\n\n\n\n\n\n\n\n\n\n 1:[name:id]:', play1UserName, play1[0]);
-      // console.log('2:[name:id]:', play2UserName, play2[0]);
-
-
       //check first spot in winner array to see which side actually won and emit info back to the entire rooom :/
 
       //if tie, send the entire room that it was a tie
       if(answer[0] === 'tie') {
         io.to(this.player.room).emit('gameEvalTie', playPiece);
       } else {
-      
+
       //send to the room the info of the eval in form of:
       // userName of winner, game piece of winner, syntax, game piece of loser, userName of loser
 
@@ -374,19 +334,16 @@ io.on('connection', function(user){
         //if side 2 won
         } else if (answer[0] === play2[1]){
           io.to(this.player.room).emit('gameEval', play2UserName, answer[0], answer[1], answer[2], play1UserName);
-        } else {
-          //this actually should never be possible but, who knows:
-          console.log('the impossible happened. somehow we evaulated for a winner even though it shouldnt be possible', answer);
         }
 
       }
 
-      //if both aren't set... 
+      //if both aren't set...
     } else if (count < 2) {
 
       //emit back to everyone in room that one person has made a move
       io.to(this.player.room).emit('waiting', this.player.userName);
-      
+
     }
 
   });
@@ -414,8 +371,6 @@ io.on('connection', function(user){
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-
 
 /**
  * Normalize a port into a number, string, or false.
